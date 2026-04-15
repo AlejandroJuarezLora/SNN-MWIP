@@ -1,0 +1,53 @@
+`include "disciplines.vams"
+`include "constants.vams"
+
+//https://gemini.google.com/share/0cd514a2e9f6
+
+module mwip_dynamics(torque, theta, x, init_x, init_theta, init_v_x, init_v_theta, v_x_node, v_theta_node);
+    // Port Definitions
+    input torque; 
+    input init_x, init_theta, init_v_x, init_v_theta;
+    output theta, x, v_x_node, v_theta_node;
+    
+    electrical torque, theta, x;
+    electrical init_x, init_theta, init_v_x, init_v_theta;
+    electrical v_x_node, v_theta_node;  // Internal nodes for velocity states
+    
+
+    // Physical Parameters
+    parameter real M = 0.5;    // Mass of wheels/base
+    parameter real m = 0.2;    // Mass of pendulum
+    parameter real l = 0.3;    // Length to COM
+    parameter real g = 9.81;   
+    parameter real J = 0.006;  
+
+   
+    real det, E11, E12, E21, E22;
+    real a_x, a_theta;
+
+    analog begin
+        // 1. Setup Matrix Elements (Non-linear terms)
+        E11 = M + m;
+        E12 = m * l * cos(V(theta));
+        E21 = m * l * cos(V(theta));
+        E22 = J + m * pow(l, 2);
+
+        det = (E11 * E22) - (E12 * E21);
+
+        // 2. Dynamics Equations
+        // Solving: M(q)q'' + C(q,q') = Tau
+        a_theta = ( (E11 * m * g * l * sin(V(theta))) - (E21 * (V(torque) + m * l * pow(V(v_theta_node), 2) * sin(V(theta)))) ) / det;
+        a_x     = ( (V(torque) + m * l * pow(V(v_theta_node), 2) * sin(V(theta))) - (E12 * a_theta) ) / E11;
+
+        // 3. Nested Integration with Initial Conditions
+        
+        // --- Velocity Layer ---
+        V(v_x_node)     <+ idt(a_x, V(init_v_x));
+        V(v_theta_node) <+ idt(a_theta, V(init_v_theta));
+
+        // --- Position/Angle Layer ---
+        V(x)     <+ idt(V(v_x_node), V(init_x));
+        V(theta) <+ idt(V(v_theta_node), V(init_theta));
+
+    end
+endmodule

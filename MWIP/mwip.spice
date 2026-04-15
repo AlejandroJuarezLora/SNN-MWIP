@@ -1,0 +1,17 @@
+*MADE BY JORGE ALEJANDRO JUAREZ LORA IPN
+
+*inicializando el dispositivo con todo inicializado en cero
+*con angulo 0.1 rad para probar estabilidad
+
+.subckt mwip_v0 Tau X Th vx vTh 
+    N1 Tau X Th vx vTh  mwip_v0_model init_x=0 init_theta=0.1 
+.ends mwip_v0
+
+.model mwip_v0_model mwip_dynamics
+
+
+.control
+    pre_osdi /foss/designs/SNN-MWIP/MWIP/mwip.osdi
+.endc
+
+
