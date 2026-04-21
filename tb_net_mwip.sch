@@ -136,7 +136,7 @@ C {code_shown.sym} 850 -330 0 0 {name=s1 only_toplevel=false value="
 .options set wr_singlescale
 .options numdgt = 2
 .save all
-.tran 1n 0.1m
+.tran 100n 1
 .control
 	run
 	write /foss/designs/SNN-MWIP/data.raw
