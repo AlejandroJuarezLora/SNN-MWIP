@@ -1,53 +1,91 @@
+
+
 `include "disciplines.vams"
 `include "constants.vams"
+//https://gemini.google.com/app/37102043ad932edb
 
-//https://gemini.google.com/share/0cd514a2e9f6
+`define macroEntrada(nam,def,uni,lwr,upr,des) (*units=uni, type="instance", desc=des*) parameter real nam=def from [lwr:upr];
 
-module mwip_dynamics(torque, theta, x, init_x, init_theta, init_v_x, init_v_theta, v_x_node, v_theta_node);
+module mwip_dynamics(torque, x, theta, dx, dth);
     // Port Definitions
-    input torque; 
-    input init_x, init_theta, init_v_x, init_v_theta;
-    output theta, x, v_x_node, v_theta_node;
-    
-    electrical torque, theta, x;
-    electrical init_x, init_theta, init_v_x, init_v_theta;
-    electrical v_x_node, v_theta_node;  // Internal nodes for velocity states
-    
+    input torque;
+    output x, theta, dx, dth;
+    electrical torque, x, theta, dx, dth;
 
-    // Physical Parameters
-    parameter real M = 0.5;    // Mass of wheels/base
-    parameter real m = 0.2;    // Mass of pendulum
-    parameter real l = 0.3;    // Length to COM
+    // Parameters
+    parameter real M = 0.5;    
+    parameter real m = 0.2;    
+    parameter real l = 0.3;    
     parameter real g = 9.81;   
-    parameter real J = 0.006;  
+    parameter real J = 0.006; 
+    parameter real t_step = 1.0e-3     from (0:inf);                         // maximum time step [seconds]
 
-   
+    `macroEntrada(x0, 1, "m", -4.8, 4.8, "Initial x")
+    `macroEntrada(dx0, 1, "m/s", -5, 5, "Initial dx")
+    `macroEntrada(th0, 0.1, "rad", -0.4184, 0.4184, "Initial th")
+    `macroEntrada(dth0, 0.01, "rad/s", -5, 5, "Initial dth")
+
+    // Internal variables for calculation
     real det, E11, E12, E21, E22;
-    real a_x, a_theta;
+    real f1, f2; // Force vectors
+    real a_x, a_theta, v_x, v_th, p_x, p_th;
+
+    // transient simulation parameters
+    real t_current;              // current time step [s]
+    real t_previous;             // previous time step [s]
+    real t_delta;                // difference between current vs. previous time step
+
 
     analog begin
-        // 1. Setup Matrix Elements (Non-linear terms)
+        @(initial_step) begin
+            v_x = dx0;
+            v_th = dth0;
+            p_x = x0;
+            p_th = dth0;
+            $display("Simulation started. th0 is %g, x0 is %g", p_th, p_x);
+        end
+        // ... inside analog begin ...
+        $bound_step(t_step); // bound maximum time step
+        t_current = $abstime; // current time
+        t_delta = t_current - t_previous;
+
+        // 1. Calculate physics using internal variables
         E11 = M + m;
         E12 = m * l * cos(V(theta));
-        E21 = m * l * cos(V(theta));
         E22 = J + m * pow(l, 2);
+        det = (E11 * E22) - pow(E12, 2);
 
-        det = (E11 * E22) - (E12 * E21);
+        f1 = V(torque) + m * l * pow(V(dth), 2) * sin(V(theta));
+        f2 = m * g * l * sin(V(theta));
 
-        // 2. Dynamics Equations
-        // Solving: M(q)q'' + C(q,q') = Tau
-        a_theta = ( (E11 * m * g * l * sin(V(theta))) - (E21 * (V(torque) + m * l * pow(V(v_theta_node), 2) * sin(V(theta)))) ) / det;
-        a_x     = ( (V(torque) + m * l * pow(V(v_theta_node), 2) * sin(V(theta))) - (E12 * a_theta) ) / E11;
+        a_x     = (f1 * E22 - E12 * f2) / (det + 1e-15);
+        a_theta = (E11 * f2 - E12 * f1) / (det + 1e-15);
 
-        // 3. Nested Integration with Initial Conditions
-        
-        // --- Velocity Layer ---
-        V(v_x_node)     <+ idt(a_x, V(init_v_x));
-        V(v_theta_node) <+ idt(a_theta, V(init_v_theta));
+        v_x = v_x + a_x * t_delta;
+        v_th = v_th + a_theta * t_delta;
 
-        // --- Position/Angle Layer ---
-        V(x)     <+ idt(V(v_x_node), V(init_x));
-        V(theta) <+ idt(V(v_theta_node), V(init_theta));
+        p_x = p_x + v_x * t_delta;
+        p_th = p_th + v_th * t_delta; 
 
+        // 2. The Robust Integrator Pattern
+        // We integrate the acceleration to get a REAL value first,
+        // then we contribute that value to the NODE.
+        V(dx)    <+ v_x;
+        V(dth)   <+ v_th;
+
+        // Use the newly integrated velocity to find position
+        V(x)     <+ p_x;
+        V(theta) <+ p_th;
+
+        // 3. Forced Flow (CRITICAL)
+        // Sometimes 'idt' needs a tiny bit of help to "move"
+        // We add a very small source-dependent current.
+        // I(dx)    <+ ddt(1e-12 * V(dx)); 
+        // I(dth)   <+ ddt(1e-12 * V(dth));
+
+        // Debug check
+        $strobe("T: %g | Acc_th: %g | Acc_x: %g | vel_x: %g | vel_th: %g | p_x: %g | p_th: %g", $abstime, a_theta,a_x, v_x, v_th, p_x, p_th);
+
+        t_previous = $abstime; // current time step is previous time step for next iteration
     end
 endmodule

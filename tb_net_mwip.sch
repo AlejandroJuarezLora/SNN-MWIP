@@ -81,8 +81,8 @@ value="
     N1 TE BE rram_v0_model
 .ends rram_v0
 
-.subckt mwip_v0 Tau X Th vx vTh 
-    N1 Tau X Th vx vTh  mwip_v0_model init_x=0 init_theta=0.1 
+.subckt mwip_v0 tau x th dx dth 
+    N1 Tau x th dx dth mwip_v0_model 
 .ends mwip_v0
 
 .model mwip_v0_model mwip_dynamics
@@ -96,16 +96,16 @@ value="
 spice_ignore=false}
 C {sky130_fd_pr/corner.sym} 850 195 0 0 {name=CORNER only_toplevel=true corner=tt}
 C {gnd.sym} 120 -10 0 0 {name=l4 lab=GND}
-C {vcvs_limit.sym} -60 60 0 1 {name=alimit1 gain='0.9/5' lower_limit=-0.9 upper_limit=0.9}
+C {vcvs_limit.sym} -60 60 0 1 {name=alimit1 gain='0.9/5' lower_limit=0 upper_limit=0.9}
 C {gnd.sym} -60 110 0 0 {name=l5 lab=GND}
 C {gnd.sym} -20 80 0 0 {name=l6 lab=GND}
-C {vcvs_limit.sym} -165 165 0 1 {name=alimit2 gain='1.8/0.4148' lower_limit=-0.9 upper_limit=0.9}
+C {vcvs_limit.sym} -165 165 0 1 {name=alimit2 gain='0.9/0.4148' lower_limit=0 upper_limit=0.9}
 C {gnd.sym} -125 185 0 0 {name=l7 lab=GND}
 C {gnd.sym} -165 195 0 0 {name=l8 lab=GND}
-C {vcvs_limit.sym} -275 250 0 1 {name=alimit3 gain='1.8/5' lower_limit=-0.9 upper_limit=0.9}
+C {vcvs_limit.sym} -275 250 0 1 {name=alimit3 gain='0.9/5' lower_limit=0 upper_limit=0.9}
 C {gnd.sym} -235 270 0 0 {name=l9 lab=GND}
 C {gnd.sym} -275 280 0 0 {name=l10 lab=GND}
-C {vcvs_limit.sym} -375 330 0 1 {name=alimit4 gain='1.8/4.8' lower_limit=-0.9 upper_limit=0.9}
+C {vcvs_limit.sym} -375 330 0 1 {name=alimit4 gain='0.9/4.8' lower_limit=0 upper_limit=0.9}
 C {gnd.sym} -335 350 0 0 {name=l11 lab=GND}
 C {gnd.sym} -375 360 0 0 {name=l12 lab=GND}
 C {vsource.sym} -60 -10 0 0 {name=V2 value=0.9 savecurrent=false}
@@ -135,9 +135,12 @@ C {code_shown.sym} 850 -330 0 0 {name=s1 only_toplevel=false value="
 .options set wr_vecnames
 .options set wr_singlescale
 .options numdgt = 2
-.save x dx th dth x_nom dx_nom th_nom dth_nom
-+x_ref th_ref e_x e_th tau tau_nom
-.tran 50n 10m
+.save all
+.tran 1n 0.1m
+.control
+	run
+	write /foss/designs/SNN-MWIP/data.raw
+.endc
 
 "}
 C {lab_pin.sym} 462.5 -160 3 0 {name=p1 sig_type=std_logic lab=th_ref}

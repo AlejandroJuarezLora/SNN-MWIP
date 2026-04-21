@@ -172,7 +172,8 @@ spiceprefix=X
 }
 C {devices/code_shown.sym} -120 -755 0 0 {name=s1 only_toplevel=false value="
 .save v(te) v(be) i(vmr)
-"}
+"
+spice_ignore=true}
 C {devices/vsource.sym} 380 -340 3 0 {name=Vmr value=0 savecurrent=true}
 C {devices/lab_pin.sym} 115 -455 0 1 {name=p10 sig_type=std_logic lab=vdd}
 C {devices/lab_pin.sym} 420 -450 0 0 {name=p4 sig_type=std_logic lab=vdd}

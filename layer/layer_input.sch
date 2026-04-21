@@ -146,3 +146,6 @@ spiceprefix=X
 }
 C {devices/lab_pin.sym} 170 -1950 1 0 {name=p8 sig_type=std_logic lab=vdd}
 C {devices/lab_pin.sym} 170 -1720 3 0 {name=p10 sig_type=std_logic lab=vss}
+C {code_shown.sym} 367.5 -2097.5 0 0 {name=s1 only_toplevel=false value="
+.save vout
+"}

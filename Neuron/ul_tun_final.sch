@@ -148,9 +148,6 @@ mult=1
 model=pfet_01v8
 spiceprefix=X
 spice_ignore=false}
-C {devices/code_shown.sym} 430 -470 0 0 {name=s1 only_toplevel=false value="
-.save i(vext) 
-"}
 C {devices/lab_pin.sym} 90 -240 3 0 {name=p1 sig_type=std_logic lab=vdd}
 C {sky130_fd_pr/nfet_01v8.sym} 360 -100 0 0 {name=M11
 L=0.15

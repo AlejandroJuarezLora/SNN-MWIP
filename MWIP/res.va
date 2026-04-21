@@ -1,0 +1,71 @@
+
+
+`include "disciplines.vams"
+`include "constants.vams"
+//https://gemini.google.com/app/37102043ad932edb
+
+//`define macroEntrada(nam,def,uni,lwr,upr,des) (*units=uni, type="instance", desc=des*) parameter real nam=def from [lwr:upr];
+
+module mwip_dynamics(torque, x, theta, dx, dth);
+    // Port Definitions
+    input torque;
+    output x, theta, dx, dth;
+    electrical torque, x, theta, dx, dth;
+
+    // Parameters
+    parameter real M = 0.5;    
+    parameter real m = 0.2;    
+    parameter real l = 0.3;    
+    parameter real g = 9.81;   
+    parameter real J = 0.006; 
+    parameter real x0 = 1; 
+    parameter real dx0 = 1; 
+    parameter real th0 = 0.1; 
+    parameter real dth0 = 0.01; 
+
+    // `macroEntrada(x0, 1, "m", -4.8, 4.8, "Initial x")
+    // `macroEntrada(dx0, 1, "m/s", -5, 5, "Initial dx")
+    // `macroEntrada(th0, 0.1, "rad", -0.4184, 0.4184, "Initial th")
+    // `macroEntrada(dth0, 0.01, "rad/s", -5, 5, "Initial dth")
+
+    // Internal variables for calculation
+    real det, E11, E12, E21, E22;
+    real f1, f2; // Force vectors
+    real a_x, a_theta;
+
+    analog begin
+        @(initial_step) $display("Simulation started. th0 is %g, x0 is %g", th0, x0);
+        // ... inside analog begin ...
+
+        // 1. Calculate physics using internal variables
+        E11 = M + m;
+        E12 = m * l * cos(V(theta));
+        E22 = J + m * pow(l, 2);
+        det = (E11 * E22) - pow(E12, 2);
+
+        f1 = V(torque) + m * l * pow(V(dth), 2) * sin(V(theta));
+        f2 = m * g * l * sin(V(theta));
+
+        a_x     = (f1 * E22 - E12 * f2) / (det + 1e-15);
+        a_theta = (E11 * f2 - E12 * f1) / (det + 1e-15);
+
+        // 2. The Robust Integrator Pattern
+        // We integrate the acceleration to get a REAL value first,
+        // then we contribute that value to the NODE.
+        V(dx)    <+ idt(a_x, dx0);
+        V(dth)   <+ idt(a_theta, dth0);
+
+        // Use the newly integrated velocity to find position
+        V(x)     <+ idt(V(dx), x0);
+        V(theta) <+ idt(V(dth), th0);
+
+        // 3. Forced Flow (CRITICAL)
+        // Sometimes 'idt' needs a tiny bit of help to "move"
+        // We add a very small source-dependent current.
+        I(dx)    <+ ddt(1e-12 * V(dx)); 
+        I(dth)   <+ ddt(1e-12 * V(dth));
+
+        // Debug check
+        $strobe("T: %g | Acc_th: %g | Acc_x: %g | vel_x: %g | vel_th: %g", $abstime, a_theta,a_x, V(dx), V(dth));
+    end
+endmodule
