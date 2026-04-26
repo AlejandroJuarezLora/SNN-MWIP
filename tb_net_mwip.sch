@@ -135,8 +135,8 @@ C {code_shown.sym} 850 -330 0 0 {name=s1 only_toplevel=false value="
 .options set wr_vecnames
 .options set wr_singlescale
 .options numdgt = 2
-.save all
-.tran 100n 1
+.save tau x dx th dth tau_x_nom dx_nom th_nom e_x e_th 
+.tran 50n 1u
 .control
 	run
 	write /foss/designs/SNN-MWIP/data.raw

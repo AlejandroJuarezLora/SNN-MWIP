@@ -34,7 +34,7 @@ N -200 -210 -200 -170 {lab=#net4}
 N -160 -140 -130 -140 {lab=x}
 N -130 -240 -130 -140 {lab=x}
 N -160 -240 -130 -240 {lab=x}
-N -200 -110 -200 -80 {lab=#net5}
+N -200 -110 -200 -80 {lab=ineg2}
 N -200 -270 -200 -240 {lab=avdd}
 N -290 -140 -200 -140 {lab=avdd}
 N -200 -310 -60 -310 {lab=avdd}
@@ -51,9 +51,9 @@ N 70 -240 110 -240 {lab=x}
 N -60 -310 30 -310 {lab=avdd}
 N 150 250 180 250 {lab=avss}
 N -200 -20 -200 10 {lab=ineg2}
-N 620 -110 620 -90 {lab=#net6}
-N 620 -30 620 0 {lab=ipos}
-N 800 -210 800 -170 {lab=#net7}
+N 620 -110 620 -90 {lab=ipos2}
+N 620 -30 620 0 {lab=ipos2}
+N 800 -210 800 -170 {lab=#net5}
 N 730 -140 760 -140 {lab=y}
 N 730 -240 730 -140 {lab=y}
 N 730 -240 760 -240 {lab=y}
@@ -61,7 +61,7 @@ N 800 -270 800 -240 {lab=avdd}
 N 800 -140 890 -140 {lab=avdd}
 N 710 -310 790 -310 {lab=avdd}
 N 800 -310 800 -270 {lab=avdd}
-N 800 -110 800 -90 {lab=#net8}
+N 800 -110 800 -90 {lab=ipos1}
 N 800 -30 800 0 {lab=ipos1}
 N 270 -240 290 -240 {lab=y}
 N 270 -190 330 -190 {lab=y}
@@ -71,11 +71,11 @@ N 270 -240 270 -190 {lab=y}
 N 620 -140 660 -140 {lab=avdd}
 N 790 -310 800 -310 {lab=avdd}
 N -430 -310 -430 -270 {lab=avdd}
-N -430 -210 -430 -170 {lab=#net9}
+N -430 -210 -430 -170 {lab=#net6}
 N -390 -140 -360 -140 {lab=x}
 N -360 -240 -360 -140 {lab=x}
 N -390 -240 -360 -240 {lab=x}
-N -430 -110 -430 -80 {lab=#net10}
+N -430 -110 -430 -80 {lab=ineg1}
 N -430 -270 -430 -240 {lab=avdd}
 N -520 -140 -430 -140 {lab=avdd}
 N -430 -310 -290 -310 {lab=avdd}
@@ -83,6 +83,10 @@ N -430 -20 -430 10 {lab=ineg1}
 N -130 -190 30 -190 {lab=x}
 N -290 -310 -200 -310 {lab=avdd}
 N -360 -190 -130 -190 {lab=x}
+N -430 -80 -430 -20 {lab=ineg1}
+N -200 -80 -200 -20 {lab=ineg2}
+N 620 -90 620 -30 {lab=ipos2}
+N 800 -90 800 -30 {lab=ipos1}
 C {sky130_fd_pr/nfet_01v8.sym} 10 50 0 0 {name=M2
 L=0.5
 W=0.5
@@ -125,7 +129,6 @@ nf=1 mult=1
 model=pfet_01v8
 spiceprefix=X
 }
-C {ammeter.sym} 620 -60 0 0 {name=Vipos savecurrent=true spice_ignore=0}
 C {lab_pin.sym} 30 -140 0 1 {name=p1 sig_type=std_logic lab=x}
 C {lab_pin.sym} 330 -140 0 0 {name=p2 sig_type=std_logic lab=y}
 C {lab_pin.sym} 180 120 1 0 {name=p3 sig_type=std_logic lab=p}
@@ -143,7 +146,6 @@ nf=1 mult=1
 model=pfet_01v8
 spiceprefix=X
 }
-C {ammeter.sym} -200 -50 0 1 {name=Vineg2 savecurrent=true spice_ignore=0}
 C {res.sym} 180 190 0 0 {name=R3
 value=10k
 footprint=1206
@@ -181,7 +183,6 @@ nf=1 mult=1
 model=pfet_01v8
 spiceprefix=X
 }
-C {ammeter.sym} 800 -60 0 0 {name=Vipos1 savecurrent=true spice_ignore=0}
 C {opin.sym} 800 0 2 1 {name=p10 lab=ipos1}
 C {lab_pin.sym} 660 -140 0 1 {name=p11 sig_type=std_logic lab=avdd}
 C {lab_pin.sym} 890 -140 0 1 {name=p12 sig_type=std_logic lab=avdd}
@@ -201,6 +202,5 @@ nf=1 mult=1
 model=pfet_01v8
 spiceprefix=X
 }
-C {ammeter.sym} -430 -50 0 1 {name=Vineg1 savecurrent=true spice_ignore=0}
 C {opin.sym} -430 10 2 1 {name=p15 lab=ineg1}
 C {lab_pin.sym} -520 -140 0 0 {name=p16 sig_type=std_logic lab=avdd}

@@ -60,7 +60,7 @@ N 170 -1740 170 -1720 {lab=vss}
 N 100 -1940 100 -1770 {lab=vin}
 N 100 -1940 290 -1940 {lab=vin}
 N 290 -1940 290 -1890 {lab=vin}
-C {Neuron/ul_tun_final.sym} 840 -2100 0 0 {name=x2
+C {Neuron/ul_tun_final.sym} 960 -1910 0 0 {name=x2
 spiceprefix=X
 W_LEAK=0.8
 CM=0.8p}
@@ -89,7 +89,7 @@ C {devices/lab_pin.sym} 350 -1480 3 0 {name=p9 sig_type=std_logic lab=vss}
 C {devices/lab_pin.sym} 840 -2040 3 0 {name=p11 sig_type=std_logic lab=vss}
 C {devices/lab_pin.sym} 440 -1510 1 0 {name=p12 sig_type=std_logic lab=vileak}
 C {devices/lab_pin.sym} 810 -1980 0 0 {name=p13 sig_type=std_logic lab=vileak}
-C {Neuron/ul_tun_final.sym} 960 -1910 0 0 {name=x1 
+C {Neuron/ul_tun_final.sym} 840 -2100 0 0 {name=x1 
 W_LEAK=0.9
 CM=0.8p}
 C {devices/lab_pin.sym} 960 -1960 1 0 {name=p16 sig_type=std_logic lab=vdd}
@@ -146,6 +146,3 @@ spiceprefix=X
 }
 C {devices/lab_pin.sym} 170 -1950 1 0 {name=p8 sig_type=std_logic lab=vdd}
 C {devices/lab_pin.sym} 170 -1720 3 0 {name=p10 sig_type=std_logic lab=vss}
-C {code_shown.sym} 367.5 -2097.5 0 0 {name=s1 only_toplevel=false value="
-.save vout
-"}

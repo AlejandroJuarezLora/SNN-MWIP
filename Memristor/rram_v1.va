@@ -1,75 +1,101 @@
 `include "constants.vams"
 `include "disciplines.vams"
 
+//definicion de macros 
 `define macroEntrada(nam,def,uni,lwr,upr,des) (*units=uni, type="instance", desc=des*) parameter real nam=def from [lwr:upr];
 
 
-module rram_v0_va(t, b);
+//parametros de instancia
+
+module rram_v1_va(t, b);
     inout t, b;
     electrical t, b, nGap;
-    // parameter real g0 = 0.271 from (0:inf);  //Tox - Tfilament_ref = 5.0 - 4.7249 (Tox - filament thickness calibration parameter)[nano meters]
-    // parameter real V0 = 0.430 from (0:inf);   // voltage calibration parameter [Volts]
-    // parameter real I0 = 6.140e-5 from (0:inf); // current calibration parameter [Amps]
-    `macroEntrada(g0, 0.271, "V", 0, inf, "Tox - Tfilament_ref = 5.0 - 4.7249 (Tox - filament thickness calibration parameter)[nano meters]")
-    `macroEntrada(V0, 0.430, "V", 0, inf, "voltage calibration parameter [Volts]")
-    `macroEntrada(I0, 6.140e-5, "I", 0, inf, "current calibration parameter [Amps]")
+    
+    parameter real g0 = 0.2751 from (0:inf);  //Tox - Tfilament_ref = 5.0 - 4.7249 (Tox - filament thickness calibration parameter)[nano meters]
+    parameter real V0 = 0.430 from (0:inf);   // voltage calibration parameter [Volts]
+    parameter real I0 = 6.140e-5 from (0:inf); // current calibration parameter [Amps]
     parameter real maxGap = 1.7 from (0:inf); //Tox - Tfilament_min = 5.0 - 3.3 // minimum thickness of conductive filament (for maximum resistance) [nano meters]
-    parameter real minGap = 0.1 from (0:inf); //Tox - Tfilament_max = 5.0 - 4.9 // maximum thickness of conductive filament (for minimum resistance) [nano meters]
-    parameter real Vel0 = 10 from (0:inf); 
+    parameter real minGap = 0.1 from (0:inf); //Tox - Tfilament_max = 5.0 - 4.9 // maximum thickness of conductive filament (for minimum resistance) [nano meters] 
+    parameter real Vel0 = 150 from (0:inf); 
     parameter real Beta0 = -1.25 from (-inf:inf);
     parameter real gamma0 = 16.5 from (0:inf);
-    parameter real Ea = 1.5 from (0:inf);
+    parameter real Ea = 1.500 from (0:inf);
     parameter real a0 = 0.25 from (0:inf);
-    parameter real tox = 5.0 from (0:inf);
-    parameter real maxslope = 1e18 from (0:inf);
+    parameter real tox = 5.0 from (0:inf); //
     parameter real smoothing = 1e-8 from (0:inf);
     parameter real GMIN = 1e-12 from (0:inf);
-    parameter real Kclip = 50 from (0:inf);
+    parameter real maxslope = 1e17 from (0:inf);
+    `macroEntrada(gap_initial, 1.69, "V", minGap, maxGap, "Initial Gap distance between tip of the filament and bottom electrode, represented as a voltage between 0.1 and 1.7")
 
- 
-  real Gap, ddt_gap, Gamma, Fw1, Fw2, clip_0, clip_maxGap, clip_minGap;
+    real ddt_Gap, Gap, Gamma, Fw1, Fw2, clip_maxGap, clip_minGap;
 
-  analog function real smoothstep;
-      input x, smoothing;
-      real  x, smoothing;
-      begin
-          smoothstep = 0.5*(x/sqrt(x*x + smoothing)+1);
-      end
-  endfunction // smoothstep
+    analog function real safeexp;
+        input x, maxslope;
+        real x, maxslope, breakpoint;
+        begin
+            breakpoint = log(maxslope);
+            safeexp = exp(x*(x <= breakpoint))*(x <= breakpoint) + (x>breakpoint)*(maxslope + maxslope*(x-breakpoint));
+        end
+    endfunction
 
-  analog function real safeexp;
-      input x, maxslope;
-      real x, maxslope, breakpoint;
-      begin
-          breakpoint = log(maxslope);
-          safeexp = exp(x*(x <= breakpoint))*(x <= breakpoint) + (x>breakpoint)*(maxslope + maxslope*(x-breakpoint));
-      end
-  endfunction
+    analog function real safesinh;
+        input x, maxslope;
+        real  x, maxslope;
+        begin
+            safesinh = 0.5*(safeexp(x, maxslope) - safeexp(-x, maxslope)); 
+        end
+    endfunction
 
-  analog function real safesinh;
-      input x, maxslope;
-      real  x, maxslope;
-      begin
-          safesinh = 0.5*(safeexp(x, maxslope) - safeexp(-x, maxslope)); 
-      end
-  endfunction
+    analog function real soft_minmax;
+        input x, xmin, xmax;
+        real x, xmin, xmax;
+        begin
+            if (x > xmax) begin
+                soft_minmax = xmax;
+            end else if (x < xmin) begin
+                soft_minmax = xmin;
+            end else begin
+                soft_minmax = x;
+            end
+        end
+    endfunction // soft_minmax
 
+    //por alguna razon, al usar la funcion suave para limitar la funcion, 
+    //no respeta el gap initial proporcionado
 
-  analog begin
-    @(initial_step) begin
-            $strobe("g0: %f", g0);
-            $strobe("V0: %f", V0);
-            $strobe("I0: %f", I0);
-    end 
-    Gap = V(nGap, b);
-    I(t, b) <+ I0 * safeexp(-Gap/g0, maxslope) * safesinh(V(t, b)/V0, maxslope) + GMIN*V(t, b);
-    Gamma = gamma0 - Beta0 * pow(Gap, 3);
-    ddt_gap = -(maxGap - minGap)*Vel0*safeexp(-Ea/$vt, maxslope)*safesinh(V(t, b)*Gamma*a0/(tox*$vt), maxslope);
-    Fw1 = smoothstep(minGap-Gap, smoothing);
-    Fw2 = smoothstep(Gap-maxGap, smoothing);
-    clip_minGap = (safeexp(Kclip*(minGap-Gap), maxslope) - ddt_gap) * Fw1; 
-    clip_maxGap = (-safeexp(Kclip*(Gap-maxGap), maxslope) - ddt_gap) * Fw2;
-    I(nGap, b) <+ ddt_gap + clip_minGap + clip_maxGap;
-    I(nGap, b) <+ ddt(-1e-9*Gap);
-  end
+    // analog function real soft_minmax;
+    //     input x, smoothing, maxGap, minGap; 
+    //     real  x, smoothing, maxGap, minGap;
+    //     begin
+    //         soft_minmax = -((maxGap - minGap)/2)*(x/sqrt(x*x + smoothing)) + ((maxGap - minGap)/2)+minGap;
+    //     end
+    // endfunction // soft_minmax
+    
+    
+    
+     // transient simulation parameters
+    real t_current;              // current time step [s]
+    real t_previous;             // previous time step [s]
+    real t_delta;                // difference between current vs. previous time step
+
+    
+    analog begin
+        @(initial_step) begin
+            // initial condition
+            Gap = gap_initial;
+            $strobe("V1 gap_initial: %f", gap_initial);
+	    end
+        t_current = $abstime; // current time
+        t_delta = t_current - t_previous;
+        Gamma = gamma0 + Beta0 * pow(Gap, 3);
+        ddt_Gap =  -(1e9)*Vel0 * safeexp(-Ea/$vt, maxslope)*safesinh(V(t, b)*Gamma*a0/(tox*$vt), maxslope);
+        Gap = Gap + t_delta * ddt_Gap;
+        // Gap = soft_minmax(Gap,smoothing, minGap, maxGap);
+        Gap = soft_minmax(Gap, minGap, maxGap);
+        I(t,b) <+ I0 * safeexp(-(Gap)/g0,maxslope) * safesinh(V(t, b)/V0, maxslope) + GMIN*V(t, b);
+        t_previous = $abstime; // current time step is previous time step for next iteration
+        V(nGap, b) <+ Gap; // Plotting in nanometers
+        
+
+    end
 endmodule

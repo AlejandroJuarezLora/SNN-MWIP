@@ -84,7 +84,9 @@ module mwip_dynamics(torque, x, theta, dx, dth);
         // I(dth)   <+ ddt(1e-12 * V(dth));
 
         // Debug check
-        $strobe("T: %g | Acc_th: %g | Acc_x: %g | vel_x: %g | vel_th: %g | p_x: %g | p_th: %g", $abstime, a_theta,a_x, v_x, v_th, p_x, p_th);
+        //$strobe("T: %g | Acc_th: %g | Acc_x: %g | vel_x: %g | vel_th: %g | p_x: %g | p_th: %g", $abstime, a_theta,a_x, v_x, v_th, p_x, p_th);
+        $strobe("T: %g | Acc_th: %g | Acc_x: %g | vel_x: %g | vel_th: %g | p_x: %g | p_th: %g", $abstime, a_theta,a_x, V(dx), V(dth), V(x), V(theta));
+
 
         t_previous = $abstime; // current time step is previous time step for next iteration
     end

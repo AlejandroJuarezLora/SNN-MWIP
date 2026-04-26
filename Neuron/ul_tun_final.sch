@@ -166,5 +166,5 @@ spiceprefix=X
 C {devices/lab_pin.sym} 380 -30 3 0 {name=p4 sig_type=std_logic lab=vss}
 C {devices/lab_pin.sym} 90 -352.5 0 0 {name=p15 sig_type=std_logic lab=vout}
 C {devices/lab_pin.sym} 322.5 -290 1 0 {name=p16 sig_type=std_logic lab=vm}
-C {vsource.sym} 210 -290 3 0 {name=vext value=0}
 C {devices/iopin.sym} 300 -440 0 1 {name=p8 lab=vdd}
+C {ammeter.sym} 210 -290 3 0 {name=viext savecurrent=true spice_ignore=0}
