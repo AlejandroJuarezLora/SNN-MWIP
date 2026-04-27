@@ -27,8 +27,8 @@ logy=0
 color=4
 node="\\"memristancia;0 te - i(v2) /\\""}
 B 2 670 -1230 1470 -830 {flags=graph
-y1=-0.00024888659
-y2=0.00042845473
+y1=-0.00015481139
+y2=0.00052252993
 ypos1=0
 ypos2=2
 divy=5
@@ -54,8 +54,8 @@ digital=0
 x2=3
 sweep=TE}
 B 2 -140 -810 660 -410 {flags=graph
-y1=0.00039593768
-y2=0.024459939
+y1=-0.0076805582
+y2=0.039319441
 ypos1=0
 ypos2=2
 divy=5
@@ -181,8 +181,8 @@ sweep=time
 color=7
 node="\\"Corriente; 0 i(v5) -\\""}
 B 2 1520 -1210 2320 -810 {flags=graph
-y1=3.3e-09
-y2=4.9e-09
+y1=1e-10
+y2=1.7e-09
 ypos1=0
 ypos2=2
 divy=5
@@ -227,8 +227,8 @@ logy=0
 color=4
 node="\\"memristancia;0 te2 - i(v1) /\\""}
 B 2 4030 -1200 4830 -800 {flags=graph
-y1=-0.00081773052
-y2=0.0016594996
+y1=-0.0048
+y2=0.023
 ypos1=0
 ypos2=2
 divy=5
@@ -254,7 +254,7 @@ digital=0
 x2=3
 sweep=TE2}
 B 2 3220 -780 4020 -380 {flags=graph
-y1=-7.1e-05
+y1=-6.9e-05
 y2=0.023
 ypos1=0
 ypos2=2
@@ -281,8 +281,8 @@ sweep=time
 color=7
 node="\\"Corriente; 0 i(v1) -\\""}
 B 2 3210 -1200 4010 -800 {flags=graph
-y1=0.1
-y2=1.7
+y1=-0.1339186
+y2=2.4666107
 ypos1=0
 ypos2=2
 divy=5
@@ -414,12 +414,12 @@ N1 TE BE rram_v0_model
 .ends rram_v0
 
 .subckt rram_v1 TE BE
-N1 TE BE rram_v1_model gap_initial=0.2
+N1 TE BE rram_v1_model gap_initial=1.6999
 .ends rram_v0
 
 
 .subckt sky_reram TE BE
-N1 TE BE sky_reram_model Tfilament_0=3.3e-9
+N1 TE BE sky_reram_model
 .ends sky_reram
 
 .model rram_v0_model rram_v0_va

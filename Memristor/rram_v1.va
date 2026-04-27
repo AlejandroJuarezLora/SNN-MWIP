@@ -64,14 +64,12 @@ module rram_v1_va(t, b);
     //no respeta el gap initial proporcionado
 
     // analog function real soft_minmax;
-    //     input x, smoothing, maxGap, minGap; 
-    //     real  x, smoothing, maxGap, minGap;
+    //     input x, smoothing, minGap, maxGap; 
+    //     real  x, smoothing, minGap, maxGap;
     //     begin
-    //         soft_minmax = -((maxGap - minGap)/2)*(x/sqrt(x*x + smoothing)) + ((maxGap - minGap)/2)+minGap;
+    //         soft_minmax = ((maxGap - minGap)/2)*(x/sqrt(x*x + smoothing)) + ((maxGap - minGap)/2)+minGap;
     //     end
     // endfunction // soft_minmax
-    
-    
     
      // transient simulation parameters
     real t_current;              // current time step [s]
