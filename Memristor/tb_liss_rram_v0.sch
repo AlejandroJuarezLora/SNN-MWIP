@@ -181,8 +181,8 @@ sweep=time
 color=7
 node="\\"Corriente; 0 i(v5) -\\""}
 B 2 1520 -1210 2320 -810 {flags=graph
-y1=1e-10
-y2=1.7e-09
+y1=0
+y2=0.01
 ypos1=0
 ypos2=2
 divy=5
@@ -227,8 +227,8 @@ logy=0
 color=4
 node="\\"memristancia;0 te2 - i(v1) /\\""}
 B 2 4030 -1200 4830 -800 {flags=graph
-y1=-0.0048
-y2=0.023
+y1=-0.00031320238
+y2=0.00049846587
 ypos1=0
 ypos2=2
 divy=5
@@ -281,8 +281,8 @@ sweep=time
 color=7
 node="\\"Corriente; 0 i(v1) -\\""}
 B 2 3210 -1200 4010 -800 {flags=graph
-y1=-0.1339186
-y2=2.4666107
+y1=0.1
+y2=1.7
 ypos1=0
 ypos2=2
 divy=5
@@ -414,7 +414,7 @@ N1 TE BE rram_v0_model
 .ends rram_v0
 
 .subckt rram_v1 TE BE
-N1 TE BE rram_v1_model gap_initial=1.6999
+N1 TE BE rram_v1_model gap_initial=0.17
 .ends rram_v0
 
 

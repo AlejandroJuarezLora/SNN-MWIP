@@ -24,7 +24,7 @@ module rram_v1_va(t, b);
     parameter real tox = 5.0 from (0:inf); //
     parameter real smoothing = 1e-8 from (0:inf);
     parameter real GMIN = 1e-12 from (0:inf);
-    parameter real maxslope = 1e17 from (0:inf);
+    parameter real maxslope = 1e18 from (0:inf);
     `macroEntrada(gap_initial, 1.69, "V", minGap, maxGap, "Initial Gap distance between tip of the filament and bottom electrode, represented as a voltage between 0.1 and 1.7")
 
     real ddt_Gap, Gap, Gamma, Fw1, Fw2, clip_maxGap, clip_minGap;
