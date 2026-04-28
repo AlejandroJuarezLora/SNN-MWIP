@@ -17,6 +17,8 @@
 `include "constants.vams"
 `include "disciplines.vams"
 
+`define macroEntrada(nam,def,uni,lwr,upr,des) (*units=uni, type="instance", desc=des*) parameter real nam=def from [lwr:upr];
+
 module sky130_fd_pr_reram__reram_cell(TE, BE);
     inout TE; // top electrode
     inout BE; // bottom electrode
@@ -30,7 +32,8 @@ module sky130_fd_pr_reram__reram_cell(TE, BE);
     parameter real Tox                 = 5.0e-9     from (0:inf);                         // thickness of oxide between TE and BE [meters]
     parameter real Tfilament_max       = 4.9e-9     from (0:inf);                         // maximum thickness of conductive filament (for minimum resistance) [meters]
     parameter real Tfilament_min       = 3.3e-9     from (0:inf);                         // minimum thickness of conductive filament (for maximum resistance) [meters]
-    parameter real Tfilament_0         = 3.3e-9     from [Tfilament_min:Tfilament_max];   // initial thickness of conductive filament (at t=0 for transient simulation) [meters]
+    //parameter real Tfilament_0         = 3.3e-9     from [Tfilament_min:Tfilament_max];   // initial thickness of conductive filament (at t=0 for transient simulation) [meters]
+    `macroEntrada(Tfilament_0, 3.3, "m", Tfilament_min,Tfilament_max, "initial thickness of conductive filament (at t=0 for transient simulation) [meters]")
     // activation energy
     parameter real Eact_generation     = 1.501      from (0:inf);                         // activation energy for vacancy generation [eV]
     parameter real Eact_recombination  = 1.500      from (0:inf);                         // activation energy for vacancy recombination [eV]
@@ -77,7 +80,7 @@ module sky130_fd_pr_reram__reram_cell(TE, BE);
                 soft_minmax = x;
             end
         end
-    // endfunction // soft_minmax
+    endfunction // soft_minmax
 
     // core equations
     analog begin
@@ -85,7 +88,8 @@ module sky130_fd_pr_reram__reram_cell(TE, BE);
             // initial condition
             Temperature_current = Temperature_0;
             Tfilament_current = Tfilament_0;
-	    end
+            $strobe("Tfilament_0: %f", Tfilament_current*1e9);
+	end
         // $bound_step(t_step); // bound maximum time step
         t_current = $abstime; // current time
         t_delta = t_current - t_previous;

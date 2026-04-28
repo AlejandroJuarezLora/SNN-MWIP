@@ -134,10 +134,6 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {devices/iopin.sym} 625 -595 2 1 {name=p15 lab=I_post}
-C {/foss/designs/SNN-MWIP/Memristor/rram_v0.sym} 230 -230 3 1 {name=R3
-model=rram_v0
-spiceprefix=X
-spice_ignore=true}
 C {devices/lab_pin.sym} 120 -340 3 0 {name=p13 sig_type=std_logic lab=be}
 C {devices/lab_pin.sym} 305 -340 3 0 {name=p14 sig_type=std_logic lab=te }
 C {devices/lab_pin.sym} 115 -215 0 1 {name=p6 sig_type=std_logic lab=vss}

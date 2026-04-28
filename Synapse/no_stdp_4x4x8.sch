@@ -2235,9 +2235,8 @@ N 2910 3490 2910 3950 {lab=i_post[6]}
 N 3370 3490 3370 3950 {lab=i_post[7]}
 C {Synapse/no_stdp.sym} -10 -80 0 0 {name=no_stdp1 }
 C {devices/lab_pin.sym} -430 -230 0 0 {name=p1 lab=vout_pre[0]}
-C {devices/lab_pin.sym} 210 -430 0 1 {name=p5 lab=vout_post[0]}
-C {devices/iopin.sym} -720 -490 0 1 {name=p7 lab=vdda}
-C {devices/iopin.sym} -720 -440 0 1 {name=p8 lab=vssa}
+C {devices/iopin.sym} -880 -470 0 1 {name=p7 lab=vdda}
+C {devices/iopin.sym} -880 -420 0 1 {name=p8 lab=vssa}
 C {Synapse/no_stdp.sym} 430 -80 0 0 {name=no_stdp2 }
 C {Synapse/no_stdp.sym} 880 -80 0 0 {name=no_stdp3 }
 C {Synapse/no_stdp.sym} 1310 -80 0 0 {name=no_stdp4 }
@@ -2254,7 +2253,7 @@ C {Synapse/no_stdp.sym} -10 670 0 0 {name=no_stdp13 }
 C {Synapse/no_stdp.sym} 430 670 0 0 {name=no_stdp14 }
 C {Synapse/no_stdp.sym} 880 670 0 0 {name=no_stdp15 }
 C {Synapse/no_stdp.sym} 1310 670 0 0 {name=no_stdp16 }
-C {devices/iopin.sym} -730 -410 0 0 {name=p2 lab=vout_pre[3:0]}
+C {devices/iopin.sym} -890 -390 0 0 {name=p2 lab=vout_pre[3:0]}
 C {devices/lab_pin.sym} -10 -120 1 0 {name=p20 sig_type=std_logic lab=vdda}
 C {devices/lab_pin.sym} -10 130 1 0 {name=p21 sig_type=std_logic lab=vdda}
 C {devices/lab_pin.sym} -10 380 1 0 {name=p22 sig_type=std_logic lab=vdda}
@@ -2335,66 +2334,15 @@ C {devices/lab_pin.sym} 2220 500 3 0 {name=p82 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} 1780 500 3 0 {name=p83 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} 1780 750 3 0 {name=p84 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} 2220 750 3 0 {name=p85 sig_type=std_logic lab=vssa}
-C {not.sym} -410 -200 0 0 {name=x1}
-C {devices/lab_pin.sym} -410 -280 1 0 {name=p6 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} -410 -180 0 1 {name=p10 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} -310 -230 0 1 {name=p13 lab=n_vout_pre[0]}
 C {devices/lab_pin.sym} -420 0 0 0 {name=p14 lab=vout_pre[1]}
-C {not.sym} -400 30 0 0 {name=x2}
-C {devices/lab_pin.sym} -400 -50 1 0 {name=p15 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} -400 50 0 1 {name=p94 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} -300 30 0 1 {name=p95 lab=n_vout_pre[1]}
 C {devices/lab_pin.sym} -420 270 0 0 {name=p96 lab=vout_pre[2]}
-C {not.sym} -400 300 0 0 {name=x3}
-C {devices/lab_pin.sym} -400 220 1 0 {name=p97 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} -400 320 0 1 {name=p98 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} -300 270 0 1 {name=p99 lab=n_vout_pre[2]}
 C {devices/lab_pin.sym} -420 520 0 0 {name=p3 lab=vout_pre[3]}
-C {not.sym} -400 550 0 0 {name=x4}
-C {devices/lab_pin.sym} -400 470 1 0 {name=p100 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} -400 570 0 1 {name=p101 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} -300 520 0 1 {name=p102 lab=n_vout_pre[3]}
-C {not.sym} 190 -400 0 1 {name=x5}
-C {devices/lab_pin.sym} 190 -480 3 1 {name=p103 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} 190 -380 0 0 {name=p104 sig_type=std_logic lab=vssa}
-C {devices/lab_pin.sym} 90 -430 0 0 {name=p4 lab=n_vout_post[0]}
 C {devices/lab_pin.sym} 190 -230 3 1 {name=p105 lab=vout_post[0]}
 C {devices/lab_pin.sym} 180 -230 2 1 {name=p106 lab=n_vout_post[0]}
-C {devices/lab_pin.sym} 640 -430 0 1 {name=p107 lab=vout_post[1]}
-C {not.sym} 620 -400 0 1 {name=x6}
-C {devices/lab_pin.sym} 620 -480 3 1 {name=p108 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} 620 -380 0 0 {name=p109 sig_type=std_logic lab=vssa}
-C {devices/lab_pin.sym} 520 -430 0 0 {name=p110 lab=n_vout_post[1]}
-C {devices/lab_pin.sym} 1110 -420 0 1 {name=p111 lab=vout_post[2]}
-C {not.sym} 1090 -390 0 1 {name=x7}
-C {devices/lab_pin.sym} 1090 -470 3 1 {name=p112 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} 1090 -370 0 0 {name=p113 sig_type=std_logic lab=vssa}
-C {devices/lab_pin.sym} 990 -420 0 0 {name=p114 lab=n_vout_post[2]}
-C {devices/lab_pin.sym} 1550 -420 0 1 {name=p115 lab=vout_post[3]}
-C {not.sym} 1530 -390 0 1 {name=x8}
-C {devices/lab_pin.sym} 1530 -470 3 1 {name=p116 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} 1530 -370 0 0 {name=p117 sig_type=std_logic lab=vssa}
-C {devices/lab_pin.sym} 1430 -420 0 0 {name=p118 lab=n_vout_post[3]}
-C {devices/lab_pin.sym} 2010 -420 0 1 {name=p119 lab=vout_post[4]}
-C {not.sym} 1990 -390 0 1 {name=x9}
-C {devices/lab_pin.sym} 1990 -470 3 1 {name=p120 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} 1990 -370 0 0 {name=p121 sig_type=std_logic lab=vssa}
-C {devices/lab_pin.sym} 1890 -420 0 0 {name=p122 lab=n_vout_post[4]}
-C {devices/lab_pin.sym} 2450 -410 0 1 {name=p123 lab=vout_post[5]}
-C {not.sym} 2430 -380 0 1 {name=x10}
-C {devices/lab_pin.sym} 2430 -460 3 1 {name=p124 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} 2430 -360 0 0 {name=p125 sig_type=std_logic lab=vssa}
-C {devices/lab_pin.sym} 2330 -410 0 0 {name=p126 lab=n_vout_post[5]}
-C {devices/lab_pin.sym} 2900 -390 0 1 {name=p127 lab=vout_post[6]}
-C {not.sym} 2880 -360 0 1 {name=x11}
-C {devices/lab_pin.sym} 2880 -440 3 1 {name=p128 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} 2880 -340 0 0 {name=p129 sig_type=std_logic lab=vssa}
-C {devices/lab_pin.sym} 2780 -390 0 0 {name=p130 lab=n_vout_post[6]}
-C {devices/lab_pin.sym} 3330 -390 0 1 {name=p131 lab=vout_post[7]}
-C {not.sym} 3310 -360 0 1 {name=x12}
-C {devices/lab_pin.sym} 3310 -440 3 1 {name=p132 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} 3310 -340 0 0 {name=p133 sig_type=std_logic lab=vssa}
-C {devices/lab_pin.sym} 3210 -390 0 0 {name=p134 lab=n_vout_post[7]}
 C {devices/lab_pin.sym} 3330 -210 3 1 {name=p93 lab=vout_post[7]}
 C {devices/lab_pin.sym} 3290 -200 1 0 {name=p135 lab=n_vout_post[7]}
 C {devices/lab_pin.sym} 2870 -210 3 1 {name=p91 lab=vout_post[6]}
@@ -2409,8 +2357,8 @@ C {devices/lab_pin.sym} 1070 -220 3 1 {name=p17 lab=vout_post[2]}
 C {devices/lab_pin.sym} 1060 -230 0 0 {name=p140 lab=n_vout_post[2]}
 C {devices/lab_pin.sym} 620 -230 3 1 {name=p16 lab=vout_post[1]}
 C {devices/lab_pin.sym} 610 -230 0 0 {name=p141 lab=n_vout_post[1]}
-C {devices/iopin.sym} -735 -275 0 0 {name=p142 lab=vout_post[7:0]}
-C {devices/iopin.sym} -720 -240 0 0 {name=p52 lab=i_post[7:0]}
+C {devices/iopin.sym} -895 -255 0 0 {name=p142 lab=vout_post[7:0]}
+C {devices/iopin.sym} -880 -220 0 0 {name=p52 lab=i_post[7:0]}
 C {devices/lab_pin.sym} 670 -230 2 0 {name=p54 lab=i_post[1]}
 C {devices/lab_pin.sym} 1110 -220 2 0 {name=p19 lab=i_post[2]}
 C {devices/lab_pin.sym} 1560 -220 2 0 {name=p11 lab=i_post[3]}
@@ -2515,24 +2463,12 @@ C {devices/lab_pin.sym} 2220 1890 3 0 {name=p205 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} 1780 1890 3 0 {name=p206 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} 1780 2140 3 0 {name=p207 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} 2220 2140 3 0 {name=p208 sig_type=std_logic lab=vssa}
-C {not.sym} -410 1190 0 0 {name=x13}
-C {devices/lab_pin.sym} -410 1110 1 0 {name=p209 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} -410 1210 0 1 {name=p210 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} -310 1160 0 1 {name=p211 lab=n_vout_pre2[0]}
 C {devices/lab_pin.sym} -420 1390 0 0 {name=p212 lab=vout_pre2[1]}
-C {not.sym} -400 1420 0 0 {name=x14}
-C {devices/lab_pin.sym} -400 1340 1 0 {name=p213 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} -400 1440 0 1 {name=p214 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} -300 1420 0 1 {name=p215 lab=n_vout_pre2[1]}
 C {devices/lab_pin.sym} -420 1660 0 0 {name=p216 lab=vout_pre2[2]}
-C {not.sym} -400 1690 0 0 {name=x15}
-C {devices/lab_pin.sym} -400 1610 1 0 {name=p217 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} -400 1710 0 1 {name=p218 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} -300 1660 0 1 {name=p219 lab=n_vout_pre2[2]}
 C {devices/lab_pin.sym} -420 1910 0 0 {name=p220 lab=vout_pre2[3]}
-C {not.sym} -400 1940 0 0 {name=x16}
-C {devices/lab_pin.sym} -400 1860 1 0 {name=p221 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} -400 1960 0 1 {name=p222 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} -300 1910 0 1 {name=p223 lab=n_vout_pre2[3]}
 C {devices/lab_pin.sym} 190 1160 3 1 {name=p227 lab=vout_post[0]}
 C {devices/lab_pin.sym} 180 1160 2 1 {name=p228 lab=n_vout_post[0]}
@@ -2551,8 +2487,8 @@ C {devices/lab_pin.sym} 1060 1160 0 0 {name=p268 lab=n_vout_post[2]}
 C {devices/lab_pin.sym} 620 1160 3 1 {name=p269 lab=vout_post[1]}
 C {devices/lab_pin.sym} 610 1160 0 0 {name=p270 lab=n_vout_post[1]}
 C {devices/lab_pin.sym} 2030 1180 2 0 {name=p274 lab=i_post[4]}
-C {devices/iopin.sym} -730 -370 0 0 {name=p144 lab=vout_pre2[3:0]}
-C {devices/iopin.sym} -730 -340 0 0 {name=p271 lab=vout_pre3[3:0]}
+C {devices/iopin.sym} -890 -350 0 0 {name=p144 lab=vout_pre2[3:0]}
+C {devices/iopin.sym} -890 -320 0 0 {name=p271 lab=vout_pre3[3:0]}
 C {Synapse/no_stdp.sym} -10 2700 0 0 {name=no_stdp65 }
 C {devices/lab_pin.sym} -430 2550 0 0 {name=p143 lab=vout_pre3[0]}
 C {Synapse/no_stdp.sym} 430 2700 0 0 {name=no_stdp66 }
@@ -2650,24 +2586,12 @@ C {devices/lab_pin.sym} 2220 3280 3 0 {name=p302 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} 1780 3280 3 0 {name=p303 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} 1780 3530 3 0 {name=p304 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} 2220 3530 3 0 {name=p305 sig_type=std_logic lab=vssa}
-C {not.sym} -410 2580 0 0 {name=x17}
-C {devices/lab_pin.sym} -410 2500 1 0 {name=p306 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} -410 2600 0 1 {name=p307 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} -310 2550 0 1 {name=p308 lab=n_vout_pre3[0]}
 C {devices/lab_pin.sym} -420 2780 0 0 {name=p309 lab=vout_pre3[1]}
-C {not.sym} -400 2810 0 0 {name=x18}
-C {devices/lab_pin.sym} -400 2730 1 0 {name=p310 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} -400 2830 0 1 {name=p311 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} -300 2810 0 1 {name=p312 lab=n_vout_pre3[1]}
 C {devices/lab_pin.sym} -420 3050 0 0 {name=p313 lab=vout_pre3[2]}
-C {not.sym} -400 3080 0 0 {name=x19}
-C {devices/lab_pin.sym} -400 3000 1 0 {name=p314 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} -400 3100 0 1 {name=p315 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} -300 3050 0 1 {name=p316 lab=n_vout_pre3[2]}
 C {devices/lab_pin.sym} -420 3300 0 0 {name=p317 lab=vout_pre3[3]}
-C {not.sym} -400 3330 0 0 {name=x20}
-C {devices/lab_pin.sym} -400 3250 1 0 {name=p318 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} -400 3350 0 1 {name=p319 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} -300 3300 0 1 {name=p320 lab=n_vout_pre3[3]}
 C {devices/lab_pin.sym} 190 2550 3 1 {name=p321 lab=vout_post[0]}
 C {devices/lab_pin.sym} 180 2550 2 1 {name=p322 lab=n_vout_post[0]}
@@ -2783,24 +2707,12 @@ C {devices/lab_pin.sym} 2220 4670 3 0 {name=p399 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} 1780 4670 3 0 {name=p400 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} 1780 4920 3 0 {name=p401 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} 2220 4920 3 0 {name=p402 sig_type=std_logic lab=vssa}
-C {not.sym} -410 3970 0 0 {name=x21}
-C {devices/lab_pin.sym} -410 3890 1 0 {name=p403 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} -410 3990 0 1 {name=p404 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} -310 3940 0 1 {name=p405 lab=n_vout_pre4[0]}
 C {devices/lab_pin.sym} -420 4170 0 0 {name=p406 lab=vout_pre4[1]}
-C {not.sym} -400 4200 0 0 {name=x22}
-C {devices/lab_pin.sym} -400 4120 1 0 {name=p407 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} -400 4220 0 1 {name=p408 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} -300 4200 0 1 {name=p409 lab=n_vout_pre4[1]}
 C {devices/lab_pin.sym} -420 4440 0 0 {name=p410 lab=vout_pre4[2]}
-C {not.sym} -400 4470 0 0 {name=x23}
-C {devices/lab_pin.sym} -400 4390 1 0 {name=p411 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} -400 4490 0 1 {name=p412 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} -300 4440 0 1 {name=p413 lab=n_vout_pre4[2]}
 C {devices/lab_pin.sym} -420 4690 0 0 {name=p414 lab=vout_pre4[3]}
-C {not.sym} -400 4720 0 0 {name=x24}
-C {devices/lab_pin.sym} -400 4640 1 0 {name=p415 sig_type=std_logic lab=vdda}
-C {devices/lab_pin.sym} -400 4740 0 1 {name=p416 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} -300 4690 0 1 {name=p417 lab=n_vout_pre4[3]}
 C {devices/lab_pin.sym} 190 3940 3 1 {name=p418 lab=vout_post[0]}
 C {devices/lab_pin.sym} 180 3940 2 1 {name=p419 lab=n_vout_post[0]}
@@ -2819,4 +2731,9 @@ C {devices/lab_pin.sym} 1060 3940 0 0 {name=p431 lab=n_vout_post[2]}
 C {devices/lab_pin.sym} 620 3940 3 1 {name=p432 lab=vout_post[1]}
 C {devices/lab_pin.sym} 610 3940 0 0 {name=p433 lab=n_vout_post[1]}
 C {devices/lab_pin.sym} 2030 3960 2 0 {name=p434 lab=i_post[4]}
-C {devices/iopin.sym} -730 -310 0 0 {name=p435 lab=vout_pre4[3:0]}
+C {devices/iopin.sym} -890 -290 0 0 {name=p435 lab=vout_pre4[3:0]}
+C {devices/iopin.sym} -730 -390 0 0 {name=p436 lab=nvout_pre[3:0]}
+C {devices/iopin.sym} -730 -350 0 0 {name=p6 lab=nvout_pre2[3:0]}
+C {devices/iopin.sym} -730 -320 0 0 {name=p10 lab=nvout_pre3[3:0]}
+C {devices/iopin.sym} -730 -290 0 0 {name=p437 lab=nvout_pre4[3:0]}
+C {devices/iopin.sym} -725 -245 0 0 {name=p15 lab=nvout_post[7:0]}

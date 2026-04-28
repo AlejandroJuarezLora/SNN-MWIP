@@ -95,6 +95,7 @@ N 660 -1320 700 -1320 {
 lab=Iext[3]}
 N 700 -1320 740 -1320 {
 lab=Iext[3]}
+N 900 -2310 920 -2310 {lab=vout[0]}
 C {Neuron/ul_tun_final.sym} 840 -2340 0 0 {name=x2
 CM=0.8p}
 C {devices/iopin.sym} 220 -2030 0 0 {name=p1 lab=vdd}
@@ -117,10 +118,9 @@ CM=0.8p}
 C {devices/lab_pin.sym} 840 -1370 1 0 {name=p30 sig_type=std_logic lab=vdd}
 C {devices/lab_pin.sym} 840 -1260 3 0 {name=p33 sig_type=std_logic lab=vss}
 C {devices/ipin.sym} 190 -2020 0 0 {name=p37 lab=Iext[3:0]}
-C {devices/lab_pin.sym} 960 -2340 3 0 {name=p39 sig_type=std_logic lab=vout[0]}
+C {devices/lab_pin.sym} 980 -2240 2 0 {name=p39 sig_type=std_logic lab=vout[0]}
 C {devices/lab_pin.sym} 960 -1990 1 0 {name=p40 sig_type=std_logic lab=vout[1]}
-C {devices/lab_pin.sym} 960 -1660 3 0 {name=p41 sig_type=std_logic lab=vout[2]}
-C {devices/lab_pin.sym} 960 -1320 3 0 {name=p42 sig_type=std_logic lab=vout[3]}
+C {devices/lab_pin.sym} 960 -1720 0 0 {name=p41 sig_type=std_logic lab=vout[2]}
 C {devices/iopin.sym} 220 -1820 0 0 {name=p43 lab=hx}
 C {devices/lab_pin.sym} 740 -2320 1 1 {name=p22 sig_type=std_logic lab=Iext[0]}
 C {devices/lab_pin.sym} 710 -1940 1 1 {name=p28 sig_type=std_logic lab=Iext[1]}
@@ -193,7 +193,9 @@ C {devices/iopin.sym} 220 -1940 0 0 {name=p38 lab=vout[3:0]}
 C {devices/iopin.sym} 220 -1790 0 0 {name=p7 lab=Vrew1}
 C {devices/lab_pin.sym} 810 -1200 0 0 {name=p13 sig_type=std_logic lab=Vrew2}
 C {devices/lab_pin.sym} 810 -2220 0 0 {name=p12 sig_type=std_logic lab=Vrew1}
-C {/foss/designs/SNN-BUCK-BOOST/layer/integrator.sym} 1140 -1770 0 0 {name=x5}
+C {/foss/designs/SNN-MWIP/layer/integrator.sym} 1140 -1770 0 0 {name=x5}
 C {devices/iopin.sym} 220 -1745 0 0 {name=p4 lab=Vrew2}
 C {devices/lab_pin.sym} 810 -1870 0 0 {name=p5 sig_type=std_logic lab=Vrew1}
 C {devices/lab_pin.sym} 810 -1555 0 0 {name=p6 sig_type=std_logic lab=Vrew2}
+C {devices/lab_pin.sym} 990 -1390 0 0 {name=p14 sig_type=std_logic lab=vout[3]}
+C {devices/iopin.sym} 220 -1880 0 0 {name=p8 lab=nvout[3:0]}

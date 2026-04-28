@@ -63,8 +63,8 @@ N 1170 -2020 1350 -2020 {lab=Iext[5]}
 N 1170 -2060 1170 -2020 {lab=Iext[5]}
 N 1170 -1680 1350 -1680 {lab=Iext[6]}
 N 1170 -1720 1170 -1680 {lab=Iext[6]}
-N 1170 -1360 1350 -1360 {lab=Iext1[7]}
-N 1170 -1400 1170 -1360 {lab=Iext1[7]}
+N 1170 -1360 1350 -1360 {lab=Iext[7]}
+N 1170 -1400 1170 -1360 {lab=Iext[7]}
 C {Neuron/ul_tun_final.sym} 840 -2340 0 0 {name=x6 
 W_LEAK=1.15
 CM=0.8p}
@@ -98,7 +98,7 @@ CM=0.8p}
 C {devices/lab_pin.sym} 840 -2040 1 0 {name=p16 sig_type=std_logic lab=vdd}
 C {devices/lab_pin.sym} 840 -1930 3 0 {name=p19 sig_type=std_logic lab=vss}
 C {devices/iopin.sym} 170 -2030 0 0 {name=p37 lab=Iext[7:0]}
-C {devices/lab_pin.sym} 960 -2340 3 0 {name=p39 sig_type=std_logic lab=vout[0]}
+C {devices/lab_pin.sym} 980 -2340 0 1 {name=p39 sig_type=std_logic lab=vout[0]}
 C {devices/lab_pin.sym} 960 -1990 1 0 {name=p40 sig_type=std_logic lab=vout[1]}
 C {devices/lab_pin.sym} 600 -2375 3 1 {name=p22 sig_type=std_logic lab=Iext[0]}
 C {devices/iopin.sym} 300 -1950 0 0 {name=p38 lab=vout[7:0]}
@@ -117,7 +117,7 @@ C {devices/lab_pin.sym} 840 -1290 3 0 {name=p26 sig_type=std_logic lab=vss}
 C {devices/lab_pin.sym} 1410 -2390 1 0 {name=p29 sig_type=std_logic lab=vdd}
 C {devices/lab_pin.sym} 1410 -2280 3 0 {name=p32 sig_type=std_logic lab=vss}
 C {devices/lab_pin.sym} 1380 -2290 3 0 {name=p33 sig_type=std_logic lab=vileak}
-C {devices/lab_pin.sym} 960 -1350 3 0 {name=p34 sig_type=std_logic lab=vout[3]}
+C {devices/lab_pin.sym} 970 -1350 0 1 {name=p34 sig_type=std_logic lab=vout[3]}
 C {devices/lab_pin.sym} 1530 -2340 1 0 {name=p35 sig_type=std_logic lab=vout[4]}
 C {devices/lab_pin.sym} 1410 -2070 1 0 {name=p53 sig_type=std_logic lab=vdd}
 C {devices/lab_pin.sym} 1410 -1960 3 0 {name=p56 sig_type=std_logic lab=vss}
@@ -153,3 +153,14 @@ C {devices/lab_pin.sym} 1170 -2375 3 1 {name=p31 sig_type=std_logic lab=Iext[4]}
 C {devices/lab_pin.sym} 1170 -2055 3 1 {name=p43 sig_type=std_logic lab=Iext[5]}
 C {devices/lab_pin.sym} 1170 -1715 3 1 {name=p46 sig_type=std_logic lab=Iext[6]}
 C {devices/lab_pin.sym} 1170 -1395 3 1 {name=p54 sig_type=std_logic lab=Iext[7]}
+C {code_shown.sym} 0 -2210 0 0 {name=s1 only_toplevel=false value=".save v(vout[0]) v(vout[1]) v(vout[2]) v(vout[3]) v(vout[4]) v(vout[5]) v(vout[6]) v(vout[7])"
+spice_ignore=true}
+C {devices/iopin.sym} 310 -1890 0 0 {name=p4 lab=nvout[7:0]}
+C {devices/lab_pin.sym} 900 -2310 2 0 {name=p5 sig_type=std_logic lab=nvout[0]}
+C {devices/lab_pin.sym} 900 -1960 2 0 {name=p6 sig_type=std_logic lab=nvout[1]}
+C {devices/lab_pin.sym} 900 -1640 2 0 {name=p8 sig_type=std_logic lab=nvout[2]}
+C {devices/lab_pin.sym} 900 -1320 2 0 {name=p15 sig_type=std_logic lab=nvout[3]}
+C {devices/lab_pin.sym} 1470 -2310 2 0 {name=p17 sig_type=std_logic lab=nvout[4]}
+C {devices/lab_pin.sym} 1470 -1990 2 0 {name=p21 sig_type=std_logic lab=nvout[5]}
+C {devices/lab_pin.sym} 1470 -1650 2 0 {name=p24 sig_type=std_logic lab=nvout[6]}
+C {devices/lab_pin.sym} 1470 -1330 2 0 {name=p28 sig_type=std_logic lab=nvout[7]}

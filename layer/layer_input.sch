@@ -23,43 +23,28 @@ N 930 -1860 930 -1790 {
 lab=vileak}
 N 860 -1910 900 -1910 {
 lab=#net2}
-N 1070 -1700 1070 -1630 {
-lab=vileak}
-N 1000 -1750 1040 -1750 {
-lab=#net3}
-N 1170 -1500 1170 -1430 {
-lab=vileak}
-N 1100 -1550 1140 -1550 {
-lab=#net4}
 N 290 -1890 340 -1890 {lab=vin}
-N 290 -1790 340 -1790 {lab=#net5}
+N 290 -1790 340 -1790 {lab=#net3}
 N 640 -1870 680 -1870 {lab=#net1}
 N 680 -2100 680 -1870 {lab=#net1}
 N 680 -2100 740 -2100 {lab=#net1}
 N 740 -1910 860 -1910 {lab=#net2}
 N 740 -1910 740 -1850 {lab=#net2}
-N 640 -1850 740 -1850 {lab=#net2}
-N 740 -1750 1000 -1750 {lab=#net3}
-N 740 -1820 740 -1750 {lab=#net3}
-N 640 -1830 740 -1830 {lab=#net3}
-N 740 -1830 740 -1820 {lab=#net3}
-N 800 -1550 1100 -1550 {lab=#net4}
-N 680 -1550 800 -1550 {lab=#net4}
-N 680 -1810 680 -1550 {lab=#net4}
-N 640 -1810 680 -1810 {lab=#net4}
+N 640 -1810 740 -1810 {lab=#net2}
 N 90 -1770 130 -1770 {lab=vin}
-N 170 -1850 170 -1800 {lab=#net5}
+N 170 -1850 170 -1800 {lab=#net3}
 N 170 -1910 170 -1880 {lab=vdd}
 N 170 -1950 170 -1910 {lab=vdd}
-N 130 -1880 130 -1830 {lab=#net5}
-N 130 -1830 170 -1830 {lab=#net5}
-N 170 -1830 290 -1830 {lab=#net5}
-N 290 -1830 290 -1790 {lab=#net5}
+N 130 -1880 130 -1830 {lab=#net3}
+N 130 -1830 170 -1830 {lab=#net3}
+N 170 -1830 290 -1830 {lab=#net3}
+N 290 -1830 290 -1790 {lab=#net3}
 N 170 -1770 170 -1740 {lab=vss}
 N 170 -1740 170 -1720 {lab=vss}
 N 100 -1940 100 -1770 {lab=vin}
 N 100 -1940 290 -1940 {lab=vin}
 N 290 -1940 290 -1890 {lab=vin}
+N 740 -1850 740 -1810 {lab=#net2}
 C {Neuron/ul_tun_final.sym} 960 -1910 0 0 {name=x2
 spiceprefix=X
 W_LEAK=0.8
@@ -95,27 +80,10 @@ CM=0.8p}
 C {devices/lab_pin.sym} 960 -1960 1 0 {name=p16 sig_type=std_logic lab=vdd}
 C {devices/lab_pin.sym} 960 -1850 3 0 {name=p19 sig_type=std_logic lab=vss}
 C {devices/lab_pin.sym} 930 -1790 2 1 {name=p20 sig_type=std_logic lab=vileak}
-C {Neuron/ul_tun_final.sym} 1100 -1750 0 0 {name=x3
-W_LEAK=1
-CM=0.8p}
-C {devices/lab_pin.sym} 1100 -1800 1 0 {name=p23 sig_type=std_logic lab=vdd}
-C {devices/lab_pin.sym} 1100 -1690 3 0 {name=p26 sig_type=std_logic lab=vss}
-C {devices/lab_pin.sym} 1070 -1630 2 1 {name=p27 sig_type=std_logic lab=vileak}
-C {Neuron/ul_tun_final.sym} 1200 -1550 0 0 {name=x4 
-W_LEAK=1.1
-CM=0.8p}
-C {devices/lab_pin.sym} 1200 -1600 1 0 {name=p30 sig_type=std_logic lab=vdd}
-C {devices/lab_pin.sym} 1200 -1490 3 0 {name=p33 sig_type=std_logic lab=vss}
-C {devices/lab_pin.sym} 1170 -1430 2 1 {name=p34 sig_type=std_logic lab=vileak}
-C {devices/lab_pin.sym} 900 -2100 2 0 {name=p39 sig_type=std_logic lab=vout[0]}
-C {devices/lab_pin.sym} 1020 -1910 2 0 {name=p40 sig_type=std_logic lab=vout[1]}
-C {devices/lab_pin.sym} 1260 -1550 2 0 {name=p42 sig_type=std_logic lab=vout[3]}
-C {devices/iopin.sym} 235 -2085 0 0 {name=p43 lab=vout[3:0]}
 C {/foss/designs/SNN-MWIP/VCCS/otavccs4.sym} 490 -1840 0 0 {name=x5}
 C {devices/ipin.sym} 90 -1770 0 0 {name=p4 lab=vin}
 C {devices/lab_pin.sym} 490 -1920 1 0 {name=p5 sig_type=std_logic lab=vdd}
 C {devices/lab_pin.sym} 490 -1760 3 0 {name=p6 sig_type=std_logic lab=vss}
-C {devices/lab_pin.sym} 1160 -1750 2 0 {name=p15 sig_type=std_logic lab=vout[2]}
 C {sky130_fd_pr/nfet_01v8.sym} 150 -1770 0 0 {name=M1
 W=5
 L=0.15
@@ -146,3 +114,7 @@ spiceprefix=X
 }
 C {devices/lab_pin.sym} 170 -1950 1 0 {name=p8 sig_type=std_logic lab=vdd}
 C {devices/lab_pin.sym} 170 -1720 3 0 {name=p10 sig_type=std_logic lab=vss}
+C {devices/iopin.sym} 900 -2100 0 0 {name=p15 lab=vout1}
+C {devices/iopin.sym} 1020 -1910 0 0 {name=p17 lab=vout2}
+C {devices/iopin.sym} 900 -2070 0 0 {name=p14 lab=nvout1}
+C {devices/iopin.sym} 1020 -1880 0 0 {name=p18 lab=nvout2}

@@ -414,12 +414,12 @@ N1 TE BE rram_v0_model
 .ends rram_v0
 
 .subckt rram_v1 TE BE
-N1 TE BE rram_v1_model gap_initial=0.5
+N1 TE BE rram_v1_model gap_initial=1
 .ends rram_v0
 
 
 .subckt sky_reram TE BE
-N1 TE BE sky_reram_model
+N1 TE BE sky_reram_model Tfilament_0=4e-9
 .ends sky_reram
 
 .model rram_v0_model rram_v0_va

@@ -5,6 +5,27 @@ V {}
 S {}
 F {}
 E {}
+B 2 680 330 1480 730 {flags=graph
+y1=0
+y2=2
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=-5.1262745e-06
+x2=4.8737255e-06
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+node=""
+color=""
+dataset=-1
+unitx=1
+logx=0
+logy=0
+}
 N 270 -40 360 -40 {lab=tau_nom}
 N -60 90 -60 110 {lab=GND}
 N 680 -15 700 -15 {lab=dth}
@@ -94,7 +115,7 @@ value="
 .endc
 "
 spice_ignore=false}
-C {sky130_fd_pr/corner.sym} 1200 -415 0 0 {name=CORNER only_toplevel=true corner=tt}
+C {sky130_fd_pr/corner.sym} 1090 -525 0 0 {name=CORNER only_toplevel=true corner=tt}
 C {gnd.sym} 120 -10 0 0 {name=l4 lab=GND}
 C {vcvs_limit.sym} -60 60 0 1 {name=alimit1 gain='0.9/5' lower_limit=0 upper_limit=0.9}
 C {gnd.sym} -60 110 0 0 {name=l5 lab=GND}
@@ -125,7 +146,7 @@ C {gnd.sym} 585 -160 0 0 {name=l16 lab=GND}
 C {vcvs_limit.sym} 415 -10 0 0 {name=alimit7 gain=100 lower_limit=-1 upper_limit=1}
 C {gnd.sym} 415 20 0 0 {name=l17 lab=GND}
 C {gnd.sym} 375 10 0 0 {name=l18 lab=GND}
-C {code_shown.sym} 850 -330 0 0 {name=s1 only_toplevel=false value="
+C {code_shown.sym} 840 -380 0 0 {name=s1 only_toplevel=false value="
 .options method gear
 .options KLU
 .options noinit
@@ -135,8 +156,8 @@ C {code_shown.sym} 850 -330 0 0 {name=s1 only_toplevel=false value="
 .options set wr_vecnames
 .options set wr_singlescale
 .options numdgt = 2
-.save tau x dx th dth tau x_nom dx_nom th_nom dth_nom tau_nom e_x e_th 
-.tran 50n 10m
+*.save tau x dx th dth tau x_nom dx_nom th_nom dth_nom tau_nom e_x e_th
+.tran 50n 1u uic
 .control
 	run
 	write /foss/designs/SNN-MWIP/data.raw
@@ -157,3 +178,28 @@ C {lab_pin.sym} -165 -52.5 0 1 {name=p11 sig_type=std_logic lab=th_nom}
 C {lab_pin.sym} -45 -40 0 1 {name=p12 sig_type=std_logic lab=dth_nom}
 C {lab_pin.sym} 482.5 -40 3 0 {name=p13 sig_type=std_logic lab=tau}
 C {lab_pin.sym} 295 -40 3 0 {name=p14 sig_type=std_logic lab=tau_nom}
+C {code_shown.sym} -460 -520 0 0 {name=s2 only_toplevel=false value="
+.options method gear
+.options KLU
+.options noinit
+.options set num_threads=8
+.options set ng_nomodcheck
+.options set skywaterpdk
+.options set wr_vecnames
+.options set wr_singlescale
+.options numdgt = 2
+.save tau x dx th dth tau x_nom dx_nom th_nom dth_nom tau_nom e_x e_th 
+.tran 50n 1u uic
+.control
+	run
+	stop when v(th) >= 1.5
+
+	write /foss/designs/SNN-MWIP/data.raw
+.endc
+
+"
+spice_ignore=true}
+C {launcher.sym} 760 -450 0 0 {name=h5
+descr="load waves"
+tclcommand="xschem raw_read data.raw tran"
+}

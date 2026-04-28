@@ -34,7 +34,7 @@ N -200 -210 -200 -170 {lab=#net4}
 N -160 -140 -130 -140 {lab=x}
 N -130 -240 -130 -140 {lab=x}
 N -160 -240 -130 -240 {lab=x}
-N -200 -110 -200 -80 {lab=ineg2}
+N -200 -110 -200 -80 {lab=ineg1}
 N -200 -270 -200 -240 {lab=avdd}
 N -290 -140 -200 -140 {lab=avdd}
 N -200 -310 -60 -310 {lab=avdd}
@@ -50,43 +50,18 @@ N 110 -240 110 -170 {lab=x}
 N 70 -240 110 -240 {lab=x}
 N -60 -310 30 -310 {lab=avdd}
 N 150 250 180 250 {lab=avss}
-N -200 -20 -200 10 {lab=ineg2}
+N -200 -20 -200 10 {lab=ineg1}
 N 620 -110 620 -90 {lab=ipos2}
 N 620 -30 620 0 {lab=ipos2}
-N 800 -210 800 -170 {lab=#net5}
-N 730 -140 760 -140 {lab=y}
-N 730 -240 730 -140 {lab=y}
-N 730 -240 760 -240 {lab=y}
-N 800 -270 800 -240 {lab=avdd}
-N 800 -140 890 -140 {lab=avdd}
-N 710 -310 790 -310 {lab=avdd}
-N 800 -310 800 -270 {lab=avdd}
-N 800 -110 800 -90 {lab=ipos1}
-N 800 -30 800 0 {lab=ipos1}
 N 270 -240 290 -240 {lab=y}
 N 270 -190 330 -190 {lab=y}
 N 330 -190 550 -190 {lab=y}
-N 550 -190 730 -190 {lab=y}
 N 270 -240 270 -190 {lab=y}
 N 620 -140 660 -140 {lab=avdd}
-N 790 -310 800 -310 {lab=avdd}
-N -430 -310 -430 -270 {lab=avdd}
-N -430 -210 -430 -170 {lab=#net6}
-N -390 -140 -360 -140 {lab=x}
-N -360 -240 -360 -140 {lab=x}
-N -390 -240 -360 -240 {lab=x}
-N -430 -110 -430 -80 {lab=ineg1}
-N -430 -270 -430 -240 {lab=avdd}
-N -520 -140 -430 -140 {lab=avdd}
-N -430 -310 -290 -310 {lab=avdd}
-N -430 -20 -430 10 {lab=ineg1}
 N -130 -190 30 -190 {lab=x}
 N -290 -310 -200 -310 {lab=avdd}
-N -360 -190 -130 -190 {lab=x}
-N -430 -80 -430 -20 {lab=ineg1}
-N -200 -80 -200 -20 {lab=ineg2}
+N -200 -80 -200 -20 {lab=ineg1}
 N 620 -90 620 -30 {lab=ipos2}
-N 800 -90 800 -30 {lab=ipos1}
 C {sky130_fd_pr/nfet_01v8.sym} 10 50 0 0 {name=M2
 L=0.5
 W=0.5
@@ -167,40 +142,8 @@ C {iopin.sym} 190 -310 3 0 {name=p6 lab=avdd}
 C {iopin.sym} 180 270 0 0 {name=p7 lab=avss}
 C {ipin.sym} -50 50 2 1 {name=p8 lab=vin1}
 C {ipin.sym} 400 50 2 0 {name=p4 lab=vin2}
-C {opin.sym} -200 10 2 1 {name=p5 lab=ineg2}
-C {opin.sym} 620 0 2 1 {name=p9 lab=ipos2}
-C {sky130_fd_pr/pfet_01v8.sym} 780 -240 0 0 {name=M4
-L=0.5
-W=0.5
-nf=1 mult=1
-model=pfet_01v8
-spiceprefix=X
-}
-C {sky130_fd_pr/pfet_01v8.sym} 780 -140 0 0 {name=M9
-L=0.5
-W=0.5
-nf=1 mult=1
-model=pfet_01v8
-spiceprefix=X
-}
-C {opin.sym} 800 0 2 1 {name=p10 lab=ipos1}
+C {opin.sym} -200 10 2 1 {name=p5 lab=ineg1}
+C {opin.sym} 620 0 2 1 {name=p9 lab=ipos1}
 C {lab_pin.sym} 660 -140 0 1 {name=p11 sig_type=std_logic lab=avdd}
-C {lab_pin.sym} 890 -140 0 1 {name=p12 sig_type=std_logic lab=avdd}
 C {lab_pin.sym} -290 -140 0 0 {name=p13 sig_type=std_logic lab=avdd}
 C {lab_pin.sym} 170 50 1 0 {name=p14 sig_type=std_logic lab=avss}
-C {sky130_fd_pr/pfet_01v8.sym} -410 -240 0 1 {name=M10
-L=0.5
-W=0.5
-nf=1 mult=1
-model=pfet_01v8
-spiceprefix=X
-}
-C {sky130_fd_pr/pfet_01v8.sym} -410 -140 0 1 {name=M12
-L=0.5
-W=0.5
-nf=1 mult=1
-model=pfet_01v8
-spiceprefix=X
-}
-C {opin.sym} -430 10 2 1 {name=p15 lab=ineg1}
-C {lab_pin.sym} -520 -140 0 0 {name=p16 sig_type=std_logic lab=avdd}
