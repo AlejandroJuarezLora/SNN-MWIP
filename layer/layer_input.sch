@@ -118,3 +118,6 @@ C {devices/iopin.sym} 900 -2100 0 0 {name=p15 lab=vout1}
 C {devices/iopin.sym} 1020 -1910 0 0 {name=p17 lab=vout2}
 C {devices/iopin.sym} 900 -2070 0 0 {name=p14 lab=nvout1}
 C {devices/iopin.sym} 1020 -1880 0 0 {name=p18 lab=nvout2}
+C {code_shown.sym} 140 -2070 0 0 {name=s1 only_toplevel=false value="
+.save v(vout1) v(vout2) 
+"}

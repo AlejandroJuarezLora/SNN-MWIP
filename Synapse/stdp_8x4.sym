@@ -8,7 +8,7 @@ V {}
 S {}
 F {}
 E {}
-L 4 370 60 390 60 {}
+L 4 370 120 390 120 {}
 L 4 370 -60 390 -60 {}
 L 4 220 -100 240 -100 {}
 L 4 240 -160 240 220 {}
@@ -23,34 +23,62 @@ L 4 220 -40 240 -40 {}
 L 4 220 80 240 80 {}
 L 4 220 100 240 100 {}
 L 4 220 120 240 120 {}
+L 4 220 -90 240 -90 {}
+L 4 220 -70 240 -70 {}
+L 4 220 -50 240 -50 {}
+L 4 220 -30 240 -30 {}
+L 4 220 70 240 70 {}
+L 4 220 90 240 90 {}
+L 4 220 110 240 110 {}
+L 4 220 130 240 130 {}
+L 4 370 -70 390 -70 {}
+L 4 370 -80 390 -80 {}
+L 4 370 -90 390 -90 {}
+L 4 370 -10 390 -10 {}
+L 4 370 20 390 20 {}
+L 4 370 10 390 10 {}
+L 4 370 130 390 130 {}
+L 4 370 140 390 140 {}
+L 4 370 150 390 150 {}
 L 7 300 220 300 240 {}
 L 7 310 -180 310 -160 {}
-B 5 387.5 57.5 392.5 62.5 {name=i_post[3:0] dir=inout}
+B 5 387.5 117.5 392.5 122.5 {name=i_post0 dir=inout}
 B 5 297.5 237.5 302.5 242.5 {name=vssa dir=inout}
-B 5 387.5 -62.5 392.5 -57.5 {name=vout_post[3:0] dir=inout}
-B 5 217.5 -102.5 222.5 -97.5 {name=vout_pre[1:0] dir=inout}
+B 5 387.5 -62.5 392.5 -57.5 {name=vout_post3 dir=inout}
+B 5 217.5 -102.5 222.5 -97.5 {name=vout_pre0 dir=inout}
 B 5 307.5 -182.5 312.5 -177.5 {name=vdda dir=inout}
-B 5 217.5 57.5 222.5 62.5 {name=nvout_pre[1:0] dir=inout}
-B 5 387.5 -2.5 392.5 2.5 {name=nvout_post[3:0] dir=inout}
-B 5 217.5 -82.5 222.5 -77.5 {name=vout_pre2[1:0] dir=inout}
-B 5 217.5 -62.5 222.5 -57.5 {name=vout_pre3[1:0] dir=inout}
-B 5 217.5 -42.5 222.5 -37.5 {name=vout_pre4[1:0] dir=inout}
-B 5 217.5 77.5 222.5 82.5 {name=nvout_pre2[1:0] dir=inout}
-B 5 217.5 97.5 222.5 102.5 {name=nvout_pre3[1:0] dir=inout}
-B 5 217.5 117.5 222.5 122.5 {name=nvout_pre4[1:0] dir=inout}
+B 5 217.5 57.5 222.5 62.5 {name=nvout_pre0 dir=inout}
+B 5 387.5 -2.5 392.5 2.5 {name=nvout_post1 dir=inout}
+B 5 217.5 -82.5 222.5 -77.5 {name=vout_pre2 dir=inout}
+B 5 217.5 -62.5 222.5 -57.5 {name=vout_pre4 dir=inout}
+B 5 217.5 -42.5 222.5 -37.5 {name=vout_pre6 dir=inout}
+B 5 217.5 77.5 222.5 82.5 {name=nvout_pre2 dir=inout}
+B 5 217.5 97.5 222.5 102.5 {name=nvout_pre4 dir=inout}
+B 5 217.5 117.5 222.5 122.5 {name=nvout_pre6 dir=inout}
+B 5 217.5 -92.5 222.5 -87.5 {name=vout_pre1 dir=inout}
+B 5 217.5 -72.5 222.5 -67.5 {name=vout_pre3 dir=inout}
+B 5 217.5 -52.5 222.5 -47.5 {name=vout_pre5 dir=inout}
+B 5 217.5 -32.5 222.5 -27.5 {name=vout_pre7 dir=inout}
+B 5 217.5 67.5 222.5 72.5 {name=nvout_pre1 dir=inout}
+B 5 217.5 87.5 222.5 92.5 {name=nvout_pre3 dir=inout}
+B 5 217.5 107.5 222.5 112.5 {name=nvout_pre5 dir=inout}
+B 5 217.5 127.5 222.5 132.5 {name=nvout_pre7 dir=inout}
+B 5 387.5 -72.5 392.5 -67.5 {name=vout_post2 dir=inout}
+B 5 387.5 -82.5 392.5 -77.5 {name=vout_post1 dir=inout}
+B 5 387.5 -92.5 392.5 -87.5 {name=vout_post0 dir=inout}
+B 5 387.5 -12.5 392.5 -7.5 {name=nvout_post0 dir=inout}
+B 5 387.5 17.5 392.5 22.5 {name=nvout_post3 dir=inout}
+B 5 387.5 7.5 392.5 12.5 {name=nvout_post2 dir=inout}
+B 5 387.5 127.5 392.5 132.5 {name=i_post1 dir=inout}
+B 5 387.5 137.5 392.5 142.5 {name=i_post2 dir=inout}
+B 5 387.5 147.5 392.5 152.5 {name=i_post3 dir=inout}
 T {@symname} 264.5 -246 0 0 0.3 0.3 {}
 T {@name} 265 -262 0 0 0.2 0.2 {}
-T {i_post[3:0]} 364 85 1 1 0.2 0.2 {}
+T {i_post} 369 150 1 1 0.2 0.2 {}
 T {vssa} 314 215 1 1 0.2 0.2 {}
-T {vout_post[3:0]} 356 -105 3 1 0.2 0.2 {}
-T {vout_pre[1:0]} 315 -96 2 0 0.2 0.2 {}
+T {vout_post} 356 -105 3 1 0.2 0.2 {}
+T {vout_pre} 254 -85 1 0 0.2 0.2 {}
 T {vdda} 306 -155 3 1 0.2 0.2 {}
 T {8x4} 390 170 0 0 0.4 0.4 {}
-T {nvout_pre[1:0]} 325 64 2 0 0.2 0.2 {}
-T {nvout_post[3:0]} 285 4 2 1 0.2 0.2 {}
-T {vout_pre2[1:0]} 325 -76 2 0 0.2 0.2 {}
-T {vout_pre3[1:0]} 325 -56 2 0 0.2 0.2 {}
-T {vout_pre4[1:0]} 325 -36 2 0 0.2 0.2 {}
-T {nvout_pre2[1:0]} 325 84 2 0 0.2 0.2 {}
-T {nvout_pre3[1:0]} 325 104 2 0 0.2 0.2 {}
-T {nvout_pre4[1:0]} 325 124 2 0 0.2 0.2 {}
+T {nvout_pre} 246 125 3 0 0.2 0.2 {}
+T {nvout_post} 369 45 1 1 0.2 0.2 {}

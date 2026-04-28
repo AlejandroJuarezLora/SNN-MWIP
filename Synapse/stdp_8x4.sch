@@ -6,575 +6,575 @@ S {}
 F {}
 E {}
 N 1130 110 1130 200 {
-lab=vout_pre[1]}
+lab=vout_pre1}
 N 700 110 1130 110 {
-lab=vout_pre[1]}
+lab=vout_pre1}
 N 1130 620 1130 700 {
-lab=vout_pre2[1]}
+lab=vout_pre3}
 N 700 620 1130 620 {
-lab=vout_pre2[1]}
+lab=vout_pre3}
 N 700 370 1130 370 {
-lab=vout_pre2[0]}
+lab=vout_pre2}
 N 1130 370 1130 450 {
-lab=vout_pre2[0]}
+lab=vout_pre2}
 N 700 110 700 200 {
-lab=vout_pre[1]}
+lab=vout_pre1}
 N 250 110 250 200 {
-lab=vout_pre[1]}
+lab=vout_pre1}
 N -190 110 -190 200 {
-lab=vout_pre[1]}
+lab=vout_pre1}
 N -190 370 -190 450 {
-lab=vout_pre2[0]}
+lab=vout_pre2}
 N 250 370 250 450 {
-lab=vout_pre2[0]}
+lab=vout_pre2}
 N 700 370 700 450 {
-lab=vout_pre2[0]}
+lab=vout_pre2}
 N -190 620 -190 700 {
-lab=vout_pre2[1]}
+lab=vout_pre3}
 N 250 620 250 700 {
-lab=vout_pre2[1]}
+lab=vout_pre3}
 N 700 620 700 700 {
-lab=vout_pre2[1]}
+lab=vout_pre3}
 N 160 460 160 710 {
-lab=vout_post[0]}
+lab=vout_post0}
 N 110 710 160 710 {
-lab=vout_post[0]}
+lab=vout_post0}
 N 110 460 160 460 {
-lab=vout_post[0]}
+lab=vout_post0}
 N 110 210 160 210 {
-lab=vout_post[0]}
+lab=vout_post0}
 N 110 -40 160 -40 {
-lab=vout_post[0]}
+lab=vout_post0}
 N 590 460 590 710 {
-lab=vout_post[1]}
+lab=vout_post1}
 N 550 710 590 710 {
-lab=vout_post[1]}
+lab=vout_post1}
 N 550 460 590 460 {
-lab=vout_post[1]}
+lab=vout_post1}
 N 550 210 590 210 {
-lab=vout_post[1]}
+lab=vout_post1}
 N 550 -40 590 -40 {
-lab=vout_post[1]}
+lab=vout_post1}
 N 1040 460 1040 710 {
-lab=vout_post[2]}
+lab=vout_post2}
 N 1000 710 1040 710 {
-lab=vout_post[2]}
+lab=vout_post2}
 N 1000 460 1040 460 {
-lab=vout_post[2]}
+lab=vout_post2}
 N 1000 210 1040 210 {
-lab=vout_post[2]}
+lab=vout_post2}
 N 1000 -40 1040 -40 {
-lab=vout_post[2]}
+lab=vout_post2}
 N 1490 460 1490 710 {
-lab=vout_post[3]}
+lab=vout_post3}
 N 1430 710 1490 710 {
-lab=vout_post[3]}
+lab=vout_post3}
 N 1430 460 1490 460 {
-lab=vout_post[3]}
+lab=vout_post3}
 N 1430 -40 1490 -40 {
-lab=vout_post[3]}
+lab=vout_post3}
 N 200 490 200 740 {
-lab=i_post[0]}
+lab=i_post0}
 N 110 740 200 740 {
-lab=i_post[0]}
+lab=i_post0}
 N 110 -10 200 -10 {
-lab=i_post[0]}
+lab=i_post0}
 N 110 240 200 240 {
-lab=i_post[0]}
+lab=i_post0}
 N 110 490 200 490 {
-lab=i_post[0]}
+lab=i_post0}
 N 640 490 640 740 {
-lab=i_post[1]}
+lab=i_post1}
 N 550 740 640 740 {
-lab=i_post[1]}
+lab=i_post1}
 N 550 490 640 490 {
-lab=i_post[1]}
+lab=i_post1}
 N 550 240 640 240 {
-lab=i_post[1]}
+lab=i_post1}
 N 550 -10 640 -10 {
-lab=i_post[1]}
+lab=i_post1}
 N 1080 490 1080 740 {
-lab=i_post[2]}
+lab=i_post2}
 N 1000 740 1080 740 {
-lab=i_post[2]}
+lab=i_post2}
 N 1000 490 1080 490 {
-lab=i_post[2]}
+lab=i_post2}
 N 1000 240 1080 240 {
-lab=i_post[2]}
+lab=i_post2}
 N 1000 -10 1080 -10 {
-lab=i_post[2]}
+lab=i_post2}
 N 1530 490 1530 740 {
-lab=i_post[3]}
+lab=i_post3}
 N 1430 740 1530 740 {
-lab=i_post[3]}
+lab=i_post3}
 N 1430 490 1530 490 {
-lab=i_post[3]}
+lab=i_post3}
 N 1430 -10 1530 -10 {
-lab=i_post[3]}
+lab=i_post3}
 N 160 1440 160 1690 {
-lab=vout_post[0]}
+lab=vout_post0}
 N 160 710 160 940 {
-lab=vout_post[0]}
+lab=vout_post0}
 N 590 1440 590 1690 {
-lab=vout_post[1]}
+lab=vout_post1}
 N 590 710 590 940 {
-lab=vout_post[1]}
+lab=vout_post1}
 N 1040 1440 1040 1690 {
-lab=vout_post[2]}
+lab=vout_post2}
 N 1040 710 1040 940 {
-lab=vout_post[2]}
+lab=vout_post2}
 N 1490 1440 1490 1690 {
-lab=vout_post[3]}
+lab=vout_post3}
 N 1490 710 1490 940 {
-lab=vout_post[3]}
+lab=vout_post3}
 N 200 1470 200 1720 {
-lab=i_post[0]}
+lab=i_post0}
 N 110 1720 200 1720 {
-lab=i_post[0]}
+lab=i_post0}
 N 640 1470 640 1720 {
-lab=i_post[1]}
+lab=i_post1}
 N 1080 1470 1080 1720 {
-lab=i_post[2]}
+lab=i_post2}
 N 1530 1470 1530 1720 {
-lab=i_post[3]}
+lab=i_post3}
 N 110 940 160 940 {
-lab=vout_post[0]}
+lab=vout_post0}
 N 110 970 200 970 {
-lab=i_post[0]}
+lab=i_post0}
 N 110 1190 160 1190 {
-lab=vout_post[0]}
+lab=vout_post0}
 N 110 1220 200 1220 {
-lab=i_post[0]}
+lab=i_post0}
 N 110 1440 160 1440 {
-lab=vout_post[0]}
+lab=vout_post0}
 N 110 1470 200 1470 {
-lab=i_post[0]}
+lab=i_post0}
 N 110 1690 160 1690 {
-lab=vout_post[0]}
+lab=vout_post0}
 N 550 1690 590 1690 {
-lab=vout_post[1]}
+lab=vout_post1}
 N 550 1720 640 1720 {
-lab=i_post[1]}
+lab=i_post1}
 N 550 1440 590 1440 {
-lab=vout_post[1]}
+lab=vout_post1}
 N 550 1470 640 1470 {
-lab=i_post[1]}
+lab=i_post1}
 N 550 1190 590 1190 {
-lab=vout_post[1]}
+lab=vout_post1}
 N 550 1220 640 1220 {
-lab=i_post[1]}
+lab=i_post1}
 N 550 940 590 940 {
-lab=vout_post[1]}
+lab=vout_post1}
 N 550 970 640 970 {
-lab=i_post[1]}
+lab=i_post1}
 N 1000 940 1040 940 {
-lab=vout_post[2]}
+lab=vout_post2}
 N 1000 970 1080 970 {
-lab=i_post[2]}
+lab=i_post2}
 N 1000 1190 1040 1190 {
-lab=vout_post[2]}
+lab=vout_post2}
 N 1000 1220 1080 1220 {
-lab=i_post[2]}
+lab=i_post2}
 N 1000 1440 1040 1440 {
-lab=vout_post[2]}
+lab=vout_post2}
 N 1000 1470 1080 1470 {
-lab=i_post[2]}
+lab=i_post2}
 N 1000 1690 1040 1690 {
-lab=vout_post[2]}
+lab=vout_post2}
 N 1000 1720 1080 1720 {
-lab=i_post[2]}
+lab=i_post2}
 N 1430 1690 1490 1690 {
-lab=vout_post[3]}
+lab=vout_post3}
 N 1430 1720 1530 1720 {
-lab=i_post[3]}
+lab=i_post3}
 N 1430 1440 1490 1440 {
-lab=vout_post[3]}
+lab=vout_post3}
 N 1430 1470 1530 1470 {
-lab=i_post[3]}
+lab=i_post3}
 N 1430 1190 1490 1190 {
-lab=vout_post[3]}
+lab=vout_post3}
 N 1430 1220 1530 1220 {
-lab=i_post[3]}
+lab=i_post3}
 N 1430 940 1490 940 {
-lab=vout_post[3]}
+lab=vout_post3}
 N 1430 970 1530 970 {
-lab=i_post[3]}
+lab=i_post3}
 N 700 880 1130 880 {
-lab=vout_pre3[0]}
+lab=vout_pre4}
 N -190 880 -190 930 {
-lab=vout_pre3[0]}
+lab=vout_pre4}
 N 250 880 250 930 {
-lab=vout_pre3[0]}
+lab=vout_pre4}
 N 700 880 700 930 {
-lab=vout_pre3[0]}
+lab=vout_pre4}
 N 1130 880 1130 930 {
-lab=vout_pre3[0]}
+lab=vout_pre4}
 N 700 1100 1130 1100 {
-lab=vout_pre3[1]}
+lab=vout_pre5}
 N -190 1100 -190 1180 {
-lab=vout_pre3[1]}
+lab=vout_pre5}
 N 250 1100 250 1180 {
-lab=vout_pre3[1]}
+lab=vout_pre5}
 N 700 1100 700 1180 {
-lab=vout_pre3[1]}
+lab=vout_pre5}
 N 1130 1100 1130 1180 {
-lab=vout_pre3[1]}
+lab=vout_pre5}
 N 700 1350 1130 1350 {
-lab=vout_pre4[0]}
+lab=vout_pre6}
 N -190 1350 -190 1430 {
-lab=vout_pre4[0]}
+lab=vout_pre6}
 N 250 1350 250 1430 {
-lab=vout_pre4[0]}
+lab=vout_pre6}
 N 700 1350 700 1430 {
-lab=vout_pre4[0]}
+lab=vout_pre6}
 N 1130 1350 1130 1430 {
-lab=vout_pre4[0]}
+lab=vout_pre6}
 N 700 1620 1130 1620 {
-lab=vout_pre4[1]}
+lab=nvout_pre7}
 N -190 1620 -190 1680 {
-lab=vout_pre4[1]}
+lab=nvout_pre7}
 N 250 1620 250 1680 {
-lab=vout_pre4[1]}
+lab=nvout_pre7}
 N 700 1620 700 1680 {
-lab=vout_pre4[1]}
+lab=nvout_pre7}
 N 1130 1620 1130 1680 {
-lab=vout_pre4[1]}
+lab=nvout_pre7}
 N 400 1760 400 1770 {
 lab=vssa}
-N 700 -130 1130 -130 {lab=vout_pre[0]}
-N 1430 210 1490 210 {lab=vout_post[3]}
-N 1430 240 1530 240 {lab=i_post[3]}
-N -190 -130 250 -130 {lab=vout_pre[0]}
-N 250 -130 700 -130 {lab=vout_pre[0]}
+N 700 -130 1130 -130 {lab=vout_pre0}
+N 1430 210 1490 210 {lab=vout_post3}
+N 1430 240 1530 240 {lab=i_post3}
+N -190 -130 250 -130 {lab=vout_pre0}
+N 250 -130 700 -130 {lab=vout_pre0}
 N 250 110 700 110 {
-lab=vout_pre[1]}
+lab=vout_pre1}
 N -190 110 250 110 {
-lab=vout_pre[1]}
+lab=vout_pre1}
 N -300 110 -190 110 {
-lab=vout_pre[1]}
+lab=vout_pre1}
 N -300 370 -190 370 {
-lab=vout_pre2[0]}
+lab=vout_pre2}
 N -190 370 250 370 {
-lab=vout_pre2[0]}
+lab=vout_pre2}
 N 250 370 700 370 {
-lab=vout_pre2[0]}
+lab=vout_pre2}
 N -300 620 -190 620 {
-lab=vout_pre2[1]}
+lab=vout_pre3}
 N -190 620 250 620 {
-lab=vout_pre2[1]}
+lab=vout_pre3}
 N 250 620 700 620 {
-lab=vout_pre2[1]}
+lab=vout_pre3}
 N 160 210 160 460 {
-lab=vout_post[0]}
+lab=vout_post0}
 N 160 -40 160 210 {
-lab=vout_post[0]}
+lab=vout_post0}
 N 160 -200 160 -40 {
-lab=vout_post[0]}
+lab=vout_post0}
 N 590 210 590 460 {
-lab=vout_post[1]}
+lab=vout_post1}
 N 590 -40 590 210 {
-lab=vout_post[1]}
+lab=vout_post1}
 N 590 -200 590 -40 {
-lab=vout_post[1]}
+lab=vout_post1}
 N 1040 210 1040 460 {
-lab=vout_post[2]}
+lab=vout_post2}
 N 1040 -40 1040 210 {
-lab=vout_post[2]}
+lab=vout_post2}
 N 1040 -190 1040 -40 {
-lab=vout_post[2]}
+lab=vout_post2}
 N 1490 210 1490 460 {
-lab=vout_post[3]}
+lab=vout_post3}
 N 1490 -180 1490 -40 {
-lab=vout_post[3]}
+lab=vout_post3}
 N 200 -210 200 -10 {
-lab=i_post[0]}
+lab=i_post0}
 N 200 -10 200 240 {
-lab=i_post[0]}
+lab=i_post0}
 N 200 240 200 490 {
-lab=i_post[0]}
+lab=i_post0}
 N 640 240 640 490 {
-lab=i_post[1]}
+lab=i_post1}
 N 640 -10 640 240 {
-lab=i_post[1]}
+lab=i_post1}
 N 640 -210 640 -10 {
-lab=i_post[1]}
+lab=i_post1}
 N 1080 240 1080 490 {
-lab=i_post[2]}
+lab=i_post2}
 N 1080 -10 1080 240 {
-lab=i_post[2]}
+lab=i_post2}
 N 1080 -200 1080 -10 {
-lab=i_post[2]}
+lab=i_post2}
 N 1530 240 1530 490 {
-lab=i_post[3]}
+lab=i_post3}
 N 1530 -190 1530 -10 {
-lab=i_post[3]}
+lab=i_post3}
 N 200 740 200 970 {
-lab=i_post[0]}
+lab=i_post0}
 N 160 940 160 1190 {
-lab=vout_post[0]}
+lab=vout_post0}
 N 200 970 200 1220 {
-lab=i_post[0]}
+lab=i_post0}
 N 160 1190 160 1440 {
-lab=vout_post[0]}
+lab=vout_post0}
 N 200 1220 200 1470 {
-lab=i_post[0]}
+lab=i_post0}
 N 590 1190 590 1440 {
-lab=vout_post[1]}
+lab=vout_post1}
 N 640 1220 640 1470 {
-lab=i_post[1]}
+lab=i_post1}
 N 590 940 590 1190 {
-lab=vout_post[1]}
+lab=vout_post1}
 N 640 970 640 1220 {
-lab=i_post[1]}
+lab=i_post1}
 N 640 740 640 970 {
-lab=i_post[1]}
+lab=i_post1}
 N 1080 740 1080 970 {
-lab=i_post[2]}
+lab=i_post2}
 N 1040 940 1040 1190 {
-lab=vout_post[2]}
+lab=vout_post2}
 N 1080 970 1080 1220 {
-lab=i_post[2]}
+lab=i_post2}
 N 1040 1190 1040 1440 {
-lab=vout_post[2]}
+lab=vout_post2}
 N 1080 1220 1080 1470 {
-lab=i_post[2]}
+lab=i_post2}
 N 1490 1190 1490 1440 {
-lab=vout_post[3]}
+lab=vout_post3}
 N 1530 1220 1530 1470 {
-lab=i_post[3]}
+lab=i_post3}
 N 1490 940 1490 1190 {
-lab=vout_post[3]}
+lab=vout_post3}
 N 1530 970 1530 1220 {
-lab=i_post[3]}
+lab=i_post3}
 N 1530 740 1530 970 {
-lab=i_post[3]}
+lab=i_post3}
 N -300 880 -190 880 {
-lab=vout_pre3[0]}
+lab=vout_pre4}
 N -190 880 250 880 {
-lab=vout_pre3[0]}
+lab=vout_pre4}
 N 250 880 700 880 {
-lab=vout_pre3[0]}
+lab=vout_pre4}
 N -300 1100 -190 1100 {
-lab=vout_pre3[1]}
+lab=vout_pre5}
 N -190 1100 250 1100 {
-lab=vout_pre3[1]}
+lab=vout_pre5}
 N 250 1100 700 1100 {
-lab=vout_pre3[1]}
+lab=vout_pre5}
 N -300 1350 -190 1350 {
-lab=vout_pre4[0]}
+lab=vout_pre6}
 N -190 1350 250 1350 {
-lab=vout_pre4[0]}
+lab=vout_pre6}
 N 250 1350 700 1350 {
-lab=vout_pre4[0]}
+lab=vout_pre6}
 N -300 1620 -190 1620 {
-lab=vout_pre4[1]}
+lab=nvout_pre7}
 N -190 1620 250 1620 {
-lab=vout_pre4[1]}
+lab=nvout_pre7}
 N 250 1620 700 1620 {
-lab=vout_pre4[1]}
+lab=nvout_pre7}
 N 1490 -40 1490 210 {
-lab=vout_post[3]}
+lab=vout_post3}
 N 1530 -10 1530 240 {
-lab=i_post[3]}
-N -200 -110 -200 -40 {lab=nvout_pre[0]}
-N -200 -40 -190 -40 {lab=nvout_pre[0]}
-N 1120 -40 1130 -40 {lab=nvout_pre[0]}
-N 1120 -110 1120 -40 {lab=nvout_pre[0]}
-N 690 -40 700 -40 {lab=nvout_pre[0]}
-N 690 -110 690 -40 {lab=nvout_pre[0]}
-N 240 -40 250 -40 {lab=nvout_pre[0]}
-N 240 -110 240 -40 {lab=nvout_pre[0]}
-N -200 140 -200 210 {lab=nvout_pre[1]}
-N -200 210 -190 210 {lab=nvout_pre[1]}
-N -300 140 1120 140 {lab=nvout_pre[1]}
-N 1120 210 1130 210 {lab=nvout_pre[1]}
-N 1120 140 1120 210 {lab=nvout_pre[1]}
-N 690 210 700 210 {lab=nvout_pre[1]}
-N 690 140 690 210 {lab=nvout_pre[1]}
-N 240 210 250 210 {lab=nvout_pre[1]}
-N 240 140 240 210 {lab=nvout_pre[1]}
-N -200 390 -200 460 {lab=nvout_pre2[0]}
-N -200 460 -190 460 {lab=nvout_pre2[0]}
-N -300 390 1120 390 {lab=nvout_pre2[0]}
-N 1120 460 1130 460 {lab=nvout_pre2[0]}
-N 1120 390 1120 460 {lab=nvout_pre2[0]}
-N 690 460 700 460 {lab=nvout_pre2[0]}
-N 690 390 690 460 {lab=nvout_pre2[0]}
-N 240 460 250 460 {lab=nvout_pre2[0]}
-N 240 390 240 460 {lab=nvout_pre2[0]}
-N -200 640 -200 710 {lab=nvout_pre2[1]}
-N -200 710 -190 710 {lab=nvout_pre2[1]}
-N -300 640 1120 640 {lab=nvout_pre2[1]}
-N 1120 710 1130 710 {lab=nvout_pre2[1]}
-N 1120 640 1120 710 {lab=nvout_pre2[1]}
-N 690 710 700 710 {lab=nvout_pre2[1]}
-N 690 640 690 710 {lab=nvout_pre2[1]}
-N 240 710 250 710 {lab=nvout_pre2[1]}
-N 240 640 240 710 {lab=nvout_pre2[1]}
-N -200 870 -200 940 {lab=nvout_pre3[0]}
-N -200 940 -190 940 {lab=nvout_pre3[0]}
-N -300 870 1120 870 {lab=nvout_pre3[0]}
-N 1120 940 1130 940 {lab=nvout_pre3[0]}
-N 1120 870 1120 940 {lab=nvout_pre3[0]}
-N 690 940 700 940 {lab=nvout_pre3[0]}
-N 690 870 690 940 {lab=nvout_pre3[0]}
-N 240 940 250 940 {lab=nvout_pre3[0]}
-N 240 870 240 940 {lab=nvout_pre3[0]}
-N -200 1120 -200 1190 {lab=nvout_pre3[1]}
-N -200 1190 -190 1190 {lab=nvout_pre3[1]}
-N -300 1120 1120 1120 {lab=nvout_pre3[1]}
-N 1120 1190 1130 1190 {lab=nvout_pre3[1]}
-N 1120 1120 1120 1190 {lab=nvout_pre3[1]}
-N 690 1190 700 1190 {lab=nvout_pre3[1]}
-N 690 1120 690 1190 {lab=nvout_pre3[1]}
-N 240 1190 250 1190 {lab=nvout_pre3[1]}
-N 240 1120 240 1190 {lab=nvout_pre3[1]}
-N -200 1370 -200 1440 {lab=nvout_pre4[0]}
-N -200 1440 -190 1440 {lab=nvout_pre4[0]}
-N -300 1370 1120 1370 {lab=nvout_pre4[0]}
-N 1120 1440 1130 1440 {lab=nvout_pre4[0]}
-N 1120 1370 1120 1440 {lab=nvout_pre4[0]}
-N 690 1440 700 1440 {lab=nvout_pre4[0]}
-N 690 1370 690 1440 {lab=nvout_pre4[0]}
-N 240 1440 250 1440 {lab=nvout_pre4[0]}
-N 240 1370 240 1440 {lab=nvout_pre4[0]}
-N -300 1600 1120 1600 {lab=vout_pre4[1]}
-N -200 1690 -190 1690 {lab=vout_pre4[1]}
-N -200 1640 -200 1690 {lab=vout_pre4[1]}
-N 240 1690 250 1690 {lab=vout_pre4[1]}
-N -200 1600 -200 1640 {lab=vout_pre4[1]}
-N 240 1600 240 1690 {lab=vout_pre4[1]}
-N 690 1690 700 1690 {lab=vout_pre4[1]}
-N 690 1600 690 1690 {lab=vout_pre4[1]}
-N 1120 1690 1130 1690 {lab=vout_pre4[1]}
-N 1120 1600 1120 1690 {lab=vout_pre4[1]}
-N -540 -110 -500 -110 {lab=vout_pre[0]}
-N -380 -110 -350 -110 {lab=nvout_pre[0]}
-N -540 140 -500 140 {lab=vout_pre[1]}
-N -380 140 -350 140 {lab=nvout_pre[1]}
-N -350 140 -300 140 {lab=nvout_pre[1]}
-N -520 70 -520 140 {lab=vout_pre[1]}
-N -300 70 -300 120 {lab=vout_pre[1]}
-N -520 70 -300 70 {lab=vout_pre[1]}
-N -540 390 -500 390 {lab=vout_pre2[0]}
-N -380 390 -350 390 {lab=nvout_pre2[0]}
-N -350 390 -300 390 {lab=nvout_pre2[0]}
-N -520 320 -520 390 {lab=vout_pre2[0]}
-N -520 320 -300 320 {lab=vout_pre2[0]}
-N -300 320 -300 370 {lab=vout_pre2[0]}
-N -540 640 -500 640 {lab=vout_pre2[1]}
-N -380 640 -350 640 {lab=nvout_pre2[1]}
-N -520 570 -520 640 {lab=vout_pre2[1]}
-N -520 570 -300 570 {lab=vout_pre2[1]}
-N -300 570 -300 620 {lab=vout_pre2[1]}
-N -350 640 -300 640 {lab=nvout_pre2[1]}
-N -540 870 -500 870 {lab=vout_pre3[0]}
-N -380 870 -350 870 {lab=nvout_pre3[0]}
-N -350 870 -300 870 {lab=nvout_pre3[0]}
-N -300 880 -300 960 {lab=vout_pre3[0]}
-N -520 960 -300 960 {lab=vout_pre3[0]}
-N -520 870 -520 960 {lab=vout_pre3[0]}
-N -540 1120 -500 1120 {lab=vout_pre3[1]}
-N -380 1120 -350 1120 {lab=nvout_pre3[1]}
-N -520 1050 -520 1120 {lab=vout_pre3[1]}
-N -520 1050 -300 1050 {lab=vout_pre3[1]}
-N -350 1120 -300 1120 {lab=nvout_pre3[1]}
-N -300 1050 -300 1100 {lab=vout_pre3[1]}
-N -540 1370 -500 1370 {lab=vout_pre4[0]}
-N -380 1370 -350 1370 {lab=nvout_pre4[0]}
-N -520 1300 -520 1370 {lab=vout_pre4[0]}
-N -520 1300 -300 1300 {lab=vout_pre4[0]}
-N -350 1370 -300 1370 {lab=nvout_pre4[0]}
-N -300 1300 -300 1350 {lab=vout_pre4[0]}
-N -540 1620 -500 1620 {lab=vout_pre4[1]}
-N -380 1620 -350 1620 {lab=vout_pre4[1]}
-N -520 1550 -520 1620 {lab=vout_pre4[1]}
-N -520 1550 -300 1550 {lab=vout_pre4[1]}
-N -350 1620 -300 1620 {lab=vout_pre4[1]}
-N -300 1550 -300 1600 {lab=vout_pre4[1]}
-N 140 -200 140 1700 {lab=nvout_post[0]}
-N 110 1700 140 1700 {lab=nvout_post[0]}
-N 110 1450 140 1450 {lab=nvout_post[0]}
-N 110 1200 140 1200 {lab=nvout_post[0]}
-N 110 950 140 950 {lab=nvout_post[0]}
-N 110 720 140 720 {lab=nvout_post[0]}
-N 110 470 140 470 {lab=nvout_post[0]}
-N 110 220 140 220 {lab=nvout_post[0]}
-N 110 -30 140 -30 {lab=nvout_post[0]}
-N 580 -200 580 1700 {lab=nvout_post[1]}
-N 550 1700 580 1700 {lab=nvout_post[1]}
-N 550 1450 580 1450 {lab=nvout_post[1]}
-N 550 1200 580 1200 {lab=nvout_post[1]}
-N 550 950 580 950 {lab=nvout_post[1]}
-N 550 720 580 720 {lab=nvout_post[1]}
-N 550 470 580 470 {lab=nvout_post[1]}
-N 550 220 580 220 {lab=nvout_post[1]}
-N 550 -30 580 -30 {lab=nvout_post[1]}
-N 1030 -200 1030 1700 {lab=nvout_post[2]}
-N 1000 1700 1030 1700 {lab=nvout_post[2]}
-N 1000 1450 1030 1450 {lab=nvout_post[2]}
-N 1000 1200 1030 1200 {lab=nvout_post[2]}
-N 1000 950 1030 950 {lab=nvout_post[2]}
-N 1000 720 1030 720 {lab=nvout_post[2]}
-N 1000 470 1030 470 {lab=nvout_post[2]}
-N 1000 220 1030 220 {lab=nvout_post[2]}
-N 1000 -30 1030 -30 {lab=nvout_post[2]}
-N 1460 -200 1460 1700 {lab=#net1}
-N 1430 1700 1460 1700 {lab=#net1}
-N 1430 1450 1460 1450 {lab=#net1}
-N 1430 1200 1460 1200 {lab=#net1}
-N 1430 950 1460 950 {lab=#net1}
-N 1430 720 1460 720 {lab=#net1}
-N 1430 470 1460 470 {lab=#net1}
-N 1430 220 1460 220 {lab=#net1}
-N 1430 -30 1460 -30 {lab=#net1}
-N 180 -380 220 -380 {lab=vout_post[0]}
-N 40 -380 60 -380 {lab=nvout_post[0]}
-N 40 -380 40 -200 {lab=nvout_post[0]}
-N 40 -200 140 -200 {lab=nvout_post[0]}
-N 160 -300 160 -200 {lab=vout_post[0]}
-N 160 -300 200 -300 {lab=vout_post[0]}
-N 200 -380 200 -300 {lab=vout_post[0]}
-N 650 -380 690 -380 {lab=vout_post[1]}
-N 510 -380 530 -380 {lab=nvout_post[1]}
-N 510 -380 510 -200 {lab=nvout_post[1]}
-N 670 -380 670 -300 {lab=vout_post[1]}
-N 590 -300 670 -300 {lab=vout_post[1]}
-N 590 -300 590 -200 {lab=vout_post[1]}
-N 510 -200 580 -200 {lab=nvout_post[1]}
-N 1100 -380 1140 -380 {lab=vout_post[2]}
-N 960 -380 980 -380 {lab=nvout_post[2]}
-N 960 -380 960 -200 {lab=nvout_post[2]}
-N 1120 -380 1120 -300 {lab=vout_post[2]}
-N 960 -200 1030 -200 {lab=nvout_post[2]}
-N 1040 -300 1040 -190 {lab=vout_post[2]}
-N 1040 -300 1120 -300 {lab=vout_post[2]}
-N 1540 -380 1580 -380 {lab=vout_post[3]}
-N 1400 -380 1420 -380 {lab=#net1}
-N 1400 -380 1400 -200 {lab=#net1}
-N 1560 -380 1560 -300 {lab=vout_post[3]}
-N 1410 -200 1460 -200 {lab=#net1}
-N 1490 -290 1490 -180 {lab=vout_post[3]}
-N 1490 -290 1560 -290 {lab=vout_post[3]}
-N 1560 -300 1560 -290 {lab=vout_post[3]}
-N 1400 -200 1410 -200 {lab=#net1}
-N -190 -130 -190 -50 {lab=vout_pre[0]}
-N -200 -110 1120 -110 {lab=nvout_pre[0]}
-N 250 -130 250 -50 {lab=vout_pre[0]}
-N 700 -130 700 -50 {lab=vout_pre[0]}
-N 1130 -130 1130 -50 {lab=vout_pre[0]}
-N -350 -110 -200 -110 {lab=nvout_pre[0]}
-N -360 -130 -190 -130 {lab=vout_pre[0]}
-N -360 -200 -360 -130 {lab=vout_pre[0]}
-N -520 -200 -360 -200 {lab=vout_pre[0]}
-N -520 -200 -520 -110 {lab=vout_pre[0]}
-C {devices/lab_pin.sym} -540 -110 0 0 {name=p1 lab=vout_pre[0]}
+lab=i_post3}
+N -200 -110 -200 -40 {lab=nvout_pre0}
+N -200 -40 -190 -40 {lab=nvout_pre0}
+N 1120 -40 1130 -40 {lab=nvout_pre0}
+N 1120 -110 1120 -40 {lab=nvout_pre0}
+N 690 -40 700 -40 {lab=nvout_pre0}
+N 690 -110 690 -40 {lab=nvout_pre0}
+N 240 -40 250 -40 {lab=nvout_pre0}
+N 240 -110 240 -40 {lab=nvout_pre0}
+N -200 140 -200 210 {lab=nvout_pre1}
+N -200 210 -190 210 {lab=nvout_pre1}
+N -300 140 1120 140 {lab=nvout_pre1}
+N 1120 210 1130 210 {lab=nvout_pre1}
+N 1120 140 1120 210 {lab=nvout_pre1}
+N 690 210 700 210 {lab=nvout_pre1}
+N 690 140 690 210 {lab=nvout_pre1}
+N 240 210 250 210 {lab=nvout_pre1}
+N 240 140 240 210 {lab=nvout_pre1}
+N -200 390 -200 460 {lab=nvout_pre2}
+N -200 460 -190 460 {lab=nvout_pre2}
+N -300 390 1120 390 {lab=nvout_pre2}
+N 1120 460 1130 460 {lab=nvout_pre2}
+N 1120 390 1120 460 {lab=nvout_pre2}
+N 690 460 700 460 {lab=nvout_pre2}
+N 690 390 690 460 {lab=nvout_pre2}
+N 240 460 250 460 {lab=nvout_pre2}
+N 240 390 240 460 {lab=nvout_pre2}
+N -200 640 -200 710 {lab=nvout_pre3}
+N -200 710 -190 710 {lab=nvout_pre3}
+N -300 640 1120 640 {lab=nvout_pre3}
+N 1120 710 1130 710 {lab=nvout_pre3}
+N 1120 640 1120 710 {lab=nvout_pre3}
+N 690 710 700 710 {lab=nvout_pre3}
+N 690 640 690 710 {lab=nvout_pre3}
+N 240 710 250 710 {lab=nvout_pre3}
+N 240 640 240 710 {lab=nvout_pre3}
+N -200 870 -200 940 {lab=nvout_pre4}
+N -200 940 -190 940 {lab=nvout_pre4}
+N -300 870 1120 870 {lab=nvout_pre4}
+N 1120 940 1130 940 {lab=nvout_pre4}
+N 1120 870 1120 940 {lab=nvout_pre4}
+N 690 940 700 940 {lab=nvout_pre4}
+N 690 870 690 940 {lab=nvout_pre4}
+N 240 940 250 940 {lab=nvout_pre4}
+N 240 870 240 940 {lab=nvout_pre4}
+N -200 1120 -200 1190 {lab=nvout_pre5}
+N -200 1190 -190 1190 {lab=nvout_pre5}
+N -300 1120 1120 1120 {lab=nvout_pre5}
+N 1120 1190 1130 1190 {lab=nvout_pre5}
+N 1120 1120 1120 1190 {lab=nvout_pre5}
+N 690 1190 700 1190 {lab=nvout_pre5}
+N 690 1120 690 1190 {lab=nvout_pre5}
+N 240 1190 250 1190 {lab=nvout_pre5}
+N 240 1120 240 1190 {lab=nvout_pre5}
+N -200 1370 -200 1440 {lab=nvout_pre6}
+N -200 1440 -190 1440 {lab=nvout_pre6}
+N -300 1370 1120 1370 {lab=nvout_pre6}
+N 1120 1440 1130 1440 {lab=nvout_pre6}
+N 1120 1370 1120 1440 {lab=nvout_pre6}
+N 690 1440 700 1440 {lab=nvout_pre6}
+N 690 1370 690 1440 {lab=nvout_pre6}
+N 240 1440 250 1440 {lab=nvout_pre6}
+N 240 1370 240 1440 {lab=nvout_pre6}
+N -300 1600 1120 1600 {lab=vout_pre7}
+N -200 1690 -190 1690 {lab=vout_pre7}
+N -200 1640 -200 1690 {lab=vout_pre7}
+N 240 1690 250 1690 {lab=vout_pre7}
+N -200 1600 -200 1640 {lab=vout_pre7}
+N 240 1600 240 1690 {lab=vout_pre7}
+N 690 1690 700 1690 {lab=vout_pre7}
+N 690 1600 690 1690 {lab=vout_pre7}
+N 1120 1690 1130 1690 {lab=vout_pre7}
+N 1120 1600 1120 1690 {lab=vout_pre7}
+N -540 -110 -500 -110 {lab=vout_pre0}
+N -380 -110 -350 -110 {lab=nvout_pre0}
+N -540 140 -500 140 {lab=vout_pre1}
+N -380 140 -350 140 {lab=nvout_pre1}
+N -350 140 -300 140 {lab=nvout_pre1}
+N -520 70 -520 140 {lab=vout_pre1}
+N -300 70 -300 120 {lab=vout_pre1}
+N -520 70 -300 70 {lab=vout_pre1}
+N -540 390 -500 390 {lab=vout_pre2}
+N -380 390 -350 390 {lab=nvout_pre2}
+N -350 390 -300 390 {lab=nvout_pre2}
+N -520 320 -520 390 {lab=vout_pre2}
+N -520 320 -300 320 {lab=vout_pre2}
+N -300 320 -300 370 {lab=vout_pre2}
+N -540 640 -500 640 {lab=vout_pre3}
+N -380 640 -350 640 {lab=nvout_pre3}
+N -520 570 -520 640 {lab=vout_pre3}
+N -520 570 -300 570 {lab=vout_pre3}
+N -300 570 -300 620 {lab=vout_pre3}
+N -350 640 -300 640 {lab=nvout_pre3}
+N -540 870 -500 870 {lab=vout_pre4}
+N -380 870 -350 870 {lab=nvout_pre4}
+N -350 870 -300 870 {lab=nvout_pre4}
+N -300 880 -300 960 {lab=vout_pre4}
+N -520 960 -300 960 {lab=vout_pre4}
+N -520 870 -520 960 {lab=vout_pre4}
+N -540 1120 -500 1120 {lab=vout_pre5}
+N -380 1120 -350 1120 {lab=nvout_pre5}
+N -520 1050 -520 1120 {lab=vout_pre5}
+N -520 1050 -300 1050 {lab=vout_pre5}
+N -350 1120 -300 1120 {lab=nvout_pre5}
+N -300 1050 -300 1100 {lab=vout_pre5}
+N -540 1370 -500 1370 {lab=vout_pre6}
+N -380 1370 -350 1370 {lab=nvout_pre6}
+N -520 1300 -520 1370 {lab=vout_pre6}
+N -520 1300 -300 1300 {lab=vout_pre6}
+N -350 1370 -300 1370 {lab=nvout_pre6}
+N -300 1300 -300 1350 {lab=vout_pre6}
+N -540 1620 -500 1620 {lab=vout_pre7}
+N -380 1620 -350 1620 {lab=nvout_pre7}
+N -520 1550 -520 1620 {lab=vout_pre7}
+N -520 1550 -300 1550 {lab=vout_pre7}
+N -350 1620 -300 1620 {lab=nvout_pre7}
+N -300 1550 -300 1600 {lab=vout_pre7}
+N 140 -200 140 1700 {lab=nvout_post0}
+N 110 1700 140 1700 {lab=nvout_post0}
+N 110 1450 140 1450 {lab=nvout_post0}
+N 110 1200 140 1200 {lab=nvout_post0}
+N 110 950 140 950 {lab=nvout_post0}
+N 110 720 140 720 {lab=nvout_post0}
+N 110 470 140 470 {lab=nvout_post0}
+N 110 220 140 220 {lab=nvout_post0}
+N 110 -30 140 -30 {lab=nvout_post0}
+N 580 -200 580 1700 {lab=nvout_post1}
+N 550 1700 580 1700 {lab=nvout_post1}
+N 550 1450 580 1450 {lab=nvout_post1}
+N 550 1200 580 1200 {lab=nvout_post1}
+N 550 950 580 950 {lab=nvout_post1}
+N 550 720 580 720 {lab=nvout_post1}
+N 550 470 580 470 {lab=nvout_post1}
+N 550 220 580 220 {lab=nvout_post1}
+N 550 -30 580 -30 {lab=nvout_post1}
+N 1030 -200 1030 1700 {lab=nvout_post2}
+N 1000 1700 1030 1700 {lab=nvout_post2}
+N 1000 1450 1030 1450 {lab=nvout_post2}
+N 1000 1200 1030 1200 {lab=nvout_post2}
+N 1000 950 1030 950 {lab=nvout_post2}
+N 1000 720 1030 720 {lab=nvout_post2}
+N 1000 470 1030 470 {lab=nvout_post2}
+N 1000 220 1030 220 {lab=nvout_post2}
+N 1000 -30 1030 -30 {lab=nvout_post2}
+N 1460 -200 1460 1700 {lab=nvout_post3}
+N 1430 1700 1460 1700 {lab=nvout_post3}
+N 1430 1450 1460 1450 {lab=nvout_post3}
+N 1430 1200 1460 1200 {lab=nvout_post3}
+N 1430 950 1460 950 {lab=nvout_post3}
+N 1430 720 1460 720 {lab=nvout_post3}
+N 1430 470 1460 470 {lab=nvout_post3}
+N 1430 220 1460 220 {lab=nvout_post3}
+N 1430 -30 1460 -30 {lab=nvout_post3}
+N 180 -380 220 -380 {lab=vout_post0}
+N 40 -380 60 -380 {lab=nvout_post0}
+N 40 -380 40 -200 {lab=nvout_post0}
+N 40 -200 140 -200 {lab=nvout_post0}
+N 160 -300 160 -200 {lab=vout_post0}
+N 160 -300 200 -300 {lab=vout_post0}
+N 200 -380 200 -300 {lab=vout_post0}
+N 650 -380 690 -380 {lab=vout_post1}
+N 510 -380 530 -380 {lab=nvout_post1}
+N 510 -380 510 -200 {lab=nvout_post1}
+N 670 -380 670 -300 {lab=vout_post1}
+N 590 -300 670 -300 {lab=vout_post1}
+N 590 -300 590 -200 {lab=vout_post1}
+N 510 -200 580 -200 {lab=nvout_post1}
+N 1100 -380 1140 -380 {lab=vout_post2}
+N 960 -380 980 -380 {lab=nvout_post2}
+N 960 -380 960 -200 {lab=nvout_post2}
+N 1120 -380 1120 -300 {lab=vout_post2}
+N 960 -200 1030 -200 {lab=nvout_post2}
+N 1040 -300 1040 -190 {lab=vout_post2}
+N 1040 -300 1120 -300 {lab=vout_post2}
+N 1540 -380 1580 -380 {lab=vout_post3}
+N 1400 -380 1420 -380 {lab=nvout_post3}
+N 1400 -380 1400 -200 {lab=nvout_post3}
+N 1560 -380 1560 -300 {lab=vout_post3}
+N 1410 -200 1460 -200 {lab=nvout_post3}
+N 1490 -290 1490 -180 {lab=vout_post3}
+N 1490 -290 1560 -290 {lab=vout_post3}
+N 1560 -300 1560 -290 {lab=vout_post3}
+N 1400 -200 1410 -200 {lab=nvout_post3}
+N -190 -130 -190 -50 {lab=vout_pre0}
+N -200 -110 1120 -110 {lab=nvout_pre0}
+N 250 -130 250 -50 {lab=vout_pre0}
+N 700 -130 700 -50 {lab=vout_pre0}
+N 1130 -130 1130 -50 {lab=vout_pre0}
+N -350 -110 -200 -110 {lab=nvout_pre0}
+N -360 -130 -190 -130 {lab=vout_pre0}
+N -360 -200 -360 -130 {lab=vout_pre0}
+N -520 -200 -360 -200 {lab=vout_pre0}
+N -520 -200 -520 -110 {lab=vout_pre0}
+C {devices/lab_pin.sym} -540 -110 0 0 {name=p1 lab=vout_pre0}
 C {devices/iopin.sym} -730 -280 0 1 {name=p7 lab=vdda}
 C {devices/iopin.sym} -730 -230 0 1 {name=p8 lab=vssa}
 C {Synapse/stdp_min.sym} 400 -50 0 0 {name=xstdp2}
 C {Synapse/stdp_min.sym} 850 -50 0 0 {name=xstdp3}
 C {Synapse/stdp_min.sym} 1280 -50 0 0 {name=xstdp4}
-C {devices/lab_pin.sym} 200 -210 0 1 {name=p9 lab=i_post[0]}
+C {devices/lab_pin.sym} 200 -210 0 1 {name=p9 lab=i_post0}
 C {Synapse/stdp_min.sym} -40 200 0 0 {name=xstdp5}
 C {Synapse/stdp_min.sym} 400 200 0 0 {name=xstdp6}
 C {Synapse/stdp_min.sym} 850 200 0 0 {name=xstdp7}
@@ -668,40 +668,57 @@ C {devices/lab_pin.sym} 400 1770 0 0 {name=p91 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} 400 1010 3 0 {name=p92 sig_type=std_logic lab=vssa}
 C {devices/lab_pin.sym} 400 1260 3 0 {name=p93 sig_type=std_logic lab=vssa}
 C {Synapse/stdp_min.sym} -40 -50 0 0 {name=xstdp1}
-C {devices/lab_pin.sym} 220 -380 0 1 {name=p64 lab=vout_post[0]}
-C {devices/lab_pin.sym} -540 140 0 0 {name=p52 lab=vout_pre[1]}
-C {devices/lab_pin.sym} -540 390 0 0 {name=p2 lab=vout_pre2[0]}
-C {devices/lab_pin.sym} -540 640 0 0 {name=p3 lab=vout_pre2[1]}
-C {devices/lab_pin.sym} -540 870 0 0 {name=p4 lab=vout_pre3[0]}
-C {devices/lab_pin.sym} -540 1120 0 0 {name=p54 lab=vout_pre3[1]}
-C {devices/lab_pin.sym} -540 1370 0 0 {name=p82 lab=vout_pre4[0]}
-C {devices/lab_pin.sym} -540 1620 0 0 {name=p10 lab=vout_pre4[1]}
-C {devices/iopin.sym} -690 -370 0 0 {name=p63 lab=vout_post[3:0]}
-C {devices/lab_pin.sym} 690 -380 0 1 {name=p16 lab=vout_post[1]}
-C {devices/lab_pin.sym} 1140 -380 0 1 {name=p83 lab=vout_post[2]}
-C {devices/lab_pin.sym} 1580 -380 0 1 {name=p18 lab=vout_post[3]}
-C {devices/iopin.sym} -730 -320 0 1 {name=p115 lab=i_post[3:0]}
-C {devices/lab_pin.sym} 640 -210 0 1 {name=p19 lab=i_post[1]}
-C {devices/lab_pin.sym} 1080 -200 0 1 {name=p122 lab=i_post[2]}
-C {devices/lab_pin.sym} 1530 -190 0 1 {name=p11 lab=i_post[3]}
-C {devices/iopin.sym} -870 -370 0 0 {name=p123 lab=nvout_post[3:0]}
-C {devices/iopin.sym} -610 -480 0 0 {name=p65 lab=vout_pre3[1:0]}
-C {devices/iopin.sym} -610 -530 0 0 {name=p85 lab=vout_pre2[1:0]}
-C {devices/iopin.sym} -610 -590 0 0 {name=p94 lab=vout_pre[1:0]}
-C {devices/iopin.sym} -610 -430 0 0 {name=p17 lab=vout_pre4[1:0]}
-C {devices/iopin.sym} -840 -460 0 0 {name=p12 lab=nvout_pre3[1:0]}
-C {devices/iopin.sym} -840 -510 0 0 {name=p96 lab=nvout_pre2[1:0]}
-C {devices/iopin.sym} -840 -570 0 0 {name=p97 lab=nvout_pre[1:0]}
-C {devices/iopin.sym} -840 -410 0 0 {name=p98 lab=nvout_pre4[1:0]}
-C {devices/lab_pin.sym} -370 -110 0 0 {name=p99 lab=nvout_pre[0]}
-C {devices/lab_pin.sym} -380 140 0 0 {name=p6 lab=nvout_pre[1]}
-C {devices/lab_pin.sym} -380 390 0 0 {name=p13 lab=nvout_pre2[0]}
-C {devices/lab_pin.sym} -380 640 0 0 {name=p95 lab=nvout_pre2[1]}
-C {devices/lab_pin.sym} -370 870 1 0 {name=p15 lab=nvout_pre3[0]}
-C {devices/lab_pin.sym} -380 1120 3 0 {name=p14 lab=nvout_pre3[1]}
-C {devices/lab_pin.sym} -380 1370 3 0 {name=p62 lab=nvout_pre4[0]}
-C {devices/lab_pin.sym} -380 1620 3 0 {name=p84 lab=vout_pre4[1]}
-C {devices/lab_pin.sym} 40 -320 0 0 {name=p100 lab=nvout_post[0]}
-C {devices/lab_pin.sym} 510 -310 0 0 {name=p5 lab=nvout_post[1]}
-C {devices/lab_pin.sym} 960 -330 0 0 {name=p101 lab=nvout_post[2]}
-C {devices/lab_pin.sym} 1400 -300 0 0 {name=p102 lab=nvout_post[3]}
+C {devices/lab_pin.sym} 220 -380 0 1 {name=p64 lab=vout_post0}
+C {devices/lab_pin.sym} -540 140 0 0 {name=p52 lab=vout_pre1}
+C {devices/lab_pin.sym} -540 390 0 0 {name=p2 lab=vout_pre2}
+C {devices/lab_pin.sym} -540 640 0 0 {name=p3 lab=vout_pre3}
+C {devices/lab_pin.sym} -540 870 0 0 {name=p4 lab=vout_pre4}
+C {devices/lab_pin.sym} -540 1120 0 0 {name=p54 lab=vout_pre5}
+C {devices/lab_pin.sym} -540 1370 0 0 {name=p82 lab=vout_pre6}
+C {devices/lab_pin.sym} -540 1620 0 0 {name=p10 lab=vout_pre7}
+C {devices/iopin.sym} -220 -580 0 0 {name=p63 lab=vout_post0}
+C {devices/lab_pin.sym} 690 -380 0 1 {name=p16 lab=vout_post1}
+C {devices/lab_pin.sym} 1140 -380 0 1 {name=p83 lab=vout_post2}
+C {devices/lab_pin.sym} 1580 -380 0 1 {name=p18 lab=vout_post3}
+C {devices/iopin.sym} -730 -320 0 1 {name=p115 lab=i_post0}
+C {devices/lab_pin.sym} 640 -210 0 1 {name=p19 lab=i_post1}
+C {devices/lab_pin.sym} 1080 -200 0 1 {name=p122 lab=i_post2}
+C {devices/lab_pin.sym} 1530 -190 0 1 {name=p11 lab=i_post3}
+C {devices/iopin.sym} -400 -580 0 0 {name=p123 lab=nvout_post0}
+C {devices/iopin.sym} -880 -520 0 0 {name=p12 lab=nvout_pre4}
+C {devices/iopin.sym} -880 -570 0 0 {name=p96 lab=nvout_pre2}
+C {devices/iopin.sym} -880 -630 0 0 {name=p97 lab=nvout_pre0}
+C {devices/iopin.sym} -880 -470 0 0 {name=p98 lab=nvout_pre6}
+C {devices/lab_pin.sym} -370 -110 0 0 {name=p99 lab=nvout_pre0}
+C {devices/lab_pin.sym} -380 140 0 0 {name=p6 lab=nvout_pre1}
+C {devices/lab_pin.sym} -380 390 0 0 {name=p13 lab=nvout_pre2}
+C {devices/lab_pin.sym} -380 640 0 0 {name=p95 lab=nvout_pre3}
+C {devices/lab_pin.sym} -370 870 1 0 {name=p15 lab=nvout_pre4}
+C {devices/lab_pin.sym} -380 1120 3 0 {name=p14 lab=nvout_pre5}
+C {devices/lab_pin.sym} -380 1370 3 0 {name=p62 lab=nvout_pre6}
+C {devices/lab_pin.sym} -380 1620 3 0 {name=p84 lab=nvout_pre7}
+C {devices/lab_pin.sym} 40 -320 0 0 {name=p100 lab=nvout_post0}
+C {devices/lab_pin.sym} 510 -310 0 0 {name=p5 lab=nvout_post1}
+C {devices/lab_pin.sym} 960 -330 0 0 {name=p101 lab=nvout_post2}
+C {devices/lab_pin.sym} 1400 -300 0 0 {name=p102 lab=nvout_post3}
+C {devices/iopin.sym} -400 -550 0 0 {name=p103 lab=nvout_post1}
+C {devices/iopin.sym} -400 -520 0 0 {name=p104 lab=nvout_post2}
+C {devices/iopin.sym} -400 -490 0 0 {name=p105 lab=nvout_post3}
+C {devices/iopin.sym} -220 -550 0 0 {name=p106 lab=vout_post1}
+C {devices/iopin.sym} -220 -520 0 0 {name=p107 lab=vout_post2}
+C {devices/iopin.sym} -220 -490 0 0 {name=p108 lab=vout_post3}
+C {devices/iopin.sym} -620 -320 0 1 {name=p109 lab=i_post1}
+C {devices/iopin.sym} -500 -320 0 1 {name=p110 lab=i_post2}
+C {devices/iopin.sym} -390 -320 0 1 {name=p111 lab=i_post3}
+C {devices/iopin.sym} -880 -490 0 0 {name=p112 lab=nvout_pre5}
+C {devices/iopin.sym} -880 -540 0 0 {name=p113 lab=nvout_pre3}
+C {devices/iopin.sym} -880 -600 0 0 {name=p114 lab=nvout_pre1}
+C {devices/iopin.sym} -880 -440 0 0 {name=p116 lab=nvout_pre7}
+C {devices/iopin.sym} -710 -520 0 0 {name=p17 lab=vout_pre4}
+C {devices/iopin.sym} -710 -570 0 0 {name=p65 lab=vout_pre2}
+C {devices/iopin.sym} -710 -630 0 0 {name=p85 lab=vout_pre0}
+C {devices/iopin.sym} -710 -470 0 0 {name=p94 lab=vout_pre6}
+C {devices/iopin.sym} -710 -490 0 0 {name=p117 lab=vout_pre5}
+C {devices/iopin.sym} -710 -540 0 0 {name=p118 lab=vout_pre3}
+C {devices/iopin.sym} -710 -600 0 0 {name=p119 lab=vout_pre1}
+C {devices/iopin.sym} -710 -440 0 0 {name=p120 lab=vout_pre7}

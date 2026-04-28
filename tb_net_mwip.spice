@@ -58,8 +58,9 @@ alimit7 %vd( tau_nom GND ) %vd( tau GND ) alimit7
 .options set wr_vecnames
 .options set wr_singlescale
 .options numdgt = 2
-.save tau x dx th dth tau x_nom dx_nom th_nom dth_nom tau_nom e_x e_th x1.x1.vout
-.tran 50n 1u uic
+*.save tau x dx th dth tau x_nom dx_nom th_nom dth_nom tau_nom e_x e_th
+.save all
+.tran 20n 0.5 uic
 .control
 	run
 	write /foss/designs/SNN-MWIP/data.raw
@@ -83,380 +84,216 @@ alimit7 %vd( tau_nom GND ) %vd( tau GND ) alimit7
 *.ipin x3
 *.ipin x4
 *.iopin R2
-x1 avdd avss x1 hJ1 hJ1 hJ1 hJ1 layer_input
-x6 avdd net2_7 net2_6 net2_5 net2_4 net2_3 net2_2 net2_1 net2_0 avss hK1 hK1 hK1 hK1 hK1 hK1 hK1 hK1 layer_hidden
-x7 net1_3 net1_2 net1_1 net1_0 GND hL1 hL1 hL1 hL1 hK1 hK1 hK1 hK1 hK1 hK1 hK1 hK1 avdd stdp_8x4
-x8 avdd net1_3 net1_2 net1_1 net1_0 GND hL1 hL1 hL1 hL1 y1 R1 R2 layer_output_rew
-x2 avdd avss x2 hJ2 hJ2 hJ2 hJ2 layer_input
-x3 avdd avss x3 hJ3 hJ3 hJ3 hJ3 layer_input
-x4 avdd avss x4 hJ4 hJ4 hJ4 hJ4 layer_input
-x5 avdd net2_7 net2_6 net2_5 net2_4 net2_3 net2_2 net2_1 net2_0 avss hK1 hK1 hK1 hK1 hK1 hK1 hK1 hK1 hJ1 hJ1 hJ1 hJ1 hJ2 hJ2 hJ2
-+ hJ2 hJ3 hJ3 hJ3 hJ3 hJ4 hJ4 hJ4 hJ4 no_stdp_4x4x8
+x1 avdd avss x1 net10 net8 net7 net9 layer_input
+x7 net17 GND net25 net8 avdd net9 net23 net1 net4 net6 net11 net13 net15 net7 net2 net5 net3 net10 net12 net14 net16 net26 net27
++ net28 net24 net21 net22 net18 net19 net20 stdp_8x4
+x8 avdd net17 GND net25 y1 R1 R2 net23 net26 net27 net28 net24 net21 net22 net18 net19 net20 layer_output_rew
+x2 avdd avss x2 net12 net1 net2 net11 layer_input
+x3 avdd avss x3 net14 net4 net5 net13 layer_input
+x4 avdd avss x4 net16 net6 net3 net15 layer_input
 .ends
 
 
-* expanding   symbol:  layer/layer_input.sym # of pins=4
+* expanding   symbol:  layer/layer_input.sym # of pins=7
 ** sym_path: /foss/designs/SNN-MWIP/layer/layer_input.sym
 ** sch_path: /foss/designs/SNN-MWIP/layer/layer_input.sch
-.subckt layer_input vdd vss vin vout[3] vout[2] vout[1] vout[0]
+.subckt layer_input vdd vss vin nvout2 vout1 vout2 nvout1
 *.iopin vdd
 *.iopin vss
-*.iopin vout[3],vout[2],vout[1],vout[0]
 *.ipin vin
-Xx2 net2 vdd vout[1] vileak vss ul_tun_final W_LEAK=0.8 CM=0.8p
+*.iopin vout1
+*.iopin vout2
+*.iopin nvout1
+*.iopin nvout2
+Xx2 net2 vdd vout2 vileak vss nvout2 ul_tun_final W_LEAK=0.8 CM=0.8p
 XM2 vileak vileak vss vss sky130_fd_pr__nfet_01v8 L=0.15 W=10 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 I1 vdd vileak 100nA
-Xx1 net1 vdd vout[0] vileak vss ul_tun_final W_LEAK=0.9 CM=0.8p
-Xx3 net3 vdd vout[2] vileak vss ul_tun_final W_LEAK=1 CM=0.8p
-Xx4 net4 vdd vout[3] vileak vss ul_tun_final W_LEAK=1.1 CM=0.8p
-x5 vdd net1 net2 net3 net4 vin net5 vss otavccs4
-XM1 net5 vin vss vss sky130_fd_pr__nfet_01v8 L=0.15 W=5 nf=1 ad=1.45 as=1.45 pd=10.58 ps=10.58 nrd=0.058 nrs=0.058 sa=0 sb=0 sd=0
-+ mult=1
-XM3 net5 net5 vdd vdd sky130_fd_pr__pfet_01v8 L=0.15 W=5 nf=1 ad=1.45 as=1.45 pd=10.58 ps=10.58 nrd=0.058 nrs=0.058 sa=0 sb=0 sd=0
-+ mult=1
+Xx1 net1 vdd vout1 vileak vss nvout1 ul_tun_final W_LEAK=0.9 CM=0.8p
+x5 vdd net1 net2 vin net3 vss otavccs4
+XM1 net3 vin vss vss sky130_fd_pr__nfet_01v8 L=0.15 W=5 nf=1 ad=1.45 as=1.45 pd=10.58 ps=10.58 nrd=0.058 nrs=0.058 sa=0 sb=0 sd=0
++ mult=1 m=1
+XM3 net3 net3 vdd vdd sky130_fd_pr__pfet_01v8 L=0.15 W=5 nf=1 ad=1.45 as=1.45 pd=10.58 ps=10.58 nrd=0.058 nrs=0.058 sa=0 sb=0 sd=0
++ mult=1 m=1
+**** begin user architecture code
+
+
+.save v(vout1) v(vout2)
+
+
+**** end user architecture code
 .ends
 
 
-* expanding   symbol:  layer/layer_hidden.sym # of pins=4
-** sym_path: /foss/designs/SNN-MWIP/layer/layer_hidden.sym
-** sch_path: /foss/designs/SNN-MWIP/layer/layer_hidden.sch
-.subckt layer_hidden vdd Iext[7] Iext[6] Iext[5] Iext[4] Iext[3] Iext[2] Iext[1] Iext[0] vss vout[7] vout[6] vout[5] vout[4]
-+ vout[3] vout[2] vout[1] vout[0]
-*.iopin vdd
-*.iopin vss
-*.iopin Iext[7],Iext[6],Iext[5],Iext[4],Iext[3],Iext[2],Iext[1],Iext[0]
-*.iopin vout[7],vout[6],vout[5],vout[4],vout[3],vout[2],vout[1],vout[0]
-Xx6 Iext[0] vdd vout[0] vileak vss ul_tun_final W_LEAK=1.15 CM=0.8p
-XM2 vileak vileak vss vss sky130_fd_pr__nfet_01v8 L=0.15 W=10 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
-I1 vdd vileak 100nA
-Xx1 Iext[1] vdd vout[1] vileak vss ul_tun_final W_LEAK=1.1 CM=0.8p
-Xx2 Iext[2] vdd vout[2] vileak vss ul_tun_final W_LEAK=1.05 CM=0.8p
-Xx3 Iext[3] vdd vout[3] vileak vss ul_tun_final W_LEAK=1 CM=0.8p
-Xx8 Iext[7] vdd vout[7] vileak vss ul_tun_final W_LEAK=1 CM=0.8p
-Xx4 Iext[4] vdd vout[4] vileak vss ul_tun_final W_LEAK=1.15 CM=0.8p
-Xx5 Iext[5] vdd vout[5] vileak vss ul_tun_final W_LEAK=1.1 CM=0.8p
-Xx7 Iext[6] vdd vout[6] vileak vss ul_tun_final W_LEAK=1.05 CM=0.8p
-.ends
-
-
-* expanding   symbol:  Synapse/stdp_8x4.sym # of pins=5
+* expanding   symbol:  Synapse/stdp_8x4.sym # of pins=30
 ** sym_path: /foss/designs/SNN-MWIP/Synapse/stdp_8x4.sym
 ** sch_path: /foss/designs/SNN-MWIP/Synapse/stdp_8x4.sch
-.subckt stdp_8x4 i_post[3] i_post[2] i_post[1] i_post[0] vssa vout_post[3] vout_post[2] vout_post[1] vout_post[0] vout_pre[7]
-+ vout_pre[6] vout_pre[5] vout_pre[4] vout_pre[3] vout_pre[2] vout_pre[1] vout_pre[0] vdda
+.subckt stdp_8x4 i_post0 vssa vout_post3 vout_pre0 vdda nvout_pre0 nvout_post1 vout_pre2 vout_pre4 vout_pre6 nvout_pre2 nvout_pre4
++ nvout_pre6 vout_pre1 vout_pre3 vout_pre5 vout_pre7 nvout_pre1 nvout_pre3 nvout_pre5 nvout_pre7 vout_post2 vout_post1 vout_post0 nvout_post0
++ nvout_post3 nvout_post2 i_post1 i_post2 i_post3
 *.iopin vdda
 *.iopin vssa
-*.iopin vout_pre[7],vout_pre[6],vout_pre[5],vout_pre[4],vout_pre[3],vout_pre[2],vout_pre[1],vout_pre[0]
-*.iopin vout_post[3],vout_post[2],vout_post[1],vout_post[0]
-*.iopin i_post[3],i_post[2],i_post[1],i_post[0]
-xstdp2 vdda vssa vout_pre[0] vout_post[1] i_post[1] n_vout_pre1 n_vout_post2 stdp_min
-xstdp3 vdda vssa vout_pre[0] vout_post[2] i_post[2] n_vout_pre1 n_vout_post3 stdp_min
-xstdp4 vdda vssa vout_pre[0] vout_post[3] i_post[3] n_vout_pre1 n_vout_post4 stdp_min
-xstdp5 vdda vssa vout_pre[1] vout_post[0] i_post[0] n_vout_pre2 n_vout_post1 stdp_min
-xstdp6 vdda vssa vout_pre[1] vout_post[1] i_post[1] n_vout_pre2 n_vout_post2 stdp_min
-xstdp7 vdda vssa vout_pre[1] vout_post[2] i_post[2] n_vout_pre2 n_vout_post3 stdp_min
-xstdp8 vdda vssa vout_pre[1] vout_post[3] i_post[3] n_vout_pre2 n_vout_post4 stdp_min
-xstdp9 vdda vssa vout_pre[2] vout_post[0] i_post[0] n_vout_pre3 n_vout_post1 stdp_min
-xstdp10 vdda vssa vout_pre[2] vout_post[1] i_post[1] n_vout_pre3 n_vout_post2 stdp_min
-xstdp11 vdda vssa vout_pre[2] vout_post[2] i_post[2] n_vout_pre3 n_vout_post3 stdp_min
-xstdp12 vdda vssa vout_pre[2] vout_post[3] i_post[3] n_vout_pre3 n_vout_post4 stdp_min
-xstdp13 vdda vssa vout_pre[3] vout_post[0] i_post[0] n_vout_pre4 n_vout_post1 stdp_min
-xstdp14 vdda vssa vout_pre[3] vout_post[1] i_post[1] n_vout_pre4 n_vout_post2 stdp_min
-xstdp15 vdda vssa vout_pre[3] vout_post[2] i_post[2] n_vout_pre4 n_vout_post3 stdp_min
-xstdp16 vdda vssa vout_pre[3] vout_post[3] i_post[3] n_vout_pre4 n_vout_post4 stdp_min
-xstdp17 vdda vssa vout_pre[4] vout_post[0] i_post[0] n_vout_pre5 n_vout_post1 stdp_min
-xstdp18 vdda vssa vout_pre[4] vout_post[1] i_post[1] n_vout_pre5 n_vout_post2 stdp_min
-xstdp19 vdda vssa vout_pre[4] vout_post[2] i_post[2] n_vout_pre5 n_vout_post3 stdp_min
-xstdp20 vdda vssa vout_pre[4] vout_post[3] i_post[3] n_vout_pre5 n_vout_post4 stdp_min
-xstdp21 vdda vssa vout_pre[5] vout_post[0] i_post[0] n_vout_pre6 n_vout_post1 stdp_min
-xstdp22 vdda vssa vout_pre[5] vout_post[1] i_post[1] n_vout_pre6 n_vout_post2 stdp_min
-xstdp23 vdda vssa vout_pre[5] vout_post[2] i_post[2] n_vout_pre6 n_vout_post3 stdp_min
-xstdp24 vdda vssa vout_pre[5] vout_post[3] i_post[3] n_vout_pre6 n_vout_post4 stdp_min
-xstdp25 vdda vssa vout_pre[6] vout_post[0] i_post[0] n_vout_pre7 n_vout_post1 stdp_min
-xstdp26 vdda vssa vout_pre[6] vout_post[1] i_post[1] n_vout_pre7 n_vout_post2 stdp_min
-xstdp27 vdda vssa vout_pre[6] vout_post[2] i_post[2] n_vout_pre7 n_vout_post3 stdp_min
-xstdp28 vdda vssa vout_pre[6] vout_post[3] i_post[3] n_vout_pre7 n_vout_post4 stdp_min
-xstdp29 vdda vssa n_vout_pre8 vout_post[0] i_post[0] vout_pre[7] n_vout_post1 stdp_min
-xstdp30 vdda vssa n_vout_pre8 vout_post[1] i_post[1] vout_pre[7] n_vout_post2 stdp_min
-xstdp31 vdda vssa n_vout_pre8 vout_post[2] i_post[2] vout_pre[7] n_vout_post3 stdp_min
-xstdp32 vdda vssa n_vout_pre8 vout_post[3] i_post[3] vout_pre[7] n_vout_post4 stdp_min
-xstdp1 vdda vssa vout_pre[0] vout_post[0] i_post[0] n_vout_pre1 n_vout_post1 stdp_min
-x1 vdda vout_pre[0] n_vout_pre1 vssa not
-x2 vdda vout_pre[1] n_vout_pre2 vssa not
-x3 vdda vout_pre[2] n_vout_pre3 vssa not
-x4 vdda vout_pre[3] n_vout_pre4 vssa not
-x5 vdda vout_pre[4] n_vout_pre5 vssa not
-x6 vdda vout_pre[5] n_vout_pre6 vssa not
-x7 vdda vout_pre[6] n_vout_pre7 vssa not
-x8 vdda vout_pre[7] n_vout_pre8 vssa not
-x9 vdda vout_post[0] n_vout_post1 vssa not
-x10 vdda vout_post[1] n_vout_post2 vssa not
-x11 vdda vout_post[2] n_vout_post3 vssa not
-x12 vdda vout_post[3] n_vout_post4 vssa not
+*.iopin vout_post0
+*.iopin i_post0
+*.iopin nvout_post0
+*.iopin nvout_pre4
+*.iopin nvout_pre2
+*.iopin nvout_pre0
+*.iopin nvout_pre6
+*.iopin nvout_post1
+*.iopin nvout_post2
+*.iopin nvout_post3
+*.iopin vout_post1
+*.iopin vout_post2
+*.iopin vout_post3
+*.iopin i_post1
+*.iopin i_post2
+*.iopin i_post3
+*.iopin nvout_pre5
+*.iopin nvout_pre3
+*.iopin nvout_pre1
+*.iopin nvout_pre7
+*.iopin vout_pre4
+*.iopin vout_pre2
+*.iopin vout_pre0
+*.iopin vout_pre6
+*.iopin vout_pre5
+*.iopin vout_pre3
+*.iopin vout_pre1
+*.iopin vout_pre7
+xstdp2 vdda vssa vout_pre0 vout_post1 i_post1 nvout_pre0 nvout_post1 stdp_min
+xstdp3 vdda vssa vout_pre0 vout_post2 i_post2 nvout_pre0 nvout_post2 stdp_min
+xstdp4 vdda vssa vout_pre0 vout_post3 i_post3 nvout_pre0 nvout_post3 stdp_min
+xstdp5 vdda vssa vout_pre1 vout_post0 i_post0 nvout_pre1 nvout_post0 stdp_min
+xstdp6 vdda vssa vout_pre1 vout_post1 i_post1 nvout_pre1 nvout_post1 stdp_min
+xstdp7 vdda vssa vout_pre1 vout_post2 i_post2 nvout_pre1 nvout_post2 stdp_min
+xstdp8 vdda vssa vout_pre1 vout_post3 i_post3 nvout_pre1 nvout_post3 stdp_min
+xstdp9 vdda vssa vout_pre2 vout_post0 i_post0 nvout_pre2 nvout_post0 stdp_min
+xstdp10 vdda vssa vout_pre2 vout_post1 i_post1 nvout_pre2 nvout_post1 stdp_min
+xstdp11 vdda vssa vout_pre2 vout_post2 i_post2 nvout_pre2 nvout_post2 stdp_min
+xstdp12 vdda vssa vout_pre2 vout_post3 i_post3 nvout_pre2 nvout_post3 stdp_min
+xstdp13 vdda vssa vout_pre3 vout_post0 i_post0 nvout_pre3 nvout_post0 stdp_min
+xstdp14 vdda vssa vout_pre3 vout_post1 i_post1 nvout_pre3 nvout_post1 stdp_min
+xstdp15 vdda vssa vout_pre3 vout_post2 i_post2 nvout_pre3 nvout_post2 stdp_min
+xstdp16 vdda vssa vout_pre3 vout_post3 i_post3 nvout_pre3 nvout_post3 stdp_min
+xstdp17 vdda vssa vout_pre4 vout_post0 i_post0 nvout_pre4 nvout_post0 stdp_min
+xstdp18 vdda vssa vout_pre4 vout_post1 i_post1 nvout_pre4 nvout_post1 stdp_min
+xstdp19 vdda vssa vout_pre4 vout_post2 i_post2 nvout_pre4 nvout_post2 stdp_min
+xstdp20 vdda vssa vout_pre4 vout_post3 i_post3 nvout_pre4 nvout_post3 stdp_min
+xstdp21 vdda vssa vout_pre5 vout_post0 i_post0 nvout_pre5 nvout_post0 stdp_min
+xstdp22 vdda vssa vout_pre5 vout_post1 i_post1 nvout_pre5 nvout_post1 stdp_min
+xstdp23 vdda vssa vout_pre5 vout_post2 i_post2 nvout_pre5 nvout_post2 stdp_min
+xstdp24 vdda vssa vout_pre5 vout_post3 i_post3 nvout_pre5 nvout_post3 stdp_min
+xstdp25 vdda vssa vout_pre6 vout_post0 i_post0 nvout_pre6 nvout_post0 stdp_min
+xstdp26 vdda vssa vout_pre6 vout_post1 i_post1 nvout_pre6 nvout_post1 stdp_min
+xstdp27 vdda vssa vout_pre6 vout_post2 i_post2 nvout_pre6 nvout_post2 stdp_min
+xstdp28 vdda vssa vout_pre6 vout_post3 i_post3 nvout_pre6 nvout_post3 stdp_min
+xstdp29 vdda vssa nvout_pre7 vout_post0 i_post0 vout_pre7 nvout_post0 stdp_min
+xstdp30 vdda vssa nvout_pre7 vout_post1 i_post1 vout_pre7 nvout_post1 stdp_min
+xstdp31 vdda vssa nvout_pre7 vout_post2 i_post2 vout_pre7 nvout_post2 stdp_min
+xstdp32 vdda vssa nvout_pre7 vout_post3 i_post3 vout_pre7 nvout_post3 stdp_min
+xstdp1 vdda vssa vout_pre0 vout_post0 i_post0 nvout_pre0 nvout_post0 stdp_min
 .ends
 
 
-* expanding   symbol:  /foss/designs/SNN-MWIP/layer/layer_output_rew.sym # of pins=7
+* expanding   symbol:  /foss/designs/SNN-MWIP/layer/layer_output_rew.sym # of pins=17
 ** sym_path: /foss/designs/SNN-MWIP/layer/layer_output_rew.sym
 ** sch_path: /foss/designs/SNN-MWIP/layer/layer_output_rew.sch
-.subckt layer_output_rew vdd Iext[3] Iext[2] Iext[1] Iext[0] vss vout[3] vout[2] vout[1] vout[0] hx Vrew1 Vrew2
+.subckt layer_output_rew vdd Iext0 vss vout3 hx Vrew1 Vrew2 nvout1 vout2 vout1 vout0 nvout0 nvout3 nvout2 Iext1 Iext2 Iext3
 *.iopin vdd
 *.iopin vss
-*.ipin Iext[3],Iext[2],Iext[1],Iext[0]
+*.ipin Iext0
 *.iopin hx
-*.iopin vout[3],vout[2],vout[1],vout[0]
+*.iopin vout0
 *.iopin Vrew1
 *.iopin Vrew2
-Xx2 Iext[0] vdd vout[0] Vrew1 vss ul_tun_final W_LEAK=1 CM=0.8p
-Xx1 Iext[1] vdd vout[1] Vrew1 vss ul_tun_final W_LEAK=1.1 CM=0.8p
-Xx3 Iext[2] vdd vout[2] Vrew2 vss ul_tun_final W_LEAK=1.05 CM=0.8p
-Xx4 Iext[3] vdd vout[3] Vrew2 vss ul_tun_final W_LEAK=1.15 CM=0.8p
-XM7 net1 vout[0] GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
-XM8 net1 vout[1] GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
-XM9 net1 vout[2] GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
-XM10 net1 vout[3] GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
+*.iopin vout1
+*.iopin vout2
+*.iopin vout3
+*.iopin nvout0
+*.iopin nvout1
+*.iopin nvout2
+*.iopin nvout3
+*.ipin Iext1
+*.ipin Iext2
+*.ipin Iext3
+Xx2 Iext0 vdd vout0 Vrew1 vss nvout0 ul_tun_final W_LEAK=1 CM=0.8p
+Xx1 Iext1 vdd vout1 Vrew1 vss nvout1 ul_tun_final W_LEAK=1.1 CM=0.8p
+Xx3 Iext2 vdd vout2 Vrew2 vss nvout2 ul_tun_final W_LEAK=1.05 CM=0.8p
+Xx4 Iext3 vdd vout3 Vrew2 vss nvout3 ul_tun_final W_LEAK=1.15 CM=0.8p
+XM7 net1 vout0 GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM8 net1 vout1 GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM9 net1 vout2 GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM10 net1 vout3 GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 x5 VDD hx net1 GND integrator
 .ends
 
 
-* expanding   symbol:  /foss/designs/SNN-MWIP/Synapse/no_stdp_4x4x8.sym # of pins=8
-** sym_path: /foss/designs/SNN-MWIP/Synapse/no_stdp_4x4x8.sym
-** sch_path: /foss/designs/SNN-MWIP/Synapse/no_stdp_4x4x8.sch
-.subckt no_stdp_4x4x8 vdda i_post[7] i_post[6] i_post[5] i_post[4] i_post[3] i_post[2] i_post[1] i_post[0] vssa vout_post[7]
-+ vout_post[6] vout_post[5] vout_post[4] vout_post[3] vout_post[2] vout_post[1] vout_post[0] vout_pre[3] vout_pre[2] vout_pre[1] vout_pre[0]
-+ vout_pre2[3] vout_pre2[2] vout_pre2[1] vout_pre2[0] vout_pre3[3] vout_pre3[2] vout_pre3[1] vout_pre3[0] vout_pre4[3] vout_pre4[2] vout_pre4[1]
-+ vout_pre4[0]
-*.iopin vdda
-*.iopin vssa
-*.iopin vout_pre[3],vout_pre[2],vout_pre[1],vout_pre[0]
-*.iopin vout_post[7],vout_post[6],vout_post[5],vout_post[4],vout_post[3],vout_post[2],vout_post[1],vout_post[0]
-*.iopin i_post[7],i_post[6],i_post[5],i_post[4],i_post[3],i_post[2],i_post[1],i_post[0]
-*.iopin vout_pre2[3],vout_pre2[2],vout_pre2[1],vout_pre2[0]
-*.iopin vout_pre3[3],vout_pre3[2],vout_pre3[1],vout_pre3[0]
-*.iopin vout_pre4[3],vout_pre4[2],vout_pre4[1],vout_pre4[0]
-xno_stdp1 vdda vssa vout_pre[0] vout_post[0] i_post[0] n_vout_pre[0] n_vout_post[0] no_stdp
-xno_stdp2 vdda vssa vout_pre[0] vout_post[1] i_post[1] n_vout_pre[0] n_vout_post[1] no_stdp
-xno_stdp3 vdda vssa vout_pre[0] vout_post[2] i_post[2] n_vout_pre[0] n_vout_post[2] no_stdp
-xno_stdp4 vdda vssa vout_pre[0] vout_post[3] i_post[3] n_vout_pre[0] n_vout_post[3] no_stdp
-xno_stdp5 vdda vssa vout_pre[1] vout_post[0] i_post[0] n_vout_pre[1] n_vout_post[0] no_stdp
-xno_stdp6 vdda vssa vout_pre[1] vout_post[1] i_post[1] n_vout_pre[1] n_vout_post[1] no_stdp
-xno_stdp7 vdda vssa vout_pre[1] vout_post[2] i_post[2] n_vout_pre[1] n_vout_post[2] no_stdp
-xno_stdp8 vdda vssa vout_pre[1] vout_post[3] i_post[3] n_vout_pre[1] n_vout_post[3] no_stdp
-xno_stdp9 vdda vssa vout_pre[2] vout_post[0] i_post[0] n_vout_pre[2] n_vout_post[0] no_stdp
-xno_stdp10 vdda vssa vout_pre[2] vout_post[1] i_post[1] n_vout_pre[2] n_vout_post[1] no_stdp
-xno_stdp11 vdda vssa vout_pre[2] vout_post[2] i_post[2] n_vout_pre[2] n_vout_post[2] no_stdp
-xno_stdp12 vdda vssa vout_pre[2] vout_post[3] i_post[3] n_vout_pre[2] n_vout_post[3] no_stdp
-xno_stdp13 vdda vssa vout_pre[3] vout_post[0] i_post[0] n_vout_pre[3] n_vout_post[0] no_stdp
-xno_stdp14 vdda vssa vout_pre[3] vout_post[1] i_post[1] n_vout_pre[3] n_vout_post[1] no_stdp
-xno_stdp15 vdda vssa vout_pre[3] vout_post[2] i_post[2] n_vout_pre[3] n_vout_post[2] no_stdp
-xno_stdp16 vdda vssa vout_pre[3] vout_post[3] i_post[3] n_vout_pre[3] n_vout_post[3] no_stdp
-xno_stdp17 vdda vssa vout_pre[0] vout_post[4] i_post[4] n_vout_pre[0] n_vout_post[4] no_stdp
-xno_stdp18 vdda vssa vout_pre[0] vout_post[5] i_post[5] n_vout_pre[0] n_vout_post[5] no_stdp
-xno_stdp19 vdda vssa vout_pre[0] vout_post[6] i_post[6] n_vout_pre[0] n_vout_post[6] no_stdp
-xno_stdp20 vdda vssa vout_pre[0] vout_post[7] i_post[7] n_vout_pre[0] n_vout_post[7] no_stdp
-xno_stdp21 vdda vssa vout_pre[1] vout_post[4] i_post[4] n_vout_pre[1] n_vout_post[4] no_stdp
-xno_stdp22 vdda vssa vout_pre[1] vout_post[5] i_post[5] n_vout_pre[1] n_vout_post[5] no_stdp
-xno_stdp23 vdda vssa vout_pre[1] vout_post[6] i_post[6] n_vout_pre[1] n_vout_post[6] no_stdp
-xno_stdp24 vdda vssa vout_pre[1] vout_post[7] i_post[7] n_vout_pre[1] n_vout_post[7] no_stdp
-xno_stdp25 vdda vssa vout_pre[2] vout_post[4] i_post[4] n_vout_pre[2] n_vout_post[4] no_stdp
-xno_stdp26 vdda vssa vout_pre[2] vout_post[5] i_post[5] n_vout_pre[2] n_vout_post[5] no_stdp
-xno_stdp27 vdda vssa vout_pre[2] vout_post[6] i_post[6] n_vout_pre[2] n_vout_post[6] no_stdp
-xno_stdp28 vdda vssa vout_pre[2] vout_post[7] i_post[7] n_vout_pre[2] n_vout_post[7] no_stdp
-xno_stdp29 vdda vssa vout_pre[3] vout_post[4] i_post[4] n_vout_pre[3] n_vout_post[4] no_stdp
-xno_stdp30 vdda vssa vout_pre[3] vout_post[5] i_post[5] n_vout_pre[3] n_vout_post[5] no_stdp
-xno_stdp31 vdda vssa vout_pre[3] vout_post[6] i_post[6] n_vout_pre[3] n_vout_post[6] no_stdp
-xno_stdp32 vdda vssa vout_pre[3] vout_post[7] i_post[7] n_vout_pre[3] n_vout_post[7] no_stdp
-x1 vdda vout_pre[0] n_vout_pre[0] vssa not
-x2 vdda vout_pre[1] n_vout_pre[1] vssa not
-x3 vdda vout_pre[2] n_vout_pre[2] vssa not
-x4 vdda vout_pre[3] n_vout_pre[3] vssa not
-x5 vdda vout_post[0] n_vout_post[0] vssa not
-x6 vdda vout_post[1] n_vout_post[1] vssa not
-x7 vdda vout_post[2] n_vout_post[2] vssa not
-x8 vdda vout_post[3] n_vout_post[3] vssa not
-x9 vdda vout_post[4] n_vout_post[4] vssa not
-x10 vdda vout_post[5] n_vout_post[5] vssa not
-x11 vdda vout_post[6] n_vout_post[6] vssa not
-x12 vdda vout_post[7] n_vout_post[7] vssa not
-xno_stdp33 vdda vssa vout_pre2[0] vout_post[0] i_post[0] n_vout_pre2[0] n_vout_post[0] no_stdp
-xno_stdp34 vdda vssa vout_pre2[0] vout_post[1] i_post[1] n_vout_pre2[0] n_vout_post[1] no_stdp
-xno_stdp35 vdda vssa vout_pre2[0] vout_post[2] i_post[2] n_vout_pre2[0] n_vout_post[2] no_stdp
-xno_stdp36 vdda vssa vout_pre2[0] vout_post[3] i_post[3] n_vout_pre2[0] n_vout_post[3] no_stdp
-xno_stdp37 vdda vssa vout_pre2[1] vout_post[0] i_post[0] n_vout_pre2[1] n_vout_post[0] no_stdp
-xno_stdp38 vdda vssa vout_pre2[1] vout_post[1] i_post[1] n_vout_pre2[1] n_vout_post[1] no_stdp
-xno_stdp39 vdda vssa vout_pre2[1] vout_post[2] i_post[2] n_vout_pre2[1] n_vout_post[2] no_stdp
-xno_stdp40 vdda vssa vout_pre2[1] vout_post[3] i_post[3] n_vout_pre2[1] n_vout_post[3] no_stdp
-xno_stdp41 vdda vssa vout_pre2[2] vout_post[0] i_post[0] n_vout_pre2[2] n_vout_post[0] no_stdp
-xno_stdp42 vdda vssa vout_pre2[2] vout_post[1] i_post[1] n_vout_pre2[2] n_vout_post[1] no_stdp
-xno_stdp43 vdda vssa vout_pre2[2] vout_post[2] i_post[2] n_vout_pre2[2] n_vout_post[2] no_stdp
-xno_stdp44 vdda vssa vout_pre2[2] vout_post[3] i_post[3] n_vout_pre2[2] n_vout_post[3] no_stdp
-xno_stdp45 vdda vssa vout_pre2[3] vout_post[0] i_post[0] n_vout_pre2[3] n_vout_post[0] no_stdp
-xno_stdp46 vdda vssa vout_pre2[3] vout_post[1] i_post[1] n_vout_pre2[3] n_vout_post[1] no_stdp
-xno_stdp47 vdda vssa vout_pre2[3] vout_post[2] i_post[2] n_vout_pre2[3] n_vout_post[2] no_stdp
-xno_stdp48 vdda vssa vout_pre2[3] vout_post[3] i_post[3] n_vout_pre2[3] n_vout_post[3] no_stdp
-xno_stdp49 vdda vssa vout_pre2[0] vout_post[4] i_post[4] n_vout_pre2[0] n_vout_post[4] no_stdp
-xno_stdp50 vdda vssa vout_pre2[0] vout_post[5] i_post[5] n_vout_pre2[0] n_vout_post[5] no_stdp
-xno_stdp51 vdda vssa vout_pre2[0] vout_post[6] i_post[6] n_vout_pre2[0] n_vout_post[6] no_stdp
-xno_stdp52 vdda vssa vout_pre2[0] vout_post[7] i_post[7] n_vout_pre2[0] n_vout_post[7] no_stdp
-xno_stdp53 vdda vssa vout_pre2[1] vout_post[4] i_post[4] n_vout_pre2[1] n_vout_post[4] no_stdp
-xno_stdp54 vdda vssa vout_pre2[1] vout_post[5] i_post[5] n_vout_pre2[1] n_vout_post[5] no_stdp
-xno_stdp55 vdda vssa vout_pre2[1] vout_post[6] i_post[6] n_vout_pre2[1] n_vout_post[6] no_stdp
-xno_stdp56 vdda vssa vout_pre2[1] vout_post[7] i_post[7] n_vout_pre2[1] n_vout_post[7] no_stdp
-xno_stdp57 vdda vssa vout_pre2[2] vout_post[4] i_post[4] n_vout_pre2[2] n_vout_post[4] no_stdp
-xno_stdp58 vdda vssa vout_pre2[2] vout_post[5] i_post[5] n_vout_pre2[2] n_vout_post[5] no_stdp
-xno_stdp59 vdda vssa vout_pre2[2] vout_post[6] i_post[6] n_vout_pre2[2] n_vout_post[6] no_stdp
-xno_stdp60 vdda vssa vout_pre2[2] vout_post[7] i_post[7] n_vout_pre2[2] n_vout_post[7] no_stdp
-xno_stdp61 vdda vssa vout_pre2[3] vout_post[4] i_post[4] n_vout_pre2[3] n_vout_post[4] no_stdp
-xno_stdp62 vdda vssa vout_pre2[3] vout_post[5] i_post[5] n_vout_pre2[3] n_vout_post[5] no_stdp
-xno_stdp63 vdda vssa vout_pre2[3] vout_post[6] i_post[6] n_vout_pre2[3] n_vout_post[6] no_stdp
-xno_stdp64 vdda vssa vout_pre2[3] vout_post[7] i_post[7] n_vout_pre2[3] n_vout_post[7] no_stdp
-x13 vdda vout_pre2[0] n_vout_pre2[0] vssa not
-x14 vdda vout_pre2[1] n_vout_pre2[1] vssa not
-x15 vdda vout_pre2[2] n_vout_pre2[2] vssa not
-x16 vdda vout_pre2[3] n_vout_pre2[3] vssa not
-xno_stdp65 vdda vssa vout_pre3[0] vout_post[0] i_post[0] n_vout_pre3[0] n_vout_post[0] no_stdp
-xno_stdp66 vdda vssa vout_pre3[0] vout_post[1] i_post[1] n_vout_pre3[0] n_vout_post[1] no_stdp
-xno_stdp67 vdda vssa vout_pre3[0] vout_post[2] i_post[2] n_vout_pre3[0] n_vout_post[2] no_stdp
-xno_stdp68 vdda vssa vout_pre3[0] vout_post[3] i_post[3] n_vout_pre3[0] n_vout_post[3] no_stdp
-xno_stdp69 vdda vssa vout_pre3[1] vout_post[0] i_post[0] n_vout_pre3[1] n_vout_post[0] no_stdp
-xno_stdp70 vdda vssa vout_pre3[1] vout_post[1] i_post[1] n_vout_pre3[1] n_vout_post[1] no_stdp
-xno_stdp71 vdda vssa vout_pre3[1] vout_post[2] i_post[2] n_vout_pre3[1] n_vout_post[2] no_stdp
-xno_stdp72 vdda vssa vout_pre3[1] vout_post[3] i_post[3] n_vout_pre3[1] n_vout_post[3] no_stdp
-xno_stdp73 vdda vssa vout_pre3[2] vout_post[0] i_post[0] n_vout_pre3[2] n_vout_post[0] no_stdp
-xno_stdp74 vdda vssa vout_pre3[2] vout_post[1] i_post[1] n_vout_pre3[2] n_vout_post[1] no_stdp
-xno_stdp75 vdda vssa vout_pre3[2] vout_post[2] i_post[2] n_vout_pre3[2] n_vout_post[2] no_stdp
-xno_stdp76 vdda vssa vout_pre3[2] vout_post[3] i_post[3] n_vout_pre3[2] n_vout_post[3] no_stdp
-xno_stdp77 vdda vssa vout_pre3[3] vout_post[0] i_post[0] n_vout_pre3[3] n_vout_post[0] no_stdp
-xno_stdp78 vdda vssa vout_pre3[3] vout_post[1] i_post[1] n_vout_pre3[3] n_vout_post[1] no_stdp
-xno_stdp79 vdda vssa vout_pre3[3] vout_post[2] i_post[2] n_vout_pre3[3] n_vout_post[2] no_stdp
-xno_stdp80 vdda vssa vout_pre3[3] vout_post[3] i_post[3] n_vout_pre3[3] n_vout_post[3] no_stdp
-xno_stdp81 vdda vssa vout_pre3[0] vout_post[4] i_post[4] n_vout_pre3[0] n_vout_post[4] no_stdp
-xno_stdp82 vdda vssa vout_pre3[0] vout_post[5] i_post[5] n_vout_pre3[0] n_vout_post[5] no_stdp
-xno_stdp83 vdda vssa vout_pre3[0] vout_post[6] i_post[6] n_vout_pre3[0] n_vout_post[6] no_stdp
-xno_stdp84 vdda vssa vout_pre3[0] vout_post[7] i_post[7] n_vout_pre3[0] n_vout_post[7] no_stdp
-xno_stdp85 vdda vssa vout_pre3[1] vout_post[4] i_post[4] n_vout_pre3[1] n_vout_post[4] no_stdp
-xno_stdp86 vdda vssa vout_pre3[1] vout_post[5] i_post[5] n_vout_pre3[1] n_vout_post[5] no_stdp
-xno_stdp87 vdda vssa vout_pre3[1] vout_post[6] i_post[6] n_vout_pre3[1] n_vout_post[6] no_stdp
-xno_stdp88 vdda vssa vout_pre3[1] vout_post[7] i_post[7] n_vout_pre3[1] n_vout_post[7] no_stdp
-xno_stdp89 vdda vssa vout_pre3[2] vout_post[4] i_post[4] n_vout_pre3[2] n_vout_post[4] no_stdp
-xno_stdp90 vdda vssa vout_pre3[2] vout_post[5] i_post[5] n_vout_pre3[2] n_vout_post[5] no_stdp
-xno_stdp91 vdda vssa vout_pre3[2] vout_post[6] i_post[6] n_vout_pre3[2] n_vout_post[6] no_stdp
-xno_stdp92 vdda vssa vout_pre3[2] vout_post[7] i_post[7] n_vout_pre3[2] n_vout_post[7] no_stdp
-xno_stdp93 vdda vssa vout_pre3[3] vout_post[4] i_post[4] n_vout_pre3[3] n_vout_post[4] no_stdp
-xno_stdp94 vdda vssa vout_pre3[3] vout_post[5] i_post[5] n_vout_pre3[3] n_vout_post[5] no_stdp
-xno_stdp95 vdda vssa vout_pre3[3] vout_post[6] i_post[6] n_vout_pre3[3] n_vout_post[6] no_stdp
-xno_stdp96 vdda vssa vout_pre3[3] vout_post[7] i_post[7] n_vout_pre3[3] n_vout_post[7] no_stdp
-x17 vdda vout_pre3[0] n_vout_pre3[0] vssa not
-x18 vdda vout_pre3[1] n_vout_pre3[1] vssa not
-x19 vdda vout_pre3[2] n_vout_pre3[2] vssa not
-x20 vdda vout_pre3[3] n_vout_pre3[3] vssa not
-xno_stdp97 vdda vssa vout_pre4[0] vout_post[0] i_post[0] n_vout_pre4[0] n_vout_post[0] no_stdp
-xno_stdp98 vdda vssa vout_pre4[0] vout_post[1] i_post[1] n_vout_pre4[0] n_vout_post[1] no_stdp
-xno_stdp99 vdda vssa vout_pre4[0] vout_post[2] i_post[2] n_vout_pre4[0] n_vout_post[2] no_stdp
-xno_stdp100 vdda vssa vout_pre4[0] vout_post[3] i_post[3] n_vout_pre4[0] n_vout_post[3] no_stdp
-xno_stdp101 vdda vssa vout_pre4[1] vout_post[0] i_post[0] n_vout_pre4[1] n_vout_post[0] no_stdp
-xno_stdp102 vdda vssa vout_pre4[1] vout_post[1] i_post[1] n_vout_pre4[1] n_vout_post[1] no_stdp
-xno_stdp103 vdda vssa vout_pre4[1] vout_post[2] i_post[2] n_vout_pre4[1] n_vout_post[2] no_stdp
-xno_stdp104 vdda vssa vout_pre4[1] vout_post[3] i_post[3] n_vout_pre4[1] n_vout_post[3] no_stdp
-xno_stdp105 vdda vssa vout_pre4[2] vout_post[0] i_post[0] n_vout_pre4[2] n_vout_post[0] no_stdp
-xno_stdp106 vdda vssa vout_pre4[2] vout_post[1] i_post[1] n_vout_pre4[2] n_vout_post[1] no_stdp
-xno_stdp107 vdda vssa vout_pre4[2] vout_post[2] i_post[2] n_vout_pre4[2] n_vout_post[2] no_stdp
-xno_stdp108 vdda vssa vout_pre4[2] vout_post[3] i_post[3] n_vout_pre4[2] n_vout_post[3] no_stdp
-xno_stdp109 vdda vssa vout_pre4[3] vout_post[0] i_post[0] n_vout_pre4[3] n_vout_post[0] no_stdp
-xno_stdp110 vdda vssa vout_pre4[3] vout_post[1] i_post[1] n_vout_pre4[3] n_vout_post[1] no_stdp
-xno_stdp111 vdda vssa vout_pre4[3] vout_post[2] i_post[2] n_vout_pre4[3] n_vout_post[2] no_stdp
-xno_stdp112 vdda vssa vout_pre4[3] vout_post[3] i_post[3] n_vout_pre4[3] n_vout_post[3] no_stdp
-xno_stdp113 vdda vssa vout_pre4[0] vout_post[4] i_post[4] n_vout_pre4[0] n_vout_post[4] no_stdp
-xno_stdp114 vdda vssa vout_pre4[0] vout_post[5] i_post[5] n_vout_pre4[0] n_vout_post[5] no_stdp
-xno_stdp115 vdda vssa vout_pre4[0] vout_post[6] i_post[6] n_vout_pre4[0] n_vout_post[6] no_stdp
-xno_stdp116 vdda vssa vout_pre4[0] vout_post[7] i_post[7] n_vout_pre4[0] n_vout_post[7] no_stdp
-xno_stdp117 vdda vssa vout_pre4[1] vout_post[4] i_post[4] n_vout_pre4[1] n_vout_post[4] no_stdp
-xno_stdp118 vdda vssa vout_pre4[1] vout_post[5] i_post[5] n_vout_pre4[1] n_vout_post[5] no_stdp
-xno_stdp119 vdda vssa vout_pre4[1] vout_post[6] i_post[6] n_vout_pre4[1] n_vout_post[6] no_stdp
-xno_stdp120 vdda vssa vout_pre4[1] vout_post[7] i_post[7] n_vout_pre4[1] n_vout_post[7] no_stdp
-xno_stdp121 vdda vssa vout_pre4[2] vout_post[4] i_post[4] n_vout_pre4[2] n_vout_post[4] no_stdp
-xno_stdp122 vdda vssa vout_pre4[2] vout_post[5] i_post[5] n_vout_pre4[2] n_vout_post[5] no_stdp
-xno_stdp123 vdda vssa vout_pre4[2] vout_post[6] i_post[6] n_vout_pre4[2] n_vout_post[6] no_stdp
-xno_stdp124 vdda vssa vout_pre4[2] vout_post[7] i_post[7] n_vout_pre4[2] n_vout_post[7] no_stdp
-xno_stdp125 vdda vssa vout_pre4[3] vout_post[4] i_post[4] n_vout_pre4[3] n_vout_post[4] no_stdp
-xno_stdp126 vdda vssa vout_pre4[3] vout_post[5] i_post[5] n_vout_pre4[3] n_vout_post[5] no_stdp
-xno_stdp127 vdda vssa vout_pre4[3] vout_post[6] i_post[6] n_vout_pre4[3] n_vout_post[6] no_stdp
-xno_stdp128 vdda vssa vout_pre4[3] vout_post[7] i_post[7] n_vout_pre4[3] n_vout_post[7] no_stdp
-x21 vdda vout_pre4[0] n_vout_pre4[0] vssa not
-x22 vdda vout_pre4[1] n_vout_pre4[1] vssa not
-x23 vdda vout_pre4[2] n_vout_pre4[2] vssa not
-x24 vdda vout_pre4[3] n_vout_pre4[3] vssa not
-.ends
-
-
-* expanding   symbol:  Neuron/ul_tun_final.sym # of pins=5
+* expanding   symbol:  Neuron/ul_tun_final.sym # of pins=6
 ** sym_path: /foss/designs/SNN-MWIP/Neuron/ul_tun_final.sym
 ** sch_path: /foss/designs/SNN-MWIP/Neuron/ul_tun_final.sch
-.subckt ul_tun_final Iext vdd vout Vleak vss  W_LEAK=1 CM=1p
+.subckt ul_tun_final Iext vdd vout Vleak vss nvout  W_LEAK=1 CM=1p
 *.iopin Iext
 *.iopin vout
 *.iopin vss
 *.iopin Vleak
 *.iopin vdd
+*.iopin nvout
 XM1 vout vout vm vdd sky130_fd_pr__pfet_01v8 L=10 W=1 nf=1 ad=0.29 as=0.29 pd=2.58 ps=2.58 nrd=0.29 nrs=0.29 sa=0 sb=0 sd=0 mult=1
++ m=1
 XM2 vout net1 vm vdd sky130_fd_pr__pfet_01v8 L=0.15 W=1.5 nf=1 ad=0.435 as=0.435 pd=3.58 ps=3.58 nrd=0.193333333333333
-+ nrs=0.193333333333333 sa=0 sb=0 sd=0 mult=1
++ nrs=0.193333333333333 sa=0 sb=0 sd=0 mult=1 m=1
 XM3 net1 net1 vm vdd sky130_fd_pr__pfet_01v8 L=0.15 W=15 nf=1 ad=4.35 as=4.35 pd=30.58 ps=30.58 nrd=0.0193333333333333
-+ nrs=0.0193333333333333 sa=0 sb=0 sd=0 mult=1
++ nrs=0.0193333333333333 sa=0 sb=0 sd=0 mult=1 m=1
 XM4 net1 vout vss vss sky130_fd_pr__nfet_01v8 L=5 W=1 nf=1 ad=0.29 as=0.29 pd=2.58 ps=2.58 nrd=0.29 nrs=0.29 sa=0 sb=0 sd=0 mult=1
-C1 vm vss 1p
++ m=1
+C1 vm vss 1p m=1
 XM9 vm vout Iext vdd sky130_fd_pr__pfet_01v8 L=0.15 W=4 nf=1 ad=1.16 as=1.16 pd=8.58 ps=8.58 nrd=0.0725 nrs=0.0725 sa=0 sb=0 sd=0
-+ mult=1
++ mult=1 m=1
 XM11 vout Vleak vss vss sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
-+ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM5 vm nvout Iext vss sky130_fd_pr__nfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM6 nvout vout vdd vdd sky130_fd_pr__pfet_01v8 L=0.15 W=2 nf=1 ad=0.58 as=0.58 pd=4.58 ps=4.58 nrd=0.145 nrs=0.145 sa=0 sb=0 sd=0
++ mult=1 m=1
+XM7 nvout vout vss vss sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad=0.29 as=0.29 pd=2.58 ps=2.58 nrd=0.29 nrs=0.29 sa=0 sb=0 sd=0
++ mult=1 m=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/SNN-MWIP/VCCS/otavccs4.sym # of pins=8
+* expanding   symbol:  /foss/designs/SNN-MWIP/VCCS/otavccs4.sym # of pins=6
 ** sym_path: /foss/designs/SNN-MWIP/VCCS/otavccs4.sym
 ** sch_path: /foss/designs/SNN-MWIP/VCCS/otavccs4.sch
-.subckt otavccs4 avdd ipos1 ipos2 ineg2 ineg1 vin1 vin2 avss
+.subckt otavccs4 avdd ipos1 ineg1 vin1 vin2 avss
 *.iopin avdd
 *.iopin avss
 *.ipin vin1
 *.ipin vin2
-*.opin ineg2
-*.opin ipos2
-*.opin ipos1
 *.opin ineg1
+*.opin ipos1
 XM2 x vin1 net2 avss sky130_fd_pr__nfet_01v8 L=0.5 W=0.5 nf=1 ad=0.145 as=0.145 pd=1.58 ps=1.58 nrd=0.58 nrs=0.58 sa=0 sb=0 sd=0
-+ mult=1
++ mult=1 m=1
 XM1 y vin2 net1 avss sky130_fd_pr__nfet_01v8 L=0.5 W=0.5 nf=1 ad=0.145 as=0.145 pd=1.58 ps=1.58 nrd=0.58 nrs=0.58 sa=0 sb=0 sd=0
-+ mult=1
++ mult=1 m=1
 XM11 x x avdd avdd sky130_fd_pr__pfet_01v8 L=0.15 W=0.8 nf=1 ad=0.232 as=0.232 pd=2.18 ps=2.18 nrd=0.3625 nrs=0.3625 sa=0 sb=0
-+ sd=0 mult=1
++ sd=0 mult=1 m=1
 XM3 y y avdd avdd sky130_fd_pr__pfet_01v8 L=0.15 W=0.8 nf=1 ad=0.232 as=0.232 pd=2.18 ps=2.18 nrd=0.3625 nrs=0.3625 sa=0 sb=0 sd=0
-+ mult=1
++ mult=1 m=1
 XM5 net3 y avdd avdd sky130_fd_pr__pfet_01v8 L=0.5 W=0.5 nf=1 ad=0.145 as=0.145 pd=1.58 ps=1.58 nrd=0.58 nrs=0.58 sa=0 sb=0 sd=0
-+ mult=1
-XM6 ipos2 y net3 avdd sky130_fd_pr__pfet_01v8 L=0.5 W=0.5 nf=1 ad=0.145 as=0.145 pd=1.58 ps=1.58 nrd=0.58 nrs=0.58 sa=0 sb=0 sd=0
-+ mult=1
++ mult=1 m=1
+XM6 ipos1 y net3 avdd sky130_fd_pr__pfet_01v8 L=0.5 W=0.5 nf=1 ad=0.145 as=0.145 pd=1.58 ps=1.58 nrd=0.58 nrs=0.58 sa=0 sb=0 sd=0
++ mult=1 m=1
 XM7 net4 x avdd avdd sky130_fd_pr__pfet_01v8 L=0.5 W=0.5 nf=1 ad=0.145 as=0.145 pd=1.58 ps=1.58 nrd=0.58 nrs=0.58 sa=0 sb=0 sd=0
-+ mult=1
-XM8 ineg2 x net4 avdd sky130_fd_pr__pfet_01v8 L=0.5 W=0.5 nf=1 ad=0.145 as=0.145 pd=1.58 ps=1.58 nrd=0.58 nrs=0.58 sa=0 sb=0 sd=0
-+ mult=1
-R3 p avss 10k
-R6 p net2 40k
-R1 p net1 40k
-XM4 net5 y avdd avdd sky130_fd_pr__pfet_01v8 L=0.5 W=0.5 nf=1 ad=0.145 as=0.145 pd=1.58 ps=1.58 nrd=0.58 nrs=0.58 sa=0 sb=0 sd=0
-+ mult=1
-XM9 ipos1 y net5 avdd sky130_fd_pr__pfet_01v8 L=0.5 W=0.5 nf=1 ad=0.145 as=0.145 pd=1.58 ps=1.58 nrd=0.58 nrs=0.58 sa=0 sb=0 sd=0
-+ mult=1
-XM10 net6 x avdd avdd sky130_fd_pr__pfet_01v8 L=0.5 W=0.5 nf=1 ad=0.145 as=0.145 pd=1.58 ps=1.58 nrd=0.58 nrs=0.58 sa=0 sb=0 sd=0
-+ mult=1
-XM12 ineg1 x net6 avdd sky130_fd_pr__pfet_01v8 L=0.5 W=0.5 nf=1 ad=0.145 as=0.145 pd=1.58 ps=1.58 nrd=0.58 nrs=0.58 sa=0 sb=0 sd=0
-+ mult=1
++ mult=1 m=1
+XM8 ineg1 x net4 avdd sky130_fd_pr__pfet_01v8 L=0.5 W=0.5 nf=1 ad=0.145 as=0.145 pd=1.58 ps=1.58 nrd=0.58 nrs=0.58 sa=0 sb=0 sd=0
++ mult=1 m=1
+R3 p avss 10k m=1
+R6 p net2 40k m=1
+R1 p net1 40k m=1
 .ends
 
 
@@ -472,13 +309,13 @@ XM12 ineg1 x net6 avdd sky130_fd_pr__pfet_01v8 L=0.5 W=0.5 nf=1 ad=0.145 as=0.14
 *.iopin n_vout_post
 *.iopin n_vout_pre
 XM3 be vout_post vss vss sky130_fd_pr__nfet_01v8 L=0.15 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 XM4 net1 vout_pre vss vss sky130_fd_pr__nfet_01v8 L=0.15 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 XM14 net3 net2 vdd vdd sky130_fd_pr__pfet_01v8 L=0.15 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 XM15 net2 net2 vdd vdd sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
-+ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 **** begin user architecture code
 
 
@@ -489,27 +326,12 @@ XM15 net2 net2 vdd vdd sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2)
 Vmr te net1 0
 .save i(vmr)
 XM1 net1 n_vout_post net2 vdd sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 XM2 be n_vout_pre net2 vdd sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 XM6 I_post net2 net3 vdd sky130_fd_pr__pfet_01v8 L=0.15 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 XR2 be te rram_v1
-.ends
-
-
-* expanding   symbol:  not.sym # of pins=4
-** sym_path: /foss/designs/SNN-MWIP/not.sym
-** sch_path: /foss/designs/SNN-MWIP/not.sch
-.subckt not avdd vin vout avss
-*.ipin vin
-*.opin vout
-*.iopin avdd
-*.iopin avss
-XM1 vout vin avss avss sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad=0.29 as=0.29 pd=2.58 ps=2.58 nrd=0.29 nrs=0.29 sa=0 sb=0 sd=0
-+ mult=1
-XM2 vout vin avdd avdd sky130_fd_pr__pfet_01v8 L=0.15 W=2 nf=1 ad=0.58 as=0.58 pd=4.58 ps=4.58 nrd=0.145 nrs=0.145 sa=0 sb=0 sd=0
-+ mult=2 m=2
 .ends
 
 
@@ -522,45 +344,16 @@ XM2 vout vin avdd avdd sky130_fd_pr__pfet_01v8 L=0.15 W=2 nf=1 ad=0.58 as=0.58 p
 *.iopin vdd
 *.iopin gnd
 XMIn Ispks vx vsyn vdd sky130_fd_pr__pfet_01v8 L=0.15 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
-+ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 XM3 vsyn vdd vdd vdd sky130_fd_pr__pfet_01v8 L=0.15 W=50 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=3 m=3
 XM4 Vout vsyn vdd vdd sky130_fd_pr__pfet_01v8 L=0.15 W=25 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=2 m=2
-XCsyn vdd vsyn sky130_fd_pr__cap_mim_m3_1 W=22.2 L=22.2 MF=1
-XR2 vx vdd sky130_fd_pr__res_generic_po W=1 L=1
-XR1 gnd vx sky130_fd_pr__res_generic_po W=1 L=1
+XCsyn vdd vsyn sky130_fd_pr__cap_mim_m3_1 W=22.2 L=22.2 MF=1 m=1
+XR2 vx vdd sky130_fd_pr__res_generic_po W=1 L=1 m=1
+XR1 gnd vx sky130_fd_pr__res_generic_po W=1 L=1 m=1
 XM6 Vout vx gnd gnd sky130_fd_pr__nfet_01v8 L=0.15 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
-+ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
-.ends
-
-
-* expanding   symbol:  Synapse/no_stdp.sym # of pins=7
-** sym_path: /foss/designs/SNN-MWIP/Synapse/no_stdp.sym
-** sch_path: /foss/designs/SNN-MWIP/Synapse/no_stdp.sch
-.subckt no_stdp vdd vss vout_pre vout_post I_post n_vout_pre n_vout_post
-*.iopin vdd
-*.iopin vss
-*.iopin vout_post
-*.iopin vout_pre
-*.iopin I_post
-*.iopin n_vout_post
-*.iopin n_vout_pre
-XM3 be vout_post vss vss sky130_fd_pr__nfet_01v8 L=0.15 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
-XM4 te vout_pre vss vss sky130_fd_pr__nfet_01v8 L=0.15 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
-XM14 net2 net1 vdd vdd sky130_fd_pr__pfet_01v8 L=0.15 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
-XM15 net1 net1 vdd vdd sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
-+ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
-XM1 te n_vout_post net1 vss sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
-XM2 be n_vout_pre net1 vss sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
-XM6 I_post net1 net2 vdd sky130_fd_pr__pfet_01v8 L=0.15 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1
-R1 be te 'AGAUSS((3300000)/2,500000, 1)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 .ends
 
 .GLOBAL VDD

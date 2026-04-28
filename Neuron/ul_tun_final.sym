@@ -17,7 +17,7 @@ L 7 0 40 0 60 {}
 L 7 40 30 60 30 {}
 B 5 -62.5 -2.5 -57.5 2.5 {name=Iext dir=inout}
 B 5 -2.5 -52.5 2.5 -47.5 {name=vdd dir=inout}
-B 5 57.5 -2.5 62.5 2.5 {name=nvout dir=inout}
+B 5 57.5 -2.5 62.5 2.5 {name=vout dir=inout}
 B 5 -32.5 47.5 -27.5 52.5 {name=Vleak dir=inout}
 B 5 -2.5 57.5 2.5 62.5 {name=vss dir=inout}
 B 5 57.5 27.5 62.5 32.5 {name=nvout dir=inout}
