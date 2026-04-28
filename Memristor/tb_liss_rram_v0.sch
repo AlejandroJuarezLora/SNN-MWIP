@@ -414,7 +414,7 @@ N1 TE BE rram_v0_model
 .ends rram_v0
 
 .subckt rram_v1 TE BE
-N1 TE BE rram_v1_model gap_initial=0.17
+N1 TE BE rram_v1_model gap_initial=0.5
 .ends rram_v0
 
 

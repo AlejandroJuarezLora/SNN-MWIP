@@ -18,12 +18,20 @@ module mwip_dynamics(torque, x, theta, dx, dth);
     parameter real l = 0.3;    
     parameter real g = 9.81;   
     parameter real J = 0.006; 
-    parameter real t_step = 1.0e-3     from (0:inf);                         // maximum time step [seconds]
+    parameter real t_step = 1.0e-3     from (0:inf);     // maximum time step [seconds]
+    parameter real xmin = -4.8;                         // minimum x position [meters]
+    parameter real xmax = 4.8;                          // maximun x position [meters]
+    parameter real dxmin = -5;                          // minimum dx velocity [meters/s]
+    parameter real dxmax = 5;                           // maximum dx velocity [meters/s]
+    parameter real thmin = -0.4184;                         // minimum th position [radians]
+    parameter real thmax = 0.4184;                          // maximun th position [radians]
+    parameter real dthmin = -5;                          // minimum dth velocity [radians/s]
+    parameter real dthmax = 5;                           // maximum dth velocity [radians/s]
 
-    `macroEntrada(x0, 1, "m", -4.8, 4.8, "Initial x")
-    `macroEntrada(dx0, 1, "m/s", -5, 5, "Initial dx")
-    `macroEntrada(th0, 0.1, "rad", -0.4184, 0.4184, "Initial th")
-    `macroEntrada(dth0, 0.01, "rad/s", -5, 5, "Initial dth")
+    `macroEntrada(x0, 1, "m", xmin,xmax, "Initial x")
+    `macroEntrada(dx0, 1, "m/s", dxmin, dxmax, "Initial dx")
+    `macroEntrada(th0, 0.1, "rad", thmin, thmax, "Initial th")
+    `macroEntrada(dth0, 0.01, "rad/s", dthmin, dthmax, "Initial dth")
 
     // Internal variables for calculation
     real det, E11, E12, E21, E22;
@@ -36,6 +44,21 @@ module mwip_dynamics(torque, x, theta, dx, dth);
     real t_delta;                // difference between current vs. previous time step
 
 
+    analog function real soft_minmax;
+        input x, xmin, xmax;
+        real x, xmin, xmax;
+        begin
+            if (x > xmax) begin
+                soft_minmax = xmax;
+            end else if (x < xmin) begin
+                soft_minmax = xmin;
+            end else begin
+                soft_minmax = x;
+            end
+        end
+    endfunction // soft_minmax
+
+
     analog begin
         @(initial_step) begin
             v_x = dx0;
@@ -45,7 +68,7 @@ module mwip_dynamics(torque, x, theta, dx, dth);
             $display("Simulation started. th0 is %g, x0 is %g", p_th, p_x);
         end
         // ... inside analog begin ...
-        $bound_step(t_step); // bound maximum time step
+        // $bound_step(t_step); // bound maximum time step
         t_current = $abstime; // current time
         t_delta = t_current - t_previous;
 
@@ -64,8 +87,16 @@ module mwip_dynamics(torque, x, theta, dx, dth);
         v_x = v_x + a_x * t_delta;
         v_th = v_th + a_theta * t_delta;
 
+        //softminmax velocidades
+        v_x = soft_minmax(v_x, dxmin, dxmax);
+        v_th = soft_minmax(v_th, dthmin, dthmax);
+
         p_x = p_x + v_x * t_delta;
         p_th = p_th + v_th * t_delta; 
+
+        //softminmax positions
+        p_x = soft_minmax(p_x, dxmin, dxmax);
+        p_th = soft_minmax(p_th, dthmin, dthmax);
 
         // 2. The Robust Integrator Pattern
         // We integrate the acceleration to get a REAL value first,
@@ -77,17 +108,8 @@ module mwip_dynamics(torque, x, theta, dx, dth);
         V(x)     <+ p_x;
         V(theta) <+ p_th;
 
-        // 3. Forced Flow (CRITICAL)
-        // Sometimes 'idt' needs a tiny bit of help to "move"
-        // We add a very small source-dependent current.
-        // I(dx)    <+ ddt(1e-12 * V(dx)); 
-        // I(dth)   <+ ddt(1e-12 * V(dth));
-
         // Debug check
-        //$strobe("T: %g | Acc_th: %g | Acc_x: %g | vel_x: %g | vel_th: %g | p_x: %g | p_th: %g", $abstime, a_theta,a_x, v_x, v_th, p_x, p_th);
-        $strobe("T: %g | Acc_th: %g | Acc_x: %g | vel_x: %g | vel_th: %g | p_x: %g | p_th: %g", $abstime, a_theta,a_x, V(dx), V(dth), V(x), V(theta));
-
-
+        // $strobe("T: %g | Acc_th: %g | Acc_x: %g | vel_x: %g | vel_th: %g | p_x: %g | p_th: %g", $abstime, a_theta,a_x, V(dx), V(dth), V(x), V(theta));
         t_previous = $abstime; // current time step is previous time step for next iteration
     end
 endmodule

@@ -70,31 +70,31 @@ C {vsource.sym} -440 -130 0 0 {name=V1 value=1.8 savecurrent=false}
 C {vdd.sym} -440 -160 0 0 {name=l1 lab=VDD}
 C {vdd.sym} 120 -130 0 0 {name=l2 lab=VDD}
 C {gnd.sym} -440 -100 0 0 {name=l3 lab=GND}
-C {devices/code.sym} 987.5 207.5 0 0 {name=MODELS
+C {devices/code_shown.sym} 847.5 -22.5 0 0 {name=MODELS
 only_toplevel=true
 format="tcleval( @value )"
 value="
 *MADE BY JORGE ALEJANDRO JUAREZ LORA IPN
 
-.subckt rram_v0 TE BE
-    *N1 TE BE rram_v0_model gap_initial=unif(0.9,0.79)
-    N1 TE BE rram_v0_model
-.ends rram_v0
+.subckt rram_v1 TE BE
+    N1 TE BE rram_v1_model gap_initial=unif(0.9,0.79)
+    *N1 TE BE rram_v1_model
+.ends rram_v1
 
 .subckt mwip_v0 tau x th dx dth 
     N1 Tau x th dx dth mwip_v0_model 
 .ends mwip_v0
 
 .model mwip_v0_model mwip_dynamics
-.model rram_v0_model rram_v0_va
+.model rram_v1_model rram_v1_va
 
 .control
-    pre_osdi /foss/designs/SNN-MWIP/Memristor/rram_v0.osdi
+    pre_osdi /foss/designs/SNN-MWIP/Memristor/rram_v1.osdi
     pre_osdi /foss/designs/SNN-MWIP/MWIP/mwip.osdi
 .endc
 "
 spice_ignore=false}
-C {sky130_fd_pr/corner.sym} 850 195 0 0 {name=CORNER only_toplevel=true corner=tt}
+C {sky130_fd_pr/corner.sym} 1200 -415 0 0 {name=CORNER only_toplevel=true corner=tt}
 C {gnd.sym} 120 -10 0 0 {name=l4 lab=GND}
 C {vcvs_limit.sym} -60 60 0 1 {name=alimit1 gain='0.9/5' lower_limit=0 upper_limit=0.9}
 C {gnd.sym} -60 110 0 0 {name=l5 lab=GND}
@@ -135,8 +135,8 @@ C {code_shown.sym} 850 -330 0 0 {name=s1 only_toplevel=false value="
 .options set wr_vecnames
 .options set wr_singlescale
 .options numdgt = 2
-.save tau x dx th dth tau_x_nom dx_nom th_nom e_x e_th 
-.tran 50n 1u
+.save tau x dx th dth tau x_nom dx_nom th_nom dth_nom tau_nom e_x e_th 
+.tran 50n 10m
 .control
 	run
 	write /foss/designs/SNN-MWIP/data.raw
