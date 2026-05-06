@@ -31,14 +31,12 @@ N 900 -1320 960 -1320 {
 lab=vout3}
 N 1100 -2010 1120 -2010 {
 lab=#net1}
-N 1120 -1960 1120 -1570 {
-lab=#net1}
 N 1100 -1570 1120 -1570 {
-lab=#net1}
+lab=#net2}
 N 1100 -1870 1120 -1870 {
 lab=#net1}
 N 1100 -1740 1120 -1740 {
-lab=#net1}
+lab=#net2}
 N 1040 -2010 1070 -2010 {
 lab=GND}
 N 1040 -1870 1070 -1870 {
@@ -47,8 +45,8 @@ N 1040 -1740 1070 -1740 {
 lab=GND}
 N 1040 -1570 1070 -1570 {
 lab=GND}
-N 1290 -1770 1340 -1770 {
-lab=hx}
+N 1290 -1940 1340 -1940 {
+lab=#net3}
 N 960 -1780 960 -1660 {
 lab=vout2}
 N 960 -1780 1070 -1780 {
@@ -95,10 +93,20 @@ N 660 -1320 700 -1320 {
 lab=Iext3}
 N 700 -1320 740 -1320 {
 lab=Iext3}
-N 900 -2310 920 -2310 {lab=vout0}
-N 900 -1960 920 -1960 {lab=vout1}
-N 900 -1630 930 -1630 {lab=vout2}
-N 900 -1290 930 -1290 {lab=vout3}
+N 900 -2310 920 -2310 {lab=nvout0}
+N 900 -1960 920 -1960 {lab=nvout1}
+N 900 -1630 930 -1630 {lab=nvout2}
+N 900 -1290 930 -1290 {lab=nvout3}
+N 1120 -1960 1120 -1870 {lab=#net1}
+N 1290 -1660 1340 -1660 {
+lab=#net4}
+N 1120 -1740 1120 -1660 {lab=#net2}
+N 1120 -1660 1120 -1570 {lab=#net2}
+N 1630 -1830 1680 -1830 {lab=hx}
+N 1340 -1790 1340 -1660 {lab=#net4}
+N 1340 -1790 1410 -1790 {lab=#net4}
+N 1340 -1870 1410 -1870 {lab=#net3}
+N 1340 -1940 1340 -1870 {lab=#net3}
 C {Neuron/ul_tun_final.sym} 840 -2340 0 0 {name=x2
 CM=0.8p}
 C {devices/iopin.sym} 220 -2030 0 0 {name=p1 lab=vdd}
@@ -186,17 +194,17 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {devices/gnd.sym} 1040 -2010 1 0 {name=l32 lab=GND}
-C {devices/vdd.sym} 1210 -1830 0 0 {name=l33 lab=VDD}
-C {devices/gnd.sym} 1210 -1710 0 0 {name=l34 lab=GND}
+C {devices/vdd.sym} 1210 -2000 0 0 {name=l33 lab=VDD}
+C {devices/gnd.sym} 1210 -1880 0 0 {name=l34 lab=GND}
 C {devices/gnd.sym} 1040 -1870 1 0 {name=l1 lab=GND}
 C {devices/gnd.sym} 1040 -1740 1 0 {name=l2 lab=GND}
 C {devices/gnd.sym} 1040 -1570 1 0 {name=l3 lab=GND}
-C {devices/lab_pin.sym} 1340 -1770 0 1 {name=p36 sig_type=std_logic lab=hx}
+C {devices/lab_pin.sym} 1680 -1830 0 1 {name=p36 sig_type=std_logic lab=hx}
 C {devices/iopin.sym} 80 -1940 0 0 {name=p38 lab=vout0}
 C {devices/iopin.sym} 220 -1790 0 0 {name=p7 lab=Vrew1}
 C {devices/lab_pin.sym} 810 -1200 0 0 {name=p13 sig_type=std_logic lab=Vrew2}
 C {devices/lab_pin.sym} 810 -2220 0 0 {name=p12 sig_type=std_logic lab=Vrew1}
-C {/foss/designs/SNN-MWIP/layer/integrator.sym} 1140 -1770 0 0 {name=x5}
+C {/foss/designs/SNN-MWIP/layer/integrator.sym} 1140 -1940 0 0 {name=x5}
 C {devices/iopin.sym} 220 -1745 0 0 {name=p4 lab=Vrew2}
 C {devices/lab_pin.sym} 810 -1870 0 0 {name=p5 sig_type=std_logic lab=Vrew1}
 C {devices/lab_pin.sym} 810 -1555 0 0 {name=p6 sig_type=std_logic lab=Vrew2}
@@ -215,3 +223,12 @@ C {devices/lab_pin.sym} 920 -2310 2 0 {name=p27 sig_type=std_logic lab=nvout0}
 C {devices/lab_pin.sym} 920 -1960 2 0 {name=p31 sig_type=std_logic lab=nvout1}
 C {devices/lab_pin.sym} 930 -1630 2 0 {name=p32 sig_type=std_logic lab=nvout2}
 C {devices/lab_pin.sym} 930 -1290 2 0 {name=p34 sig_type=std_logic lab=nvout3}
+C {code_shown.sym} 230 -2320 0 0 {name=s1 only_toplevel=false value="
+.save v(vout0) v(vout1) v(vout2) v(vout3) 
+"}
+C {devices/vdd.sym} 1210 -1720 0 0 {name=l4 lab=VDD}
+C {devices/gnd.sym} 1210 -1600 0 0 {name=l5 lab=GND}
+C {/foss/designs/SNN-MWIP/layer/integrator.sym} 1140 -1660 0 0 {name=x6}
+C {/foss/designs/SNN-MWIP/OPAMP/opamp_mini.sym} 1430 -1750 0 0 {name=x7}
+C {devices/vdd.sym} 1500 -1900 0 0 {name=l6 lab=VDD}
+C {devices/gnd.sym} 1500 -1760 0 0 {name=l7 lab=GND}

@@ -166,8 +166,8 @@ sa=0 sb=0 sd=0
 model=pfet_01v8
 spiceprefix=X
 }
-C {devices/code_shown.sym} -120 -755 0 0 {name=s1 only_toplevel=false value="
-.save v(te) v(be) i(vmr)
+C {devices/code_shown.sym} -240 -725 0 0 {name=s1 only_toplevel=false value="
+.save v(te) v(be) i(vmr) 
 "
 spice_ignore=false}
 C {devices/vsource.sym} 380 -340 3 0 {name=Vmr value=0 savecurrent=true}

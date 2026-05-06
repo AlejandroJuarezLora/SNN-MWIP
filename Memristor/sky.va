@@ -33,7 +33,7 @@ module sky130_fd_pr_reram__reram_cell(TE, BE);
     parameter real Tfilament_max       = 4.9e-9     from (0:inf);                         // maximum thickness of conductive filament (for minimum resistance) [meters]
     parameter real Tfilament_min       = 3.3e-9     from (0:inf);                         // minimum thickness of conductive filament (for maximum resistance) [meters]
     //parameter real Tfilament_0         = 3.3e-9     from [Tfilament_min:Tfilament_max];   // initial thickness of conductive filament (at t=0 for transient simulation) [meters]
-    `macroEntrada(Tfilament_0, 3.3, "m", Tfilament_min,Tfilament_max, "initial thickness of conductive filament (at t=0 for transient simulation) [meters]")
+    `macroEntrada(Tfilament_0, Tfilament_min, "m", Tfilament_min,Tfilament_max, "initial thickness of conductive filament (at t=0 for transient simulation) [meters]")
     // activation energy
     parameter real Eact_generation     = 1.501      from (0:inf);                         // activation energy for vacancy generation [eV]
     parameter real Eact_recombination  = 1.500      from (0:inf);                         // activation energy for vacancy recombination [eV]

@@ -27,14 +27,14 @@ logy=0
 color=4
 node="\\"memristancia;0 te - i(v2) /\\""}
 B 2 670 -1230 1470 -830 {flags=graph
-y1=-0.00015481139
-y2=0.00052252993
+y1=-9.1058873e-05
+y2=0.0001675419
 ypos1=0
 ypos2=2
 divy=5
 subdivy=4
 unity=1
-x1=-3
+x1=-2
 
 divx=5
 subdivx=1
@@ -51,11 +51,11 @@ logy=0
 linewidth_mult=3
 
 digital=0
-x2=3
+x2=2
 sweep=TE}
 B 2 -140 -810 660 -410 {flags=graph
-y1=-0.0076805582
-y2=0.039319441
+y1=-6.3e-05
+y2=0.0023
 ypos1=0
 ypos2=2
 divy=5
@@ -106,7 +106,7 @@ color=6
 node=n.xr2.n1#ngap
 linewidth_mult=3}
 B 2 2340 -790 3140 -390 {flags=graph
-y1=130
+y1=29000
 y2=3400000
 ypos1=0
 ypos2=2
@@ -127,14 +127,14 @@ logy=0
 color=4
 node="\\"memristancia;0 te3 - i(v5) /\\""}
 B 2 2340 -1210 3140 -810 {flags=graph
-y1=-0.00088108864
-y2=0.0055393344
+y1=-6.7e-06
+y2=6.9e-05
 ypos1=0
 ypos2=2
 divy=5
 subdivy=4
 unity=1
-x1=-3
+x1=-2
 
 divx=5
 subdivx=1
@@ -151,11 +151,11 @@ logy=0
 linewidth_mult=3
 
 digital=0
-x2=3
+x2=2
 sweep=TE3}
 B 2 1530 -790 2330 -390 {flags=graph
-y1=-6.9e-05
-y2=0.023
+y1=-6.7e-06
+y2=6.9e-05
 ypos1=0
 ypos2=2
 divy=5
@@ -206,8 +206,8 @@ linewidth_mult=3
 color=4
 node=n.xr4.n1#nGap}
 B 2 4030 -780 4830 -380 {flags=graph
-y1=130
-y2=3400000
+y1=890
+y2=2500000
 ypos1=0
 ypos2=2
 divy=5
@@ -227,14 +227,14 @@ logy=0
 color=4
 node="\\"memristancia;0 te2 - i(v1) /\\""}
 B 2 4030 -1200 4830 -800 {flags=graph
-y1=-0.00031320238
-y2=0.00049846587
+y1=-0.00015448996
+y2=0.00273751
 ypos1=0
 ypos2=2
 divy=5
 subdivy=4
 unity=1
-x1=-3
+x1=-2
 
 divx=5
 subdivx=1
@@ -251,11 +251,11 @@ logy=0
 linewidth_mult=3
 
 digital=0
-x2=3
+x2=2
 sweep=TE2}
 B 2 3220 -780 4020 -380 {flags=graph
-y1=-6.9e-05
-y2=0.023
+y1=-6.2e-05
+y2=0.0023
 ypos1=0
 ypos2=2
 divy=5
@@ -281,8 +281,8 @@ sweep=time
 color=7
 node="\\"Corriente; 0 i(v1) -\\""}
 B 2 3210 -1200 4010 -800 {flags=graph
-y1=0.1
-y2=1.7
+y1=-0.95308127
+y2=1.647448
 ypos1=0
 ypos2=2
 divy=5
@@ -305,6 +305,56 @@ logy=0
 linewidth_mult=3
 color=4
 node=n.xr3.n1#ngap}
+B 2 2410 -1670 3210 -1270 {flags=graph
+y1=-2743.3202
+y2=50864.921
+ypos1=0
+ypos2=2
+divy=5
+subdivy=4
+unity=1
+x1=2.5e-11
+x2=0.0012
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+
+
+dataset=-1
+unitx=1
+logx=0
+logy=0
+
+
+color=6
+node="\\"n.xr2.n1#ngap deriv()\\""
+linewidth_mult=3}
+B 2 3260 -1670 4060 -1270 {flags=graph
+y1=-2743.3202
+y2=50864.921
+ypos1=0
+ypos2=2
+divy=5
+subdivy=4
+unity=1
+x1=2.5e-11
+x2=0.0012
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+
+
+dataset=-1
+unitx=1
+logx=0
+logy=0
+
+
+color=6
+node="\\"n.xr3.n1#ngap deriv()\\""
+linewidth_mult=3}
 N 130 -170 130 -140 {
 lab=TE}
 N 130 50 130 60 {
@@ -391,6 +441,7 @@ unset rawfile
 C {devices/code_shown.sym} 420 100 0 0 {name=NGSPICE
 only_toplevel=true
 value="
+.param frec=1k
 .options num_threads=8
 .tran 20n 1.2m uic
 .control
@@ -401,8 +452,8 @@ value="
 
 " }
 C {devices/lab_wire.sym} 260 -170 0 0 {name=l3 sig_type=std_logic lab=TE}
-C {devices/vsource.sym} 30 -220 0 1 {name=V2a value="SINE(0 1.8 100k 0 0 0)"
-spice_ignore=true}
+C {devices/vsource.sym} 130 -80 0 1 {name=V2 value="SINE(0 2 \{frec\} 0 0 0)"
+}
 C {devices/code_shown.sym} 822.5 -322.5 0 0 {name=MODELS2
 only_toplevel=true
 format="tcleval( @value )"
@@ -414,12 +465,12 @@ N1 TE BE rram_v0_model
 .ends rram_v0
 
 .subckt rram_v1 TE BE
-N1 TE BE rram_v1_model gap_initial=1
+N1 TE BE rram_v1_model gap_initial=0.1111
 .ends rram_v0
 
 
 .subckt sky_reram TE BE
-N1 TE BE sky_reram_model Tfilament_0=4e-9
+N1 TE BE sky_reram_model Tfilament_0=3.3e-9
 .ends sky_reram
 
 .model rram_v0_model rram_v0_va
@@ -433,27 +484,23 @@ pre_osdi /foss/designs/SNN-MWIP/Memristor/sky.osdi
 .endc
 "
 spice_ignore=false}
-C {devices/vsource.sym} 130 -80 0 1 {name=V2 value="PWL(0 -3 200u 3 400u -3 600u 3 800u -3 1m 3 1.2m -3)"
-}
 C {rram_v0.sym} 350 -110 0 0 {name=R2
 model=rram_v0
 spiceprefix=X
 }
 C {devices/gnd.sym} 1680 40 0 0 {name=l6 lab=0}
 C {devices/lab_wire.sym} 1810 -200 0 0 {name=l7 sig_type=std_logic lab=TE3}
-C {devices/vsource.sym} 1530 -270 0 1 {name=V5a value="SINE(0 1.8 100k 0 0 0)"
-spice_ignore=true}
 C {sky.sym} 1900 -140 0 0 {name=R4
 model=sky_reram
 spiceprefix=X
 }
-C {devices/vsource.sym} 1680 -110 0 1 {name=V5 value="PWL(0 -3 200u 3 400u -3 600u 3 800u -3 1m 3 1.2m -3)"
-}
 C {devices/gnd.sym} 3370 50 0 0 {name=l1 lab=0}
 C {devices/lab_wire.sym} 3500 -190 0 0 {name=l4 sig_type=std_logic lab=TE2}
-C {devices/vsource.sym} 3370 -100 0 1 {name=V1 value="PWL(0 -3 200u 3 400u -3 600u 3 800u -3 1m 3 1.2m -3)"
-}
 C {rram_v1.sym} 3590 -130 0 0 {name=R3
 model=rram_v1
 spiceprefix=X
+}
+C {devices/vsource.sym} 1680 -110 0 1 {name=V5 value="SINE(0 2 \{frec\} 0 0 0)"
+}
+C {devices/vsource.sym} 3370 -100 0 1 {name=V1 value="SINE(0 2 \{frec\} 0 0 0)"
 }

@@ -18,7 +18,6 @@ module mwip_dynamics(torque, x, theta, dx, dth);
     parameter real l = 0.3;    
     parameter real g = 9.81;   
     parameter real J = 0.006; 
-    parameter real t_step = 1.0e-3     from (0:inf);     // maximum time step [seconds]
     parameter real xmin = -4.8;                         // minimum x position [meters]
     parameter real xmax = 4.8;                          // maximun x position [meters]
     parameter real dxmin = -5;                          // minimum dx velocity [meters/s]
@@ -27,6 +26,7 @@ module mwip_dynamics(torque, x, theta, dx, dth);
     parameter real thmax = 0.4184;                          // maximun th position [radians]
     parameter real dthmin = -5;                          // minimum dth velocity [radians/s]
     parameter real dthmax = 5;                           // maximum dth velocity [radians/s]
+    parameter real t_step = 10e-9;   //minimun timestep for simulation
 
     `macroEntrada(x0, 1, "m", xmin,xmax, "Initial x")
     `macroEntrada(dx0, 1, "m/s", dxmin, dxmax, "Initial dx")
@@ -68,7 +68,7 @@ module mwip_dynamics(torque, x, theta, dx, dth);
             $display("Simulation started. th0 is %g, x0 is %g", p_th, p_x);
         end
         // ... inside analog begin ...
-        // $bound_step(t_step); // bound maximum time step
+        $bound_step(t_step); // bound maximum time step
         t_current = $abstime; // current time
         t_delta = t_current - t_previous;
 

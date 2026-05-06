@@ -75,15 +75,15 @@ N 860 -70 870 -70 {
 lab=vss}
 N 240 -290 260 -290 {
 lab=vm}
-N 120 -290 130 -290 {lab=vm}
+N 60 -290 70 -290 {lab=#net2}
 N 320 -100 320 -70 {lab=Vleak}
 N 320 -100 340 -100 {lab=Vleak}
 N 380 -70 380 -30 {lab=vss}
 N 380 -100 380 -70 {lab=vss}
-N 90 -290 90 -240 {lab=vdd}
-N 0 -290 50 -290 {lab=Iext}
-N 50 -290 60 -290 {lab=Iext}
-N 90 -360 90 -330 {lab=vout}
+N 30 -290 30 -240 {lab=vdd}
+N -60 -290 -10 -290 {lab=Iext}
+N -10 -290 0 -290 {lab=Iext}
+N 30 -360 30 -330 {lab=vout}
 N 450 -250 580 -250 {lab=vdd}
 N 380 -290 510 -290 {lab=vm}
 N 380 -180 510 -180 {lab=vout}
@@ -95,13 +95,13 @@ N 330 -250 340 -250 {lab=vout}
 N 380 -250 450 -250 {lab=vdd}
 N 380 -220 380 -210 {lab=vout}
 N 900 -170 940 -170 {lab=vout}
-N 130 -290 180 -290 {lab=vm}
+N 70 -290 120 -290 {lab=#net2}
 N 180 -290 240 -290 {lab=vm}
-N 120 -130 160 -130 {lab=vm}
-N 160 -290 160 -130 {lab=vm}
-N 30 -130 60 -130 {lab=Iext}
-N 30 -290 30 -130 {lab=Iext}
-N 90 -90 90 -50 {lab=nvout}
+N 60 -130 100 -130 {lab=#net2}
+N 100 -290 100 -130 {lab=#net2}
+N -30 -130 0 -130 {lab=Iext}
+N -30 -290 -30 -130 {lab=Iext}
+N 30 -90 30 -50 {lab=nvout}
 N 900 -70 1040 -70 {lab=vss}
 N 1040 -100 1040 -70 {lab=vss}
 N 1040 -130 1040 -100 {lab=vss}
@@ -147,14 +147,14 @@ m=1
 value=@CM
 footprint=1206
 device="ceramic capacitor"}
-C {devices/iopin.sym} 0 -290 0 1 {name=p5 lab=Iext}
+C {devices/iopin.sym} -60 -290 0 1 {name=p5 lab=Iext}
 C {devices/iopin.sym} 940 -170 3 1 {name=p6 lab=vout}
 C {devices/iopin.sym} 850 -30 0 0 {name=p2 lab=vss}
 C {devices/iopin.sym} 320 -70 1 0 {name=p7 lab=Vleak }
 C {devices/lab_pin.sym} 490 -250 3 0 {name=p11 sig_type=std_logic lab=vdd}
 C {devices/lab_pin.sym} 890 -250 3 0 {name=p12 sig_type=std_logic lab=vdd}
 C {devices/lab_pin.sym} 260 -90 3 0 {name=p10 sig_type=std_logic lab=vss}
-C {sky130_fd_pr/pfet_01v8.sym} 90 -310 3 1 {name=M9
+C {sky130_fd_pr/pfet_01v8.sym} 30 -310 3 1 {name=M9
 L=0.15
 W=4
 nf=1
@@ -162,7 +162,7 @@ mult=1
 model=pfet_01v8
 spiceprefix=X
 spice_ignore=false}
-C {devices/lab_pin.sym} 90 -240 3 0 {name=p1 sig_type=std_logic lab=vdd}
+C {devices/lab_pin.sym} 30 -240 3 0 {name=p1 sig_type=std_logic lab=vdd}
 C {sky130_fd_pr/nfet_01v8.sym} 360 -100 0 0 {name=M11
 L=0.15
 W=@W_LEAK
@@ -178,10 +178,10 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {devices/lab_pin.sym} 380 -30 3 0 {name=p4 sig_type=std_logic lab=vss}
-C {devices/lab_pin.sym} 90 -352.5 0 0 {name=p15 sig_type=std_logic lab=vout}
+C {devices/lab_pin.sym} 30 -352.5 0 0 {name=p15 sig_type=std_logic lab=vout}
 C {devices/lab_pin.sym} 322.5 -290 1 0 {name=p16 sig_type=std_logic lab=vm}
 C {devices/iopin.sym} 300 -440 0 1 {name=p8 lab=vdd}
-C {sky130_fd_pr/nfet_01v8.sym} 90 -110 1 1 {name=M5
+C {sky130_fd_pr/nfet_01v8.sym} 30 -110 1 1 {name=M5
 L=0.15
 W=2
 nf=1 
@@ -195,7 +195,7 @@ sa=0 sb=0 sd=0
 model=nfet_01v8
 spiceprefix=X
 }
-C {devices/lab_pin.sym} 90 -130 1 0 {name=p3 sig_type=std_logic lab=vss}
+C {devices/lab_pin.sym} 30 -130 1 0 {name=p3 sig_type=std_logic lab=vss}
 C {sky130_fd_pr/pfet_01v8.sym} 1020 -250 0 0 {name=M6
 L=0.15
 W=2
@@ -214,4 +214,5 @@ spiceprefix=X
 }
 C {devices/lab_pin.sym} 1040 -300 0 0 {name=p9 sig_type=std_logic lab=vdd}
 C {devices/iopin.sym} 1040 -190 2 1 {name=p13 lab=nvout}
-C {devices/lab_pin.sym} 90 -52.5 0 0 {name=p14 sig_type=std_logic lab=nvout}
+C {devices/lab_pin.sym} 30 -52.5 0 0 {name=p14 sig_type=std_logic lab=nvout}
+C {ammeter.sym} 150 -290 3 0 {name=iext_meas savecurrent=true spice_ignore=0}
