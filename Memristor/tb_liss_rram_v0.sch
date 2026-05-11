@@ -81,8 +81,8 @@ sweep=time
 color=7
 node="\\"Corriente; 0 i(v2) -\\""}
 B 2 -150 -1230 650 -830 {flags=graph
-y1=0.087
-y2=1.7
+y1=-0.36105558
+y2=1.2519446
 ypos1=0
 ypos2=2
 divy=5
@@ -103,7 +103,7 @@ logy=0
 
 
 color=6
-node=n.xr2.n1#ngap
+node=n.x2.n1#ngap
 linewidth_mult=3}
 B 2 2340 -790 3140 -390 {flags=graph
 y1=29000
@@ -128,7 +128,7 @@ color=4
 node="\\"memristancia;0 te3 - i(v5) /\\""}
 B 2 2340 -1210 3140 -810 {flags=graph
 y1=-6.7e-06
-y2=6.9e-05
+y2=5.5e-05
 ypos1=0
 ypos2=2
 divy=5
@@ -181,8 +181,8 @@ sweep=time
 color=7
 node="\\"Corriente; 0 i(v5) -\\""}
 B 2 1520 -1210 2320 -810 {flags=graph
-y1=0
-y2=0.01
+y1=-6.7e-06
+y2=5.5e-05
 ypos1=0
 ypos2=2
 divy=5
@@ -203,11 +203,10 @@ logy=0
 
 
 linewidth_mult=3
-color=4
-node=n.xr4.n1#nGap}
+}
 B 2 4030 -780 4830 -380 {flags=graph
-y1=890
-y2=2500000
+y1=1000
+y2=3400000
 ypos1=0
 ypos2=2
 divy=5
@@ -227,8 +226,8 @@ logy=0
 color=4
 node="\\"memristancia;0 te2 - i(v1) /\\""}
 B 2 4030 -1200 4830 -800 {flags=graph
-y1=-0.00015448996
-y2=0.00273751
+y1=-6.7e-06
+y2=0.0018
 ypos1=0
 ypos2=2
 divy=5
@@ -254,7 +253,7 @@ digital=0
 x2=2
 sweep=TE2}
 B 2 3220 -780 4020 -380 {flags=graph
-y1=-6.2e-05
+y1=-6.7e-06
 y2=0.0023
 ypos1=0
 ypos2=2
@@ -281,8 +280,8 @@ sweep=time
 color=7
 node="\\"Corriente; 0 i(v1) -\\""}
 B 2 3210 -1200 4010 -800 {flags=graph
-y1=-0.95308127
-y2=1.647448
+y1=0.1
+y2=1.7
 ypos1=0
 ypos2=2
 divy=5
@@ -304,10 +303,10 @@ logy=0
 
 linewidth_mult=3
 color=4
-node=n.xr3.n1#ngap}
+node=n.x3.n1#ngap}
 B 2 2410 -1670 3210 -1270 {flags=graph
-y1=-2743.3202
-y2=50864.921
+y1=-104773.3
+y2=94624.203
 ypos1=0
 ypos2=2
 divy=5
@@ -328,11 +327,11 @@ logy=0
 
 
 color=6
-node="\\"n.xr2.n1#ngap deriv()\\""
+node="\\"n.x2.n1#ngap deriv()\\""
 linewidth_mult=3}
 B 2 3260 -1670 4060 -1270 {flags=graph
-y1=-2743.3202
-y2=50864.921
+y1=-35659726
+y2=29340275
 ypos1=0
 ypos2=2
 divy=5
@@ -353,7 +352,7 @@ logy=0
 
 
 color=6
-node="\\"n.xr3.n1#ngap deriv()\\""
+node="\\"n.x3.n1#ngap deriv()\\""
 linewidth_mult=3}
 N 130 -170 130 -140 {
 lab=TE}
@@ -444,8 +443,10 @@ value="
 .param frec=1k
 .options num_threads=8
 .tran 20n 1.2m uic
+.save all
+*.save ngap TE
 .control
-	save all
+	
 	run
 	write tb_liss_rram_v0.raw
 .endc
@@ -464,8 +465,8 @@ value="
 N1 TE BE rram_v0_model
 .ends rram_v0
 
-.subckt rram_v1 TE BE
-N1 TE BE rram_v1_model gap_initial=0.1111
+.subckt rram_v1 TE BE 
+N1 TE BE rram_v1_model gap_initial=0.2751
 .ends rram_v0
 
 
@@ -484,21 +485,22 @@ pre_osdi /foss/designs/SNN-MWIP/Memristor/sky.osdi
 .endc
 "
 spice_ignore=false}
-C {rram_v0.sym} 350 -110 0 0 {name=R2
+C {rram_v0.sym} 350 -110 0 0 {name=2
 model=rram_v0
 spiceprefix=X
 }
 C {devices/gnd.sym} 1680 40 0 0 {name=l6 lab=0}
 C {devices/lab_wire.sym} 1810 -200 0 0 {name=l7 sig_type=std_logic lab=TE3}
-C {sky.sym} 1900 -140 0 0 {name=R4
+C {sky.sym} 1900 -140 0 0 {name=4
 model=sky_reram
 spiceprefix=X
 }
 C {devices/gnd.sym} 3370 50 0 0 {name=l1 lab=0}
 C {devices/lab_wire.sym} 3500 -190 0 0 {name=l4 sig_type=std_logic lab=TE2}
-C {rram_v1.sym} 3590 -130 0 0 {name=R3
+C {rram_v1.sym} 3590 -130 0 0 {name=3
 model=rram_v1
 spiceprefix=X
+
 }
 C {devices/vsource.sym} 1680 -110 0 1 {name=V5 value="SINE(0 2 \{frec\} 0 0 0)"
 }

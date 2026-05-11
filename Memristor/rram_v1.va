@@ -25,8 +25,8 @@ module rram_v1_va(t, b);
     parameter real smoothing = 1e-8 from (0:inf);
     parameter real GMIN = 1e-12 from (0:inf);
     parameter real maxslope = 3.5e16 from (0:inf);
+    parameter real Kclip = 50 from (0:inf);
     `macroEntrada(gap_initial, 1.69, "V", minGap, maxGap, "Initial Gap distance between tip of the filament and bottom electrode, represented as a voltage between 0.1 and 1.7")
-    parameter real t_step = 10e-9;   //minimun timestep for simulation
     real ddt_Gap, Gap, Gamma, Fw1, Fw2, clip_maxGap, clip_minGap;
 
     analog function real safeexp;
@@ -45,6 +45,7 @@ module rram_v1_va(t, b);
             safesinh = 0.5*(safeexp(x, maxslope) - safeexp(-x, maxslope)); 
         end
     endfunction
+
 
     analog function real soft_minmax;
         input x, xmin, xmax;
@@ -70,6 +71,14 @@ module rram_v1_va(t, b);
     //         soft_minmax = ((maxGap - minGap)/2)*(x/sqrt(x*x + smoothing)) + ((maxGap - minGap)/2)+minGap;
     //     end
     // endfunction // soft_minmax
+
+    analog function real smoothstep;
+        input x, smoothing; 
+        real  x, smoothing;
+        begin
+            smoothstep = 0.5*(x/sqrt(x*x + smoothing)+1);
+        end
+    endfunction // smoothstep
     
      // transient simulation parameters
     real t_current;              // current time step [s]
@@ -83,19 +92,18 @@ module rram_v1_va(t, b);
             Gap = gap_initial;
             $strobe("V1 gap_initial: %f", gap_initial);
 	    end
-        $bound_step(t_step); // bound maximum time step
+        // $bound_step(t_step); // bound maximum time step
         t_current = $abstime; // current time
         t_delta = t_current - t_previous;
         Gamma = gamma0 + Beta0 * pow(Gap, 3);
-        ddt_Gap =  -1e9*Vel0 * safeexp(-Ea/$vt, maxslope)*safesinh(V(t, b)*Gamma*a0/(tox*$vt), maxslope);
+        ddt_Gap =  -1e9*Vel0 * safeexp(-Ea/$vt, maxslope)*safesinh(V(t, b)*Gamma*a0/(tox*$vt), maxslope);  
         Gap = Gap + t_delta * ddt_Gap;
         Gap = soft_minmax(Gap, minGap, maxGap);
+        // Gap = soft_minmax(Gap, smoothing, minGap, maxGap);
         I(t,b) <+ I0 * safeexp(-(Gap)/g0,maxslope) * safesinh(V(t, b)/V0, maxslope);
         t_previous = $abstime; // current time step is previous time step for next iteration
         V(nGap, b) <+ Gap; // Plotting in nanometers
 
-
-       
 
     end
 endmodule

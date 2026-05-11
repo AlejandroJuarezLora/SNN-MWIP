@@ -15,9 +15,9 @@ v {xschem version=3.4.8RC file_version=1.3
 
 }
 G {}
-K {type=reram
+K {type=primitive
 format="@spiceprefix@name @pinlist @model "
-template="name=R1
+template="name=X1
 model=sky_reram
 spiceprefix=X
 "

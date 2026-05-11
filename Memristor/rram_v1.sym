@@ -15,9 +15,9 @@ v {xschem version=3.4.8RC file_version=1.3
 
 }
 G {}
-K {type=reram
+K {type=primitive
 format="@spiceprefix@name @pinlist @model "
-template="name=R1
+template="name=X1
 model=rram_v1
 spiceprefix=X
 "
@@ -42,4 +42,4 @@ T {@name} 15 -13.75 0 0 0.2 0.2 {}
 T {@model} 15 2.5 0 0 0.2 0.2 {}
 T {TE} 10 -28.75 0 0 0.2 0.2 {}
 T {BE} 10 28.75 2 1 0.2 0.2 {}
-T {v1} -10 -10 1 0 0.4 0.4 {}
+T {v1} 70 -20 2 0 0.4 0.4 {}

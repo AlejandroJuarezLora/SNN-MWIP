@@ -68,7 +68,7 @@ module mwip_dynamics(torque, x, theta, dx, dth);
             $display("Simulation started. th0 is %g, x0 is %g", p_th, p_x);
         end
         // ... inside analog begin ...
-        $bound_step(t_step); // bound maximum time step
+        // $bound_step(t_step); // bound maximum time step
         t_current = $abstime; // current time
         t_delta = t_current - t_previous;
 
